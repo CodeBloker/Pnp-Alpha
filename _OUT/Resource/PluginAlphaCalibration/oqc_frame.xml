@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0">
+		<Label text="OQC Enable:" font="1"/>
+		<Option width="130" height="25" name="check_OqcMode" padding="6,0,60,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="启用OQC模式" textpadding="10,0,0,0" />
+		<Label text="OQC Record Input:" font="1"/>
+		<HorizontalLayout height="28" font="0" padding="5,3,3,3">
+			<Label text="TyCamera：" width="100" />
+			<Label text="X：" width="20" />
+			<Edit name="edit_OqcTy_x" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Y：" width="20" />
+			<Edit name="edit_OqcTy_y" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="28" font="0" padding="5,3,3,3">
+			<Label text="AlphaCamera：" width="100" />
+			<Label text="X：" width="20" />
+			<Edit name="edit_OqcAlpha_x" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Y：" width="20" />
+			<Edit name="edit_OqcAlpha_y" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<Label text="TY相机实时调整结果:" font="1"/>
+		<HorizontalLayout height="28" font="0" padding="5,3,3,3">
+			<Label text="ΔX：" width="30" />
+			<Edit name="edit_OqcTyDertaX" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="阈值:" width="35" align="center"/>
+			<Label name="lable_OqcTyDertaXThreshold" width="40" text="0.0" padding="3,3,3,3" />	
+			<Label name="lable_OqcAxis5Advice" text="轴3向?方向调整"/>
+		</HorizontalLayout>
+		<HorizontalLayout height="28" font="0" padding="5,3,3,3">
+			<Label text="ΔY：" width="30" />
+			<Edit name="edit_OqcTyDertaY" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="阈值:" width="35" align="center"/>
+			<Label name="lable_OqcTyDertaYThreshold" width="40" text="0.0" padding="3,3,3,3" />	
+			<Label name="lable_OqcAxis6Advice" text="轴2向?方向调整"/>
+		</HorizontalLayout>
+		<Label text="ALPHA相机实时调整结果:" font="1"/>
+		<HorizontalLayout height="28" font="0" padding="5,3,3,3">
+			<Label text="ΔX：" width="30" />
+			<Edit name="edit_OqcAlphaDertaX" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="阈值:" width="35" align="center"/>
+			<Label name="lable_OqcAlphaDertaXThreshold" width="40" text="0.0" padding="3,3,3,3" />	
+			<Label name="lable_OqcAxis3Advice" text="轴3向?方向调整"/>
+		</HorizontalLayout>
+		<HorizontalLayout height="28" font="0" padding="5,3,3,3">
+			<Label text="ΔY：" width="30" />
+			<Edit name="edit_OqcAlphaDertaY" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="阈值:" width="35" align="center"/>
+			<Label name="lable_OqcAlphaDertaYThreshold" width="40" text="0.0" padding="3,3,3,3" />	
+			<Label name="lable_OqcAxis4Advice" text="轴1向?方向调整"/>
+		</HorizontalLayout>
+		<Label text="标定结果：" font="1"/>
+		<HorizontalLayout height="28" font="0" padding="10,3,3,3">
+			<Label text="TX：" width="30" />
+			<Label text="X：" width="20" />
+			<Edit name="edit_OqcTxResultX" text="0" padding="3,3,10,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Y：" width="20" />
+			<Edit name="edit_OqcTxResultY" text="0" padding="3,3,30,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="阈值：" width="45" />
+			<Label name="lable_OqcTxThreshold" padding="3,3,3,3" />
+		</HorizontalLayout>
+		<HorizontalLayout height="28" font="0" padding="10,3,3,3">
+			<Label text="TY：" width="30" />
+			<Label text="X：" width="20" />
+			<Edit name="edit_OqcTyResultX" text="0" padding="3,3,10,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Y：" width="20" />
+			<Edit name="edit_OqcTyResultY" text="0" padding="3,3,30,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="阈值：" width="45" />
+			<Label name="lable_OqcTyThreshold" padding="3,3,3,3" />
+		</HorizontalLayout>
+		<HorizontalLayout font="0" padding="5,3,3,3">
+			<Option width="80" height="27" name="radio_OqcTx" padding="3,15,3,3" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_oqc" selected="true" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="TX标定" textpadding="20,0,0,0" />
+			<Option width="80" height="27" name="radio_OqcTy" padding="3,15,3,3" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_oqc" selected="false" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="TY标定" textpadding="20,0,0,0" />
+			<Button name="btn_OqcStartAutoCalibration" height="35" text="开始标定" enabled="false" padding="3,10,3,1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

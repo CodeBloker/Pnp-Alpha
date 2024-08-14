@@ -1,0 +1,137 @@
+{
+	"@processName" : "Main",
+	"groups" : 
+	[
+		{
+			"@branchName" : "master",
+			"@groupName" : "Loading",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "ResetPath",
+					"@method" : "PnpDoeResetData",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupA",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Move To TopPhoto",
+					"@method" : "AxisLoadPnpToPosPhoto",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "AxisX&R Move to WorkPos",
+					"@method" : "AxisXRLoadPnpToPosTray",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "StartDVPTopCapture",
+					"@method" : "StartCaptureTopImageThread",
+					"@pluginFileName" : "DvpPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Move to tray",
+					"@method" : "AxisLoadPnpToPosTray",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "AxisZPeriodicMotion",
+					"@method" : "AxisZPeriodicMotion",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Is the last step",
+					"@method" : "IsTheLastStep",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CylPickDUT",
+					"@method" : "CylLoadPnpToPickDut",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Set ButtonCamera Params",
+					"@method" : "AxisLoadSetParameter",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Pnp move to socket",
+					"@method" : "AxisLoadPnpCommandToPosSocket",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "start buttom capture",
+					"@method" : "StartCaptureBottomImageThread",
+					"@pluginFileName" : "DvpPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "wait pnp to socket",
+					"@method" : "AxisLoadPnpWaitMoveToPosSocket",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "StartDVPTopCapture",
+					"@method" : "StartCaptureTopImageThread",
+					"@pluginFileName" : "DvpPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "put dut to socket",
+					"@method" : "CylLoadPnpToPutDut",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupB",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupC",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "UnLoading",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CloseDevice",
+					"@method" : "unknown",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
+			"policy" : "Restart"
+		}
+	]
+}

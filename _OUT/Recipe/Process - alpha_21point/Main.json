@@ -1,0 +1,747 @@
+{
+	"@processName" : "Main",
+	"groups" : 
+	[
+		{
+			"@branchName" : "master",
+			"@groupName" : "Loading",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "InitDevice",
+					"@method" : "unknown",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CircleWait",
+					"@method" : "TestWaitSleep",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CircleCheck",
+					"@method" : "TestStartCheck",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "SerialCaller",
+					"@itemName" : "GetSensorTemp",
+					"@method" : "GetSensorTemperature",
+					"@pluginFileName" : "SerialPlugin.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupA",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToA1",
+					"@method" : "moveToPosA1",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA1_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA1_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA1_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA1_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToA2",
+					"@method" : "moveToPosA2",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA2_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA2_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA2_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA2_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToA3",
+					"@method" : "moveToPosA3",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA3_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA3_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA3_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA3_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToA4",
+					"@method" : "moveToPosA4",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA4_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA4_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA4_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA4_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToA5",
+					"@method" : "moveToPosA5",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA5_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA5_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA5_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA5_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToA6",
+					"@method" : "moveToPosA6",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA6_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA6_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA6_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA6_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToA7",
+					"@method" : "moveToPosA7",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA7_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA7_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureA7_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilA7_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupB",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToB7",
+					"@method" : "moveToPosB7",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB7_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB7_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB7_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB7_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToB6",
+					"@method" : "moveToPosB6",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB6_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB6_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB6_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB6_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToB5",
+					"@method" : "moveToPosB5",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB5_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB5_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB5_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB5_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToB4",
+					"@method" : "moveToPosB4",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB4_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB4_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB4_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB4_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "SerialCaller",
+					"@itemName" : "GetSensorHeigh1",
+					"@method" : "GetOmronSensor1HeighValue",
+					"@pluginFileName" : "SerialPlugin.dll"
+				},
+				{
+					"@callerName" : "SerialCaller",
+					"@itemName" : "GetSensorHeigh2",
+					"@method" : "GetOmronSensor2HeighValue",
+					"@pluginFileName" : "SerialPlugin.dll"
+				},
+				{
+					"@callerName" : "TcpPluginCaller",
+					"@itemName" : "GetSensorHeigh3",
+					"@method" : "GetConfocalSensorValue1",
+					"@pluginFileName" : "TcpPlugin.dll"
+				},
+				{
+					"@callerName" : "TcpPluginCaller",
+					"@itemName" : "GetSensorHeigh4",
+					"@method" : "GetConfocalSensorValue2",
+					"@pluginFileName" : "TcpPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToB3",
+					"@method" : "moveToPosB3",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB3_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB3_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB3_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB3_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToB2",
+					"@method" : "moveToPosB2",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB2_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB2_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB2_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB2_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToB1",
+					"@method" : "moveToPosB1",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB1_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB1_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureB1_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilB1_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupC",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToC1",
+					"@method" : "moveToPosC1",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC1_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC1_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC1_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC1_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToC2",
+					"@method" : "moveToPosC2",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC2_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC2_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC2_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC2_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToC3",
+					"@method" : "moveToPosC3",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC3_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC3_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC3_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC3_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToC4",
+					"@method" : "moveToPosC4",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC4_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC4_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC4_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC4_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToC5",
+					"@method" : "moveToPosC5",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC5_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC5_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC5_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC5_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToC6",
+					"@method" : "moveToPosC6",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC6_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC6_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC6_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC6_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToC7",
+					"@method" : "moveToPosC7",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC7_Hik1",
+					"@method" : "GetCameraImage1",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC7_Hik1",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "CaptureC7_Hik2",
+					"@method" : "GetCameraImage2",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CallMilC7_Hik2",
+					"@method" : "GetHikImageResult",
+					"@pluginFileName" : "MilPlugin.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "UnLoading",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "MoveToZero",
+					"@method" : "moveToPosZero",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "WriteDataToCSV",
+					"@method" : "WriteTestResultToCSV",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CloseDevice",
+					"@method" : "unknown",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
+			"policy" : "Restart"
+		}
+	]
+}

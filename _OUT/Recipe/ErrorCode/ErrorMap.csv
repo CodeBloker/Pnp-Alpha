@@ -1,0 +1,67 @@
+code,name,description
+#DUTPlugin.dll
+1001,ERR_Init,Initialization failed,0
+1002,ERR_Free,Free failed,0
+1003,ERR_Run,Run error,0
+#HIKPlugin.dll
+1001,ERR_Init,Initialization failed,0
+1002,ERR_Free,Free failed,0
+1003,ERR_Run,Run error,0
+#IDSPlugin.dll
+1001,ERR_Init,Initialization failed,0
+1002,ERR_Free,Free failed,0
+1003,ERR_Run,Run error,0
+#JupINIParser.dll
+40001,ERR_Init,Initialization failed,0
+40002,ERR_ParsingConfig,Configuration file parsing failed,0
+#JupLogView.dll
+40001,ERR_Init,Initialization failed,0
+40002,ERR_ParsingConfig,Configuration file parsing failed,0
+#JupMotion.dll
+10000,ERR_CardInit,Initialization failed,0
+10003,ERR_MotionMoveTimeOut,Move timeout,0
+10004,ERR_MotionMoveTimeOut,Home timeout,0
+10005,ERR_MotionSafetyError,Exceeded safe position,0
+10006,ERR_SetMoveParam,Failed to set move parameters,0
+10007,ERR_AxisServo,Axis card enabled not set,0
+10008,ERR_MoveToPos,Moving to the set position failed,0
+10009,ERR_MoveDistance,Moving fixed distance failed,0
+10010,ERR_Movement_Exceeds_Limit,Detection error exceeds the setting after the move is completed,0
+10011,ERR_StopMoveAxis,Stop moving failed,0
+10012,ERR_EMGStopMoveAxis,Emergency stop failed,0
+10013,ERR_MotionHome,Failed to move back to original location,0
+10014,ERR_StopWaitMove,Stop waiting for axis movement,0
+10015,ERR_WaitHome_ORG_Not_Triggered,The origin sensor was not triggered after returning to its original position,0
+10016,ERR_PEl,Positive Limit Trigger,0
+10017,ERR_NEL,Negative Limit Trigger,0
+10018,ERR_Anti_Collision_Sensor_Triggered_X,Integration Ball X-axis Collision Avoidance Sensing,0
+10019,ERR_Anti_Collision_Sensor_Triggered_Y,Integration Ball Y-axis Collision Avoidance Sensing,0
+10020,ERR_Read_Sensor_Value,Reading distance sensor failed,0
+10021,ERR_EyeBox_Movement_Exceeds_Limit,Exceeding EyeBox distance limit,0
+10022,ERR_OpenSafetyDoor,Failed to open the safety door,0
+10023,ERR_OpenAllClampingCylinders,Failed to open the gripper cylinder,0
+10024,ERR_CloseSafetyDoor,Closing the safety door failed,0
+10025,ERR_CloseAllClampingCylinders,Closing the gripper cylinder failed,0
+10026,ERR_TurnOn_IonFan,Failed to open ion fan,0
+10027,ERR_TurnOff_IonFan,Failed to turn off ion fan,0
+10028,ERR_EyeBoxConfig,EyeBox configuration error,0
+10029,ERR_Read_EyeBoxIndex,Failed to obtain the current number of EyeBox tests,0
+10030,ERR_Read_EyeBoxLoop,Failed to obtain EyeBoxLoop data,0
+10031,ERR_SW_AxisSafetyCheckY,Software Axis Card Y Security Detection Triggered,0
+10032,ERR_SW_AxisSafetyCheckZ,Software Axis Card Z Security Detection Triggered,0
+10033,ERR_HW_AxisSafetyCheck,Hardware axis card security detection triggered,0
+10034,ERR_DUT_NotExist,No test object detected,0
+10035,ERR_DUT_StillExist,Residues of the tested substance,0
+10036,ERR_DUT_AirPressure,Abnormal total pressure,0
+10037,ERR_SafetyDoorOpen,Safety door open,0
+10038,ERR_GratingTrigger,GratingTrigger,0
+10039,ERR_ThermoHygro,ThermoHygro error,0
+10040,ERR_SmallPushBlockIn,Abnormal action of small push block(In),0
+10041,ERR_SmallPushBlockOut,Abnormal action of small push block(Out),0
+10042,ERR_BigPushBlockIn,Abnormal action of big push block(In),0
+10043,ERR_BigPushBlockOut,Abnormal action of big push block(Out),0
+10044,ERR_GripperSensingIsNotOn,Gripper sensing is not on,0
+10045,ERR_GripperSensingIsNotOff,Gripper sensing is not off,0
+#JupTestProcess.dll
+40001,ERR_Init,Initialization failed,0
+40002,ERR_ParsingConfig,Configuration file parsing failed,0

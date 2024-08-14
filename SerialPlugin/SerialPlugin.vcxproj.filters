@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="SerialPlugin.cpp" />
+    <ClCompile Include="export\SerialCaller.cpp">
+      <Filter>Caller</Filter>
+    </ClCompile>
+    <ClCompile Include="export\SerialView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="SerialControl.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleSerialPort.cpp" />
+    <ClCompile Include="WzSerialPort.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SerialPlugin.h" />
+    <ClInclude Include="export\JError.h" />
+    <ClInclude Include="export\JVersion.h" />
+    <ClInclude Include="export\SerialCaller.h">
+      <Filter>Caller</Filter>
+    </ClInclude>
+    <ClInclude Include="export\SerialView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="SerialControl.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleSerialPort.h" />
+    <ClInclude Include="WzSerialPort.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Caller">
+      <UniqueIdentifier>{2cf154d1-2c90-490f-8b62-12163e24b289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{968a2d3e-0ffe-47b6-9b45-38468d8f795c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{ab8a2d72-1c3d-4469-a7ae-16f2e9354e3e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

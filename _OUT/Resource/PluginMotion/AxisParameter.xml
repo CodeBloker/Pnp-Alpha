@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="360,925" caption="0,0,0,30" roundcorner="1,1,1,1">
+	<Font id="0" name="微软雅黑" size="14" share="true" bold="true" />
+	<Font id="1" name="微软雅黑" size="14" share="true" default="true" />
+	<VerticalLayout bkcolor="0xffF4F8FF" bordersize="1" bordercolor="0xFFCFE7F4">	
+		<Label text="基础参数" font="0" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+		<HorizontalLayout height="26">
+			<Label text="当前轴名：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_CurrentAxis" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="当前轴中文名：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_CurrentAxisCn" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="电机类型：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_MotorType" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="板卡类型：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_CardType" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="板卡卡号：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_CardNum" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="板卡轴号：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_AxisNum" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<Label text="运动参数" font="0" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+		<HorizontalLayout height="26">
+			<Label text="运动最小速度：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_AxisMinSpeed" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="运动最大速度：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_AxisMaxSpeed" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="运动加速度：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_AxisAcc" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="运动减速度：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_AxisDec" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="运动停止速度：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_AxisStopSpeed" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="运动曲线速度：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_AxisCurve" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="允许误差(mm/°)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_AllowErrorPos" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="脉冲当量（1mm/°对应脉冲数）：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_Scale" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="导程：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_Lead" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<Label text="回零参数" font="0" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+		<HorizontalLayout height="26">
+			<Label text="回零模式(0原点1信号定位)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeMode" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="回零方向(0正向1负向)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeDir" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="回零最小速度(pulse)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeMinSpeed" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="回零最大速度(pulse)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeMaxSpeed" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="回零加速度(pulse)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeAcc" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="回零减速度(pulse)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeDec" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="回零偏移距离(mm/°)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeOffset" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="回零曲线(0-1)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeCurve" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="回零Z相(0不使用1使用)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_HomeEZA" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<Label text="超时参数" font="0" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+		<HorizontalLayout height="26">
+			<Label text="是否启用超时检查(0不启用1启用)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_useDelay" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="运动超时时间(ms)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_DelayTime" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<Label text="限位参数" font="0" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+		<HorizontalLayout height="26">
+			<Label text="是否启用软件限位(0不启用1启用)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_useLimit" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="软件正限位(mm/°)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_PositiveLimit" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="26">
+			<Label text="软件负限位(mm/°)：" padding="20,3,3,3" borderround="3,3" />
+			<Edit name="edit_NegativeLimit" width="100" padding="3,1,20,1" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<Label text="功能设置" font="0" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+		<HorizontalLayout height="35">
+			<Button name="btn_AxisParasSave" text="保存更新参数" height="35" padding="30,3,30,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+			<Button name="btn_CloseDlg" text="退出参数设置" height="35" padding="30,3,30,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

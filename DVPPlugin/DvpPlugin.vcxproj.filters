@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DvpPlugin.cpp" />
+    <ClCompile Include="DvpCaller.cpp">
+      <Filter>Caller</Filter>
+    </ClCompile>
+    <ClCompile Include="DvpMainWidget.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="DvpCamera_Manage.cpp">
+      <Filter>Dvp_Control</Filter>
+    </ClCompile>
+    <ClCompile Include="DvpCamera_Control.cpp">
+      <Filter>Dvp_Control</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DvpPlugin.h" />
+    <ClInclude Include="JError.h" />
+    <ClInclude Include="JVersion.h" />
+    <ClInclude Include="DvpCaller.h">
+      <Filter>Caller</Filter>
+    </ClInclude>
+    <ClInclude Include="DvpMainWidget.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="DvpCamera_Manage.h">
+      <Filter>Dvp_Control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_INCLUDE\ProjectEvent.h" />
+    <ClInclude Include="DvpCamera_Control.h">
+      <Filter>Dvp_Control</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Caller">
+      <UniqueIdentifier>{120367d8-da4b-46e2-bbb7-4f6605148021}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dvp_Control">
+      <UniqueIdentifier>{79a5cb02-5746-4dd4-bdd2-b84093c60d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{69d773a5-c867-4716-a380-d00e9ec4d971}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

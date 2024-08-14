@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="1800,900">
+	<Font id="0" name="微软雅黑" size="14" share="true" />
+	<Font id="1" name="微软雅黑" size="22" share="true" bold="true"/>
+	<Font id="2" name="微软雅黑" size="14" share="true" bold="true"/>
+	<HorizontalLayout bkcolor="0xFFF7F6F6" childpadding="3">
+		<VerticalLayout >
+			<Label text="输入信号" font="2" bkcolor="#FFC5D4F2" height="20" align="center" />
+			<List name="list_IO_Input" itemvlinesize="1" itemvlinecolor="#FAFAD2" bkcolor="ffffffff"  itembkcolor="ffF4F8FF" itemaltbk="true" sepheight="5" itemfont="0" inset="1,1,1,1" bordercolor="#FFC5D4F2" bordersize="1" itemselectedtextcolor="ff048ae0" itemhottextcolor="ff048ae0" itemalign="center"  vscrollbar="true" hscrollbar="true" sepwidth="2">
+				<ListHeader bkimage="list_header_bg.png">
+					<ListHeaderItem text="IO名" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2"  />
+					<ListHeaderItem text="卡类型" width="100" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+					<ListHeaderItem text="卡号" width="50" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2"  />
+					<ListHeaderItem text="位索引" width="60" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2"  />
+					<ListHeaderItem text="是否启用" width="70" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+					<ListHeaderItem text="电平信号" width="70" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+					<ListHeaderItem text="所属区域" width="100" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+					<ListHeaderItem text="状态" width="35" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+				</ListHeader>
+			</List>
+			<HorizontalLayout height="40" childvalign="vcenter">
+				<Button name="btn_IO_InputConfig" text="IO输入信号参数" enabled="false" width="120" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<Button name="btn_IO_InputAdd" text="添加输入IO" enabled="false" width="120" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<Button name="btn_IO_InputDel" text="删除输入IO" enabled="false" width="120" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+			</HorizontalLayout>
+		</VerticalLayout>
+		<VerticalLayout >
+			<Label text="输出信号" font="2" bkcolor="#FFC5D4F2" height="20" align="center" />
+			<List name="list_IO_Output" itemvlinesize="1" itemvlinecolor="#FAFAD2" bkcolor="ffffffff"  itembkcolor="ffF4F8FF" itemaltbk="true" sepheight="5" itemfont="0" inset="1,1,1,1" bordercolor="#FFC5D4F2" bordersize="1" itemselectedtextcolor="ff048ae0" itemhottextcolor="ff048ae0" itemalign="center"  vscrollbar="true" hscrollbar="true" sepwidth="2">
+				<ListHeader bkimage="list_header_bg.png">
+					<ListHeaderItem text="IO名" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2"  />
+					<ListHeaderItem text="卡类型" width="100" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+					<ListHeaderItem text="卡号" width="50" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2"  />
+					<ListHeaderItem text="位索引" width="60" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2"  />
+					<ListHeaderItem text="电平信号" width="70" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+					<ListHeaderItem text="所属区域" width="100" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+					<ListHeaderItem text="状态" width="50" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+				</ListHeader>
+			</List>
+			<HorizontalLayout height="40" childvalign="vcenter">
+				<Button name="btn_IO_OutputConfig" text="IO输出信号参数" enabled="false" width="120" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<Button name="btn_IO_OutputAdd" text="添加输出IO" enabled="false" width="120" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<Button name="btn_IO_OutputDel" text="删除输出IO" enabled="false" width="120" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+			</HorizontalLayout>
+		</VerticalLayout>
+		<VerticalLayout width="300" bkcolor="#FFDDDDDD">
+			<Label text="输出信号组合指令" font="2" bkcolor="#FFC5D4F2" height="20" align="center" />
+			<Label text="ALPHA SOCKET:" font="2" height="20"/>
+			<HorizontalLayout height="40" padding="3,3,3,3">
+				<Button name="btn_SocketCoveOpen" text="盖子打开" padding="3,0,3,0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<Button name="btn_SocketCoveClose" text="盖子关闭" padding="3,0,3,0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+			</HorizontalLayout>
+			<HorizontalLayout height="40" padding="3,3,3,3">
+				<Button name="btn_SocketCoveUp" text="盖子上升" padding="3,0,3,0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<Button name="btn_SocketCoveDown" text="盖子下压" padding="3,0,3,0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+			</HorizontalLayout>
+			<HorizontalLayout height="40" padding="3,3,3,3">
+				<Button name="btn_SocketCoveCloseDown" text="盖子关闭下压" padding="3,0,3,0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<Button name="btn_SocketCoveUpOpen" text="盖子上升打开" padding="3,0,3,0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+			</HorizontalLayout>
+			<Label text="PNP Vacuum suction:" font="2" height="20"/>
+			<HorizontalLayout height="40" padding="3,3,3,3">
+				<Button name="btn_CylHoldDut" text="吸紧DUT" padding="3,0,3,0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<Button name="btn_CylPutDut" text="松开DUT" padding="3,0,3,0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+			</HorizontalLayout>
+		</VerticalLayout>
+	</HorizontalLayout>
+</Window>

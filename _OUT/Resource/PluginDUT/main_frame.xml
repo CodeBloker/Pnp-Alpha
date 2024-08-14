@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<Default name="VScrollBar" value="share=&quot;true&quot; button1normalimage=&quot;file='scroll.png' source='0,0,16,16'&quot; button1hotimage=&quot;file='scroll.png' source='0,0,16,16' mask='#FFFF00FF'&quot; button1pushedimage=&quot;file='scroll.png' source='0,16,16,32' mask='#FFFF00FF'&quot; button1disabledimage=&quot;file='scroll.png' source='0,0,16,16' mask='#FFFF00FF'&quot; button2normalimage=&quot;file='scroll.png' source='0,32,16,48' mask='#FFFF00FF'&quot; button2hotimage=&quot;file='scroll.png' source='0,32,16,48' mask='#FFFF00FF'&quot; button2pushedimage=&quot;file='scroll.png' source='0,48,16,64' mask='#FFFF00FF'&quot; button2disabledimage=&quot;file='scroll.png' source='0,32,16,48' mask='#FFFF00FF'&quot; thumbnormalimage=&quot;file='scroll.png' source='0,64,16,80' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbhotimage=&quot;file='scroll.png' source='0,64,16,80' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbpushedimage=&quot;ffile='scroll.png' source='0,64,16,80' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbdisabledimage=&quot;file='scroll.png' source='0,64,16,80' corner='2,2,2,2' mask='#FFFF00FF'&quot; railnormalimage=&quot;file='scroll.png' source='0,80,16,96' corner='2,2,2,2' mask='#FFFF00FF'&quot; railhotimage=&quot;file='scroll.png' source='0,80,16,96' corner='2,2,2,2' mask='#FFFF00FF'&quot; railpushedimage=&quot;file='scroll.png' source='0,96,16,112' corner='2,2,2,2' mask='#FFFF00FF'&quot; raildisabledimage=&quot;file='scroll.png' source='0,80,16,96' corner='2,2,2,2' mask='#FFFF00FF'&quot; bknormalimage=&quot;file='scroll.png' source='0,128,16,146' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkhotimage=&quot;file='scroll.png' source='0,128,16,146' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkpushedimage=&quot;file='scroll.png' source='0,128,16,146' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkdisabledimage=&quot;file='scroll.png' source='0,128,16,146' corner='2,2,2,2' mask='#FFFF00FF'&quot; " />
+	<VerticalLayout bkcolor="0xFFF7F6F6" inset="0,1,0,1">
+		<HorizontalLayout>
+			<VerticalLayout width="350" padding="0,0,1,0" bordercolor="#FF768D9B" bordersize="1">
+				<Label text="功能控制" bkcolor="#FFC5D4F2" font="1" height="20" padding="1,1,1,1" align="center" />
+				<HorizontalLayout height="35" font="0" padding="3,3,3,3">
+					<Button name="btn_DutInit" text="初始化" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_DutDisplayClear" text="清除列表" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="3,3,3,3">
+					<Button name="btn_DutOpen" text="开机" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_DutClose" text="关机" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<Label text="I2C(Senser Command)" font="1" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+				<HorizontalLayout height="30" padding="3,3,3,3">
+					<Label text="Addr:" width="35" padding="3,3,3,3" borderround="3,3"/>
+					<Edit name="edit_DutAddr" width="70" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Label text="H" width="10" padding="3,3,3,3" borderround="3,3"/>
+					<Button name="btn_ReadDutAddr" width="50" text="Read" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Option width="100" height="32" name="btn_SlaveTx" padding="3,0,50,0" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_options" selected="true" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="TX_SLAVE" textpadding="14,0,0,0" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" font="0" padding="3,3,3,3">
+					<Label text="Data:" width="35" padding="3,3,3,3" borderround="3,3"/>
+					<Edit name="edit_DutData" width="70" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Label text="H" width="10" padding="3,3,3,3" borderround="3,3"/>
+					<Button name="btn_ReadDutData" width="50" text="Write" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Option width="100" height="32" name="btn_SlaveRx" padding="3,0,50,0" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_options" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="RX_SLAVE" textpadding="14,0,0,0" />
+				</HorizontalLayout>
+				<Label text="组合功能" font="1" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+				<HorizontalLayout height="35" padding="3,3,3,3">
+					<Button name="btn_SwitchDot" text="SwitchToDot" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_SwitchFlood" text="SwitchToFlood" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+			</VerticalLayout>
+			<VerticalLayout padding="0,0,0,0" bordercolor="#FF768D9B" bordersize="1">
+				<Label text="Command" font="1" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+				<HorizontalLayout height="30" font="0" padding="1,0,1,3">
+					<Edit name="dut_intput" bkcolor="#FFFFFFFF" />
+					<Button name="btn_DutCommandSend"  width="70" text="Send" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>	
+				<Label text="OUTPUT" bkcolor="#FFC5D4F2" font="1" height="20" padding="1,1,1,1" align="center" />
+				<HorizontalLayout valign="top" font="0" padding="1,0,1,3">
+					<List name="dut_output" vscrollbar="true"  hscrollbar="true"  header="hidden" multiline="true" wantreturn="true" valign="top" bkcolor="#FFFFFFFF" />
+				</HorizontalLayout>	
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

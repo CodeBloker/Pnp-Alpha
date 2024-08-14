@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0">
+		<HorizontalLayout>
+			<VerticalLayout width="350" padding="0,0,1,0" bordercolor="#FF768D9B" bordersize="1">
+				<Label text="设备初始化" bkcolor="#FFC5D4F2" font="1" height="20" align="center" />
+				<Combo name="cmb_DeviceList" height="25" padding="2,1,2,2" normalimage="file='Combo_nor.bmp' corner='2,2,24,2'" hotimage="file='Combo_over.bmp' corner='2,2,24,2'" itemfont="5" font="0" scrollselect="true" vscrollbar="true" />
+				<Button name="btn_DeviceSerch" height="30" text="查找设备" font="0" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				<HorizontalLayout height="30" padding="1,0,1,3">
+					<Button name="btn_DeviceOpen" text="打开设备" font="0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_DeviceClose" text="关闭设备" font="0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<Label text="图像采集" padding="1,0,1,3" font="1" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout height="30" childalign="center" childvalign="vcenter" padding="3,3,3,3">
+					<Option width="100" height="28" font="0" name="btn_ContinueMode"  selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_options_1" selected="true" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="连续模式" textpadding="15,0,0,0" />
+					<Option width="100" height="28" font="0" name="btn_SwTriggerMode" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_options_1" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="软触发模式" textpadding="15,0,0,0" />
+					<Option width="100" height="28" font="0" name="btn_HwTriggerMode" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_options_1" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="硬触发模式" textpadding="15,0,0,0" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" padding="1,0,1,3">
+					<Button name="btn_StartGrab" text="开始采集" font="0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_StopGrab" text="停止采集" font="0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" padding="1,0,1,3">
+					<Button name="btn_SoftOnce" text="软触发一次" font="0" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<Label text="图片保存" padding="1,0,1,3" font="1" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout height="35" childalign="center" childvalign="vcenter" padding="3,3,3,3">
+					<Button name="btn_ImageSaveBmp" height="30" font="0" text="保存Bmp图片" padding="3,1,3,1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_ImageSaveJpeg" height="30" font="0" text="保存Jpeg图片" padding="3,1,3,1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" childalign="center" childvalign="vcenter" padding="3,3,3,3">
+					<Button name="btn_ImageSavePng" height="30" font="0" text="保存Png图片" padding="3,1,3,1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_ImageSaveTif" height="30" font="0" text="保存Tif图片" padding="3,1,3,1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<Label text="参数设置" padding="1,0,1,3" font="1" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout height="35" font="0" padding="10,3,3,3">
+					<Label text="曝光时间：" width="60" />
+					<Edit name="edit_exposureTime" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_exposureTimeGet" text="获取" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_exposureTimeSet" text="设置" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="10,3,3,3">
+					<Label text="帧率：" width="60" />
+					<Edit name="edit_frameRate" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_frameRateGet" text="获取" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_frameRateSet" text="设置" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="10,3,3,3">
+					<Label text="清晰度：" width="60" />
+					<Edit name="edit_sharpness" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_sharpnessGet" text="获取" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_sharpnessSet" text="设置" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="10,3,3,3">
+					<Label text="增益：" width="60" />
+					<Edit name="edit_gain" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_gainGet" text="获取" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_gainSet" text="设置" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="10,3,3,3">
+					<Label text="Gamma：" width="60" />
+					<Edit name="edit_gamma" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_gammaGet" text="获取" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_gammaSet" text="设置" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+			</VerticalLayout>
+			<VerticalLayout bordercolor="#FF768D9B" padding="0,0,1,1" bordersize="1">
+				<Label text="图像" bkcolor="#FFC5D4F2" font="1" height="20" align="center" />
+				<HorizontalLayout>
+					<Label name="hik_image" bkcolor="#FFFFFFFF" />
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

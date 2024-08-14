@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window size="1400,700" sizebox="0,0,0,0" caption="0,0,0,0" mininfo="800,400">
+	<Font id="0" name="微软雅黑" size="12" default="true" />
+	<Font id="1" name="微软雅黑" size="12" bold="true" />
+	<VerticalLayout inset="10,10,10,10" childpadding="0" bkcolor="#FFF0F0F0">
+		<HorizontalLayout height="25" sepwidth="1" childpadding="1" childvalign="vcenter" childalign="left">
+			<Option name="Tab_Current" text="Current" width="100" bkcolor="#FFD0D0D0" selectedbkcolor="#FFFFFFFF" bordercolor="#FF808080" bordersize="1" group="tab_group" selected="true" />
+			<Option name="Tab_History" text="History" width="100" bkcolor="#FFD0D0D0" selectedbkcolor="#FFFFFFFF" bordercolor="#FF808080" bordersize="1" group="tab_group" />
+		</HorizontalLayout>
+		<TabLayout name="Tab_Page">	
+			<HorizontalLayout childpadding="10">
+				<List name="CurrentList" header="hidden" vscrollbar="true" hscrollbar="true" bordercolor="#FF000000" bordersize="1" bkcolor="#FFFFFFFF" itemtextcolor="#FF000000" itembkcolor="#FFFFFFFF" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF">
+				</List>				
+				<VerticalLayout width="150">
+					<Combo name="Combo_Level" height="25" bkcolor="#FFFFFFFF" textpadding="4,0,4,0" bordercolor="#FF808080" bordersize="1">
+						<ListLabelElement name="Item_Debug" text="[DEBUG]" />
+						<ListLabelElement name="Item_Info" text="[INFO]" />
+						<ListLabelElement name="Item_Warn" text="[WARN]" />
+						<ListLabelElement name="Item_Error" text="[ERROR]" />
+						<ListLabelElement name="Item_All" text="[ALL]" selected="true" />
+					</Combo>
+				</VerticalLayout>
+			</HorizontalLayout>
+			<HorizontalLayout>
+				<List name="HistoryList" header="hidden" vscrollbar="true" hscrollbar="true" bordercolor="#FF000000" bordersize="1" bkcolor="#FFFFFFFF" itemtextcolor="#FF000000" itembkcolor="#FFFFFFFF" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF">
+				</List>
+				<VerticalLayout width="150">
+				</VerticalLayout>
+			</HorizontalLayout>
+		</TabLayout>
+	</VerticalLayout>
+</Window>

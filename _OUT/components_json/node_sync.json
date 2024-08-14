@@ -1,0 +1,36 @@
+{
+  "node color": [ 0.0, 0.2, 1.0, 0.5 ],
+  "node color click": [ 0.0, 0.2, 1.0, 0.7 ],
+  "node title": "SYNC",
+  "node width": 150.0,
+  "node image": "",
+  "node image size": [ 0, 0 ],
+  "node sample switch": false,
+  "node sample timer": 200,
+  "node execute path switch": true,
+  "input point": [
+    {
+      "point color": [ 0.92, 0.92, 0.92, 1.0 ],
+      "point text": "out",
+      "point param type": 1
+    },
+	{
+      "point color": [ 0.92, 0.92, 0.92, 1.0 ],
+      "point text": "sub_out",
+      "point param type": 1
+    }
+  ],
+  "output point": [
+    {
+      "point color": [ 0.92, 0.92, 0.92, 1.0 ],
+      "point text": "in",
+      "point param type": 1
+    },
+	{
+      "point color": [ 0.92, 0.92, 0.92, 1.0 ],
+      "point text": "sub_in",
+      "point param type": 1
+    }
+  ],
+  "node type": 4
+}

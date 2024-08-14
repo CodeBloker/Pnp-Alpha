@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="IDSPlugin.cpp" />
+    <ClCompile Include="IDSCaller.cpp">
+      <Filter>Caller</Filter>
+    </ClCompile>
+    <ClCompile Include="IDSCamera.cpp">
+      <Filter>IDS_Control</Filter>
+    </ClCompile>
+    <ClCompile Include="JRootDlg.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IDSPlugin.h" />
+    <ClInclude Include="JError.h" />
+    <ClInclude Include="JVersion.h" />
+    <ClInclude Include="IDS_Control\ueye.h">
+      <Filter>IDS_Control</Filter>
+    </ClInclude>
+    <ClInclude Include="IDS_Control\ueye_deprecated.h">
+      <Filter>IDS_Control</Filter>
+    </ClInclude>
+    <ClInclude Include="IDS_Control\ueye_tools.h">
+      <Filter>IDS_Control</Filter>
+    </ClInclude>
+    <ClInclude Include="IDS_Control\uEyeCaptureInterface.h">
+      <Filter>IDS_Control</Filter>
+    </ClInclude>
+    <ClInclude Include="IDS_Control\version.h">
+      <Filter>IDS_Control</Filter>
+    </ClInclude>
+    <ClInclude Include="IDSCaller.h">
+      <Filter>Caller</Filter>
+    </ClInclude>
+    <ClInclude Include="IDSCamera.h">
+      <Filter>IDS_Control</Filter>
+    </ClInclude>
+    <ClInclude Include="JRootDlg.h">
+      <Filter>View</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="IDS_Control">
+      <UniqueIdentifier>{c7b4a403-f6e8-47cf-980e-23abea1ee132}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Caller">
+      <UniqueIdentifier>{0bf9170b-15f5-4091-a9f5-533199899240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{0bd95eca-fd0b-4cbb-b8f6-bd6af49c43e0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

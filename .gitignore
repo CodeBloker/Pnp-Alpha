@@ -1,0 +1,11 @@
+x64/
+.vs/
+DuiLib_Project/
+DuiLib/
+SMUPlugin/x64/
+MILPlugin/x64/
+JupMotion/x64/
+IDSPlugin/x64/
+HIKPlugin/x64/
+DUTPlugin/x64/
+_OUT/Project/

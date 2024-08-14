@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0">
+		<HorizontalLayout>
+			<VerticalLayout width="350" padding="1,0,1,0" bordercolor="#FF768D9B" bordersize="1">
+				<Label text="Alpha光源控制" bkcolor="#FFC5D4F2" font="1" height="20" padding="1,15,1,1" align="center" />
+				<HorizontalLayout height="35" font="0" padding="30,3,30,3">
+					<Button name="btn_OpenAlphaLightSerial" text="打开串口" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_CloseAlphaLightSerial" text="关闭串口" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="30,3,30,3">
+					<Button name="btn_OpenAlphaLight1" text="Alpha相机光源1开" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_OpenAlphaLight2" text="Alpha相机光源2开" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" font="0" padding="30,3,30,3">
+					<Button name="btn_AlphaOpenAllLight" text="打开Alpha所有光源" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AlphaCloseAllLight" text="关闭Alpha所有光源" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<Label text="温度传感器控制" bkcolor="#FFC5D4F2" font="1" height="20" padding="1,15,1,1" align="center" />
+				<HorizontalLayout height="35" font="0" padding="30,3,30,3">
+					<Button name="btn_OpenTemp1Serial" text="打开串口1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_CloseTemp1Serial" text="关闭串口1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="30,3,30,3">
+					<Button name="btn_OpenTemp2Serial" text="打开串口2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_CloseTemp2Serial" text="关闭串口2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="30,3,30,3">
+					<Button name="btn_Temp1Get" text="获取温度传感器1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_Temp2Get" text="获取温度传感器2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<Label text="高度传感器控制" bkcolor="#FFC5D4F2" font="1" height="20" padding="1,15,1,1" align="center" />
+				<HorizontalLayout height="35" font="0" padding="30,3,30,3">
+					<Button name="btn_OpenHeighSerial" text="打开串口" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_CloseHeighSerial" text="关闭串口" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" font="0" padding="30,3,30,3">
+					<Button name="btn_Heigh1Get" text="获取高度(OMRON1)" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_Heigh2Get" text="获取高度(OMRON2)" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_Heigh3Get" text="获取高度(OMRON3)" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+			</VerticalLayout>
+			<VerticalLayout bordercolor="#FF768D9B" padding="0,0,1,0" bordersize="1">
+				<Label text="Command" font="1" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+				<HorizontalLayout height="30" font="0" padding="3,3,3,3">
+					<Edit name="edit_intput" bkcolor="#FFFFFFFF" />
+					<Button name="btn_CommandSend"  width="70" text="Send" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_DisplayClear" width="70" text="Clear" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>	
+				<Label text="OUTPUT" font="1" bkcolor="#FFC5D4F2" height="20" padding="1,1,1,1" align="center" />
+				<HorizontalLayout valign="top" font="0" padding="1,1,1,1">
+					<List name="list_output" vscrollbar="true"  hscrollbar="true"  header="hidden" multiline="true" wantreturn="true" valign="top" bkcolor="#FFFFFFFF" />
+				</HorizontalLayout>	
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

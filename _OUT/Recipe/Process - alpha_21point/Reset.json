@@ -1,0 +1,76 @@
+{
+	"@processName" : "Reset",
+	"groups" : 
+	[
+		{
+			"@branchName" : "master",
+			"@groupName" : "DeviceReset",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "ResetMotionData",
+					"@method" : "ResetData",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "ResetMilData",
+					"@method" : "ResetData",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "AxisHome",
+					"@method" : "AxisTxTyHome",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "SerialCaller",
+					"@itemName" : "OpenLightSerial",
+					"@method" : "OpenAlphaLightSource",
+					"@pluginFileName" : "SerialPlugin.dll"
+				},
+				{
+					"@callerName" : "SerialCaller",
+					"@itemName" : "OpenAllAlphaLight",
+					"@method" : "OpenAllAlphaLightSource",
+					"@pluginFileName" : "SerialPlugin.dll"
+				},
+				{
+					"@callerName" : "SerialCaller",
+					"@itemName" : "OpenTempSerial",
+					"@method" : "OpenSensorTemperature",
+					"@pluginFileName" : "SerialPlugin.dll"
+				},
+				{
+					"@callerName" : "SerialCaller",
+					"@itemName" : "OpenHeighSerial",
+					"@method" : "OpenSensorHeigh",
+					"@pluginFileName" : "SerialPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "SetTxCameraParas",
+					"@method" : "SetTxCameraParameter",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				},
+				{
+					"@callerName" : "HIPACaller",
+					"@itemName" : "SetTyCameraParas",
+					"@method" : "SetTyCameraParameter",
+					"@pluginFileName" : "HIPAPlugin.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "MotionReset",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		}
+	]
+}

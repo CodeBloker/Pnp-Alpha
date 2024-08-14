@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DemoPlugin.cpp" />
+    <ClCompile Include="export\DemoTestCaller.cpp">
+      <Filter>Export\Caller</Filter>
+    </ClCompile>
+    <ClCompile Include="export\DemoView.cpp">
+      <Filter>Export\Viewer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DemoPlugin.h" />
+    <ClInclude Include="export\DemoTestCaller.h">
+      <Filter>Export\Caller</Filter>
+    </ClInclude>
+    <ClInclude Include="export\JError.h">
+      <Filter>Export</Filter>
+    </ClInclude>
+    <ClInclude Include="export\JVersion.h">
+      <Filter>Export</Filter>
+    </ClInclude>
+    <ClInclude Include="export\DemoView.h">
+      <Filter>Export\Viewer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Export">
+      <UniqueIdentifier>{b69e6688-f97f-4133-83f4-fe93c7f21392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{e0af7c6d-0728-495f-8c64-7165171e88d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{ec1d9527-8e79-41be-897e-03de51d0cef5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Export\Viewer">
+      <UniqueIdentifier>{04af97d9-7c7e-4512-bdd7-a323d86cfab6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Export\Caller">
+      <UniqueIdentifier>{0bf011c1-ab92-4684-bda8-82dd857dd5be}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

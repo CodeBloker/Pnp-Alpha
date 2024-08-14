@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="12" default="true" />
+	<Font id="1" name="微软雅黑" size="12" bold="true" />
+	<Default name="VScrollBar" value="share=&quot;true&quot; button1normalimage=&quot;file='scroll.png' source='0,0,16,16'&quot; button1hotimage=&quot;file='scroll.png' source='0,0,16,16' mask='#FFFF00FF'&quot; button1pushedimage=&quot;file='scroll.png' source='0,16,16,32' mask='#FFFF00FF'&quot; button1disabledimage=&quot;file='scroll.png' source='0,0,16,16' mask='#FFFF00FF'&quot; button2normalimage=&quot;file='scroll.png' source='0,32,16,48' mask='#FFFF00FF'&quot; button2hotimage=&quot;file='scroll.png' source='0,32,16,48' mask='#FFFF00FF'&quot; button2pushedimage=&quot;file='scroll.png' source='0,48,16,64' mask='#FFFF00FF'&quot; button2disabledimage=&quot;file='scroll.png' source='0,32,16,48' mask='#FFFF00FF'&quot; thumbnormalimage=&quot;file='scroll.png' source='0,64,16,80' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbhotimage=&quot;file='scroll.png' source='0,64,16,80' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbpushedimage=&quot;ffile='scroll.png' source='0,64,16,80' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbdisabledimage=&quot;file='scroll.png' source='0,64,16,80' corner='2,2,2,2' mask='#FFFF00FF'&quot; railnormalimage=&quot;file='scroll.png' source='0,80,16,96' corner='2,2,2,2' mask='#FFFF00FF'&quot; railhotimage=&quot;file='scroll.png' source='0,80,16,96' corner='2,2,2,2' mask='#FFFF00FF'&quot; railpushedimage=&quot;file='scroll.png' source='0,96,16,112' corner='2,2,2,2' mask='#FFFF00FF'&quot; raildisabledimage=&quot;file='scroll.png' source='0,80,16,96' corner='2,2,2,2' mask='#FFFF00FF'&quot; bknormalimage=&quot;file='scroll.png' source='0,128,16,146' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkhotimage=&quot;file='scroll.png' source='0,128,16,146' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkpushedimage=&quot;file='scroll.png' source='0,128,16,146' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkdisabledimage=&quot;file='scroll.png' source='0,128,16,146' corner='2,2,2,2' mask='#FFFF00FF'&quot; " />
+	<VerticalLayout bkcolor="0xFFF7F6F6" inset="20,10,20,10">
+		<HorizontalLayout height="120" padding="0,0,3,3" bordercolor="#FF768D9B" bordersize="1">
+			<VerticalLayout padding="0,0,3,0">
+				<Label text="参数设置" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout height="30">
+					<Edit name="edit_image_path" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_image_open" width="150" text="打开图片" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30">
+					<Label text="Angle：" width="60" padding="30,3,3,3" />
+					<Edit name="edit_Degree" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Label text="Distance：" width="60" padding="30,3,3,3" />
+					<Edit name="edit_Distance" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Label text="midPointX：" width="70" padding="30,3,3,3" />
+					<Edit name="midPointX" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Label text="midPointY：" width="70" padding="30,3,3,3" />
+					<Edit name="midPointY" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35">
+					<Label />
+					<Option height="32" name="btn_ImageSaveBmp" padding="10,0,3,0" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_options_2" selected="true" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="底部视觉校准" textpadding="14,0,0,0" pos="0,0,0,32" />
+					<Option height="32" name="btn_ImageSaveJpeg" padding="10,0,3,0" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_options_2" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="PNP与十字校准板校准" textpadding="14,0,0,0" pos="0,0,0,32" />
+					<Option height="32" name="btn_ImageSavePng" padding="10,0,3,0" selectedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='90,0,105,16' " group="group_options_2" normalimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_radio.png' dest='5,6,21,22' source='45,0,60,16' " text="十字与四个圆点校准" textpadding="14,0,0,0" pos="0,0,0,32" />
+					<Button name="btn_Mil_Calr" width="150" text="计算图片" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_Mil_Clear" width="150" text="清除界面" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+		<HorizontalLayout>
+			<VerticalLayout padding="0,0,3,0">
+				<Label text="输出" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout padding="1,0,1,3">
+					<Label name="mil_output" bkcolor="#FFFFFFFF" />
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

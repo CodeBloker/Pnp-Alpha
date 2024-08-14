@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0">
+		<Label text="自动标定圆心" padding="1,5,1,0" font="1" bkcolor="#FFC5D4F2" height="20" align="center" />
+		<Label text="Tx轴运动位置(mm/°)："/>
+		<HorizontalLayout height="28" font="0" padding="10,3,3,3">
+			<Label text="Pos1：" width="40" />
+			<Edit name="edit_TxPos1" text="15" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Pos2：" width="40" />
+			<Edit name="edit_TxPos2" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Pos3：" width="40" />
+			<Edit name="edit_TxPos3" text="-15" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<Label text="Ty轴运动位置(mm/°)："/>
+		<HorizontalLayout height="28" font="0" padding="10,3,3,3">
+			<Label text="Pos1：" width="40" />
+			<Edit name="edit_TyPos1" text="12" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Pos2：" width="40" />
+			<Edit name="edit_TyPos2" text="0" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Pos3：" width="40" />
+			<Edit name="edit_TyPos3" text="-12" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

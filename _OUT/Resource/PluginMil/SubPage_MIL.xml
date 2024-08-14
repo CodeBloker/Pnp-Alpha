@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="12" default="true" />
+	<Font id="1" name="微软雅黑" size="12" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0" bkcolor2="#FFAAAAA0">
+		<HorizontalLayout height="120" padding="0,0,3,3" bordercolor="#FF768D9B" bordersize="1">
+			<VerticalLayout padding="0,0,3,0">
+				<Label text="参数设置" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout height="30">
+					<Edit name="edit_image_path" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_image_open" width="150" text="打开图片" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35">
+					<Label />
+					<Button name="btn_Mil_Calr" width="150" text="计算图片" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_Mil_Clear" width="150" text="清除界面" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+		<HorizontalLayout>
+			<VerticalLayout padding="0,0,3,0">
+				<Label text="输出" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout padding="1,0,1,3">
+					<Edit name="mil_output" vscrollbar="true" multiline="true" bkcolor="#FFFFFFFF" valign="top" />
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

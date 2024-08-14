@@ -1,0 +1,163 @@
+﻿  CardConfigDlg.cpp
+  class template variant is only available with C++17 or later.
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2039: “variant”: 不是“std”的成员
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\map(20): note: 参见“std”的声明
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2061: 语法错误: 标识符“variant”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2059: 语法错误:“>”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): error C2662: “void std::vector<_Ty,_Alloc>::clear(void) noexcept”: 不能将“this”指针从“std::vector”转换为“std::vector<_Ty,_Alloc> &”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 原因如下: 无法从“std::vector”转换为“std::vector<_Ty,_Alloc>”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 转换要求第二个用户定义的转换运算符或构造函数
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  ClientSocket.cpp
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.h(55): error C2039: “vector”: 不是“std”的成员
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\mutex(26): note: 参见“std”的声明
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.h(55): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.h(55): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.h(55): error C2238: 意外的标记位于“;”之前
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.cpp(179): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.cpp(188): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.cpp(193): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.cpp(194): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.cpp(214): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\clientsocket.cpp(222): error C2065: “m_queRecvData”: 未声明的标识符
+  SerialComm.cpp
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.h(58): error C2039: “vector”: 不是“std”的成员
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\mutex(26): note: 参见“std”的声明
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.h(58): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.h(58): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.h(58): error C2238: 意外的标记位于“;”之前
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.cpp(352): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.cpp(363): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.cpp(364): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.cpp(373): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.cpp(374): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.cpp(384): error C2065: “m_queRecvData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\jupmotion\commonfunction\serialcomm.cpp(392): error C2065: “m_queRecvData”: 未声明的标识符
+  CPluginDlg.cpp
+  class template variant is only available with C++17 or later.
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2039: “variant”: 不是“std”的成员
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\map(20): note: 参见“std”的声明
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2061: 语法错误: 标识符“variant”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2059: 语法错误:“>”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): error C2662: “void std::vector<_Ty,_Alloc>::clear(void) noexcept”: 不能将“this”指针从“std::vector”转换为“std::vector<_Ty,_Alloc> &”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 原因如下: 无法从“std::vector”转换为“std::vector<_Ty,_Alloc>”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 转换要求第二个用户定义的转换运算符或构造函数
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  IOConfigDlg.cpp
+  class template variant is only available with C++17 or later.
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2039: “variant”: 不是“std”的成员
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\map(20): note: 参见“std”的声明
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2061: 语法错误: 标识符“variant”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2059: 语法错误:“>”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): error C2662: “void std::vector<_Ty,_Alloc>::clear(void) noexcept”: 不能将“this”指针从“std::vector”转换为“std::vector<_Ty,_Alloc> &”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 原因如下: 无法从“std::vector”转换为“std::vector<_Ty,_Alloc>”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 转换要求第二个用户定义的转换运算符或构造函数
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  JupMotionCaller.cpp
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(92): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(93): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(94): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(95): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(96): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(97): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  JupMotionPlugin.cpp
+d:\sw\git_lrt\sphinx-alpha\jupmotion\jupmotionplugin.h(3): fatal error C1083: 无法打开包括文件: “Base/JupGlobal.h”: No such file or directory
+  main.cpp
+  class template variant is only available with C++17 or later.
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2039: “variant”: 不是“std”的成员
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\map(20): note: 参见“std”的声明
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2061: 语法错误: 标识符“variant”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2059: 语法错误:“>”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): error C2662: “void std::vector<_Ty,_Alloc>::clear(void) noexcept”: 不能将“this”指针从“std::vector”转换为“std::vector<_Ty,_Alloc> &”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 原因如下: 无法从“std::vector”转换为“std::vector<_Ty,_Alloc>”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 转换要求第二个用户定义的转换运算符或构造函数
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  AdlinkDispatch.cpp
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(92): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(93): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(94): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(95): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(96): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(97): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlinkdispatch.cpp(2): fatal error C1083: 无法打开包括文件: “JError.h”: No such file or directory
+  AdlinkController.cpp
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(92): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(93): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(94): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(95): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(96): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\adlinkcard\adlink_define.h(97): warning C4244: “=”: 从“double”转换到“I32”，可能丢失数据
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  MotionParameter.cpp
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  MyTipsDialog.cpp
+  class template variant is only available with C++17 or later.
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2039: “variant”: 不是“std”的成员
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\map(20): note: 参见“std”的声明
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2061: 语法错误: 标识符“variant”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2059: 语法错误:“>”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): error C2662: “void std::vector<_Ty,_Alloc>::clear(void) noexcept”: 不能将“this”指针从“std::vector”转换为“std::vector<_Ty,_Alloc> &”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 原因如下: 无法从“std::vector”转换为“std::vector<_Ty,_Alloc>”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 转换要求第二个用户定义的转换运算符或构造函数
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  PositionConfigDlg.cpp
+  class template variant is only available with C++17 or later.
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2039: “variant”: 不是“std”的成员
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\map(20): note: 参见“std”的声明
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2061: 语法错误: 标识符“variant”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(8): error C2059: 语法错误:“>”
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(15): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): error C2662: “void std::vector<_Ty,_Alloc>::clear(void) noexcept”: 不能将“this”指针从“std::vector”转换为“std::vector<_Ty,_Alloc> &”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 原因如下: 无法从“std::vector”转换为“std::vector<_Ty,_Alloc>”
+  d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(21): note: 转换要求第二个用户定义的转换运算符或构造函数
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2065: “JTreeItemData”: 未声明的标识符
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2923: “std::vector”: 对于参数“_Ty”，“JTreeItemData”不是有效的 模板 类型变量
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C2903: “allocator”: 符号既不是类 模板 也不是函数 模板
+d:\sw\git_lrt\sphinx-alpha\duilib\jupexpand\ctreelist.h(58): error C3203: “allocator”: 未专用化的 类 模板 不能用作 模板 变量，该变量属于 模板 参数“_Alloc”，应为 real 类型
+d:\sw\git_lrt\sphinx-alpha\jupmotion\motioncard\motionparameter.h(6): fatal error C1083: 无法打开包括文件: “json/json.h”: No such file or directory
+  正在生成代码...

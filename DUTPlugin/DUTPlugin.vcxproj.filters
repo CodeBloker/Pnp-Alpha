@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DUTPlugin.cpp" />
+    <ClCompile Include="Device\Canyon\DeviceModuleGuadalupeCanyon.cpp">
+      <Filter>Device\Canyon</Filter>
+    </ClCompile>
+    <ClCompile Include="DutController.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="INIManager.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\Visa\VisaCaller.cpp">
+      <Filter>Device\Visa</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\Visa\VisaManager.cpp">
+      <Filter>Device\Visa</Filter>
+    </ClCompile>
+    <ClCompile Include="DUTCaller.cpp">
+      <Filter>Caller</Filter>
+    </ClCompile>
+    <ClCompile Include="DutMainDlg.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DUTPlugin.h" />
+    <ClInclude Include="JError.h" />
+    <ClInclude Include="JVersion.h" />
+    <ClInclude Include="Device\Canyon\DeviceModuleGuadalupeCanyon.h">
+      <Filter>Device\Canyon</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Canyon\HVS_CheckSum.h">
+      <Filter>Device\Canyon</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Canyon\HVS_JPEGLib.h">
+      <Filter>Device\Canyon</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Canyon\pci_opt01_import.h">
+      <Filter>Device\Canyon</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Canyon\PCIeInterface.h">
+      <Filter>Device\Canyon</Filter>
+    </ClInclude>
+    <ClInclude Include="DutController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="ParasDefine.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="INIManager.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Visa\visa.h">
+      <Filter>Device\Visa</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Visa\VisaCaller.h">
+      <Filter>Device\Visa</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Visa\VisaManager.h">
+      <Filter>Device\Visa</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Visa\visatype.h">
+      <Filter>Device\Visa</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Visa\vpptype.h">
+      <Filter>Device\Visa</Filter>
+    </ClInclude>
+    <ClInclude Include="DUTCaller.h">
+      <Filter>Caller</Filter>
+    </ClInclude>
+    <ClInclude Include="DutMainDlg.h">
+      <Filter>View</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{4cf12173-16a9-4115-bffe-702b1b5c990e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device">
+      <UniqueIdentifier>{acf9032a-599b-40dc-9b1c-4b3cfb1819bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device\Canyon">
+      <UniqueIdentifier>{9343107c-cbc8-4a7c-b8f6-2ac7062d9710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device\Visa">
+      <UniqueIdentifier>{a02d6934-77d8-4f07-84ed-622b51d5062d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Caller">
+      <UniqueIdentifier>{3fb80ace-cbc9-4a77-928c-1bc9314174f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{b49ddc41-f8a4-4a0c-a094-1602f9684267}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

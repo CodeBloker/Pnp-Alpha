@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0">
+		<HorizontalLayout>
+			<VerticalLayout width="350" padding="1,0,1,0" bordercolor="#FF768D9B" bordersize="1">
+				<Label text="Control" bkcolor="#FFC5D4F2" font="1" padding="1,1,1,1" height="20" align="center" />
+				<HorizontalLayout height="30" font="0" padding="3,3,3,3">
+					<Button name="btn_SmuOpen" text="Connect" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_SmuClose" text="DisConnect" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" font="0" padding="3,3,3,3">
+					<Button name="btn_SmuGetVersion" text="Version" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_SmuBufRead" text="BufRead" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<Label text="Light" bkcolor="#FFC5D4F2" font="1" padding="1,1,1,1" height="20" align="center" />
+				<HorizontalLayout height="30" font="0" padding="3,3,3,3">
+					<Button name="btn_SmuDotLight" text="DOT" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_SmuFloodLight" text="FLOOD" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" font="0" padding="3,3,3,3">
+					<Button name="btn_SmuDarkLight" text="DARK" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+			</VerticalLayout>
+			<VerticalLayout bordercolor="#FF768D9B" padding="0,0,1,0" bordersize="1">
+				<Label text="Command" font="1" bkcolor="#FFC5D4F2" padding="1,1,1,1" height="20" align="center" />
+				<HorizontalLayout height="30" font="0" padding="1,0,1,1">
+					<Edit name="smu_intput" bkcolor="#FFFFFFFF" />
+					<Button name="btn_SmuCommandSend"  width="70" text="Send" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_SmuDisplayClear" width="70" text="Clear" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>	
+				<Label text="OUTPUT" bkcolor="#FFC5D4F2" font="1" padding="1,1,1,1" height="20" align="center" />
+				<HorizontalLayout valign="top" padding="1,0,1,3">
+					<List name="smu_output" vscrollbar="true" font="0" hscrollbar="true"  header="hidden" multiline="true" wantreturn="true" valign="top" bkcolor="#FFFFFFFF" />
+				</HorizontalLayout>	
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

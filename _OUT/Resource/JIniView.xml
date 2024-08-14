@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window size="1400,700" sizebox="0,0,0,0" caption="0,0,0,0" mininfo="800,400">
+	<Font id="0" name="微软雅黑" size="12" default="true" />
+	<Font id="1" name="微软雅黑" size="12" bold="true" />
+	<HorizontalLayout inset="10,10,10,10" childpadding="10" bkcolor="#FFF0F0F0">
+		<VerticalLayout width="400" childpadding="5">
+			<List name="SectionList" vscrollbar="true" hscrollbar="true" bordercolor="#FF000000" bordersize="1" bkcolor="#FFFFFFFF" itemtextcolor="#FF000000" itembkcolor="#FFFFFFFF" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF">
+				<ListHeaderItem text="Section" font="1" bkcolor="#FFE2DDDF" bordercolor="#FF000000" bordersize="1" endellipsis="true" sepwidth="1" align="left"/>
+			</List>
+			<HorizontalLayout childpadding="10" height="30">
+				<Button name="btn_AddSection" text="Add section" align="centerwrap" width="100" height="30" bkcolor="#FF87CEFA" bordercolor="#FF000000" bordersize="1" borderround="15,15" />
+				<Button name="btn_DelSection" text="Del section" align="centerwrap" width="100" height="30" bkcolor="#FF87CEFA" bordercolor="#FF000000" bordersize="1" borderround="15,15" />
+				<HorizontalLayout />
+				<Button name="btn_Reload" text="Reload" align="centerwrap" width="100" height="30" bkcolor="#FF87CEFA" bordercolor="#FF000000" bordersize="1" borderround="15,15" />
+			</HorizontalLayout>
+		</VerticalLayout>
+		<VerticalLayout childpadding="5">
+			<List name="KeyValueList" vscrollbar="true" hscrollbar="true" bordercolor="#FF000000" bordersize="1" bkcolor="#FFFFFFFF" itemtextcolor="#FF000000" itembkcolor="#FFFFFFFF" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF">
+				<ListHeaderItem text="Key" font="1" bkcolor="#FFE2DDDF" bordercolor="#FF000000" bordersize="1" endellipsis="true" sepwidth="1" align="left"/>
+				<ListHeaderItem text="Value" font="1" bkcolor="#FFE2DDDF" bordercolor="#FF000000" bordersize="1" endellipsis="true" sepwidth="1" align="left"/>
+			</List>		
+			<HorizontalLayout childpadding="10" height="30">
+				<Button name="btn_AddKey" text="AddKey" align="centerwrap" width="100" height="30" bkcolor="#FF87CEFA" bordercolor="#FF000000" bordersize="1" borderround="15,15" />
+				<Button name="btn_DelKey" text="DelKey" align="centerwrap" width="100" height="30" bkcolor="#FF87CEFA" bordercolor="#FF000000" bordersize="1" borderround="15,15" />
+				<HorizontalLayout />
+				<Button name="btn_Update" text="Update" align="centerwrap" width="100" height="30" bkcolor="#FF87CEFA" bordercolor="#FF000000" bordersize="1" borderround="15,15" />
+				<Button name="btn_Save" text="Save" align="centerwrap" width="100"  height="30" bkcolor="#FF87CEFA" bordercolor="#FF000000" bordersize="1" borderround="15,15" />
+			</HorizontalLayout>
+		</VerticalLayout>
+	</HorizontalLayout>
+</Window>

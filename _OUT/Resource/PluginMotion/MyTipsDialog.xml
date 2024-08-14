@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="800,400">
+	<Font id="6" name="微软雅黑" size="30" />
+	<VerticalLayout bkcolor="0xFFF7F6F6" bkimage="file='TipsBk.png' corner='20,20,20,20'">
+		<VerticalLayout float="true" height="50" pos="0,100,800,150">
+			<Label text="MyTips" name="Tip_Text" font="6" align="center" />
+		</VerticalLayout>
+		<HorizontalLayout float="true" height="50" pos="0,300,800,350">
+			<Text />
+			<Button name="Tip_Btn_Stop" text="Stop" font="6" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+			<Text />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

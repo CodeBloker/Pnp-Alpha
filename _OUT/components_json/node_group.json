@@ -1,0 +1,36 @@
+{
+  "node color": [ 0.7, 1.0, 0.0, 0.5 ],
+  "node color click": [ 0.7, 1.0, 0.0, 0.7 ],
+  "node title": "GROUP",
+  "node width": 200.0,
+  "node image": "",
+  "node image size": [ 0, 0 ],
+  "node sample switch": false,
+  "node sample timer": 200,
+  "node execute path switch": true,
+  "input point": [
+    {
+      "point color": [ 0.92, 0.92, 0.92, 1.0 ],
+      "point text": "prev",
+      "point param type": 1
+    },
+	{
+      "point color": [ 0.8, 1.0, 0.0, 1.0 ],
+      "point text": "selected",
+      "point param type": 2
+    }
+  ],
+  "output point": [
+    {
+      "point color": [ 0.92, 0.92, 0.92, 1.0 ],
+      "point text": "next",
+      "point param type": 1
+    },
+	{
+      "point color": [ 0.8, 1.0, 0.0, 1.0 ],
+      "point text": "select",
+      "point param type": 2
+    }
+  ],
+  "node type": 3
+}

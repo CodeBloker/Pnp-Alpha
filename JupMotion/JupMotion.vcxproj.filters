@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{3ad72d3c-69c7-4d67-ba5b-b3ae410c17d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1.MotionCard">
+      <UniqueIdentifier>{0199c0ee-1a16-456c-b39c-18a39b8b8be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Export">
+      <UniqueIdentifier>{f128c27b-8ba0-43ec-b884-a01eca13bec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Export\Caller">
+      <UniqueIdentifier>{469a8086-5b8e-4fd7-afd8-26170212ad1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Export\Viewer">
+      <UniqueIdentifier>{633b5136-5090-4894-81af-ecc9a32a0d98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1.MotionCard\Adlink">
+      <UniqueIdentifier>{ce1c7d53-0276-4579-b9c7-e2e6849cd174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2.CommonFunction">
+      <UniqueIdentifier>{aa42abea-2261-415e-bbea-d13afc74fecc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MotionCard\MotionParameter.cpp">
+      <Filter>1.MotionCard</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonFunction\ClientSocket.cpp">
+      <Filter>2.CommonFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonFunction\SerialComm.cpp">
+      <Filter>2.CommonFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="JupMotionCaller.cpp">
+      <Filter>Export\Caller</Filter>
+    </ClCompile>
+    <ClCompile Include="JupMotionPlugin.cpp" />
+    <ClCompile Include="CPluginDlg.cpp">
+      <Filter>Export\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MyTipsDialog.cpp">
+      <Filter>Export\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="CardConfigDlg.cpp">
+      <Filter>Export\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="MotionCard\AdlinkCard\AdlinkDispatch.cpp">
+      <Filter>1.MotionCard\Adlink</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonFunction\CSVReader.cpp">
+      <Filter>2.CommonFunction</Filter>
+    </ClCompile>
+    <ClCompile Include="MotionCard\AdlinkController.cpp">
+      <Filter>1.MotionCard</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionConfigDlg.cpp">
+      <Filter>Export\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="IOConfigDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="JError.h">
+      <Filter>Export</Filter>
+    </ClInclude>
+    <ClInclude Include="JVersion.h">
+      <Filter>Export</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionCard\MotionParameter.h">
+      <Filter>1.MotionCard</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonFunction\ClientSocket.h">
+      <Filter>2.CommonFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonFunction\SerialComm.h">
+      <Filter>2.CommonFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="JupMotionCaller.h">
+      <Filter>Export\Caller</Filter>
+    </ClInclude>
+    <ClInclude Include="JupMotionPlugin.h" />
+    <ClInclude Include="CPluginDlg.h">
+      <Filter>Export\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTipsDialog.h">
+      <Filter>Export\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>Export\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="CardConfigDlg.h">
+      <Filter>Export\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionCard\AdlinkCard\AdlinkDispatch.h">
+      <Filter>1.MotionCard\Adlink</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonFunction\CSVReader.h">
+      <Filter>2.CommonFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionCard\AdlinkCard\ADLink_Define.h">
+      <Filter>1.MotionCard\Adlink</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionCard\AdlinkController.h">
+      <Filter>1.MotionCard</Filter>
+    </ClInclude>
+    <ClInclude Include="CardIO.h">
+      <Filter>1.MotionCard</Filter>
+    </ClInclude>
+    <ClInclude Include="CardAxis.h">
+      <Filter>1.MotionCard</Filter>
+    </ClInclude>
+    <ClInclude Include="CardGlobal.h">
+      <Filter>1.MotionCard</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionConfigDlg.h">
+      <Filter>Export\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="IOConfigDlg.h" />
+  </ItemGroup>
+</Project>

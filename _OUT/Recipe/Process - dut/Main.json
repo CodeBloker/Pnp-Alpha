@@ -1,0 +1,67 @@
+{
+	"@processName" : "Main",
+	"groups" : 
+	[
+		{
+			"@branchName" : "master",
+			"@groupName" : "Loading",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupA",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "DUTCaller",
+					"@itemName" : "DutSwitchToDot",
+					"@method" : "DutSetDotPara",
+					"@pluginFileName" : "DUTPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CamerSetDotPara",
+					"@method" : "SetDotParas",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "CameraWaitCapture",
+					"@method" : "WaitTriggerGetImage",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "SmuCaller",
+					"@itemName" : "SmuTriggerDot",
+					"@method" : "ExecuteCommandDOT",
+					"@pluginFileName" : "SmuPlugin.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupB",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupC",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "UnLoading",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Restart"
+		}
+	]
+}

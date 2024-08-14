@@ -1,0 +1,17 @@
+﻿  DeviceModuleGuadalupeCanyon.cpp
+d:\sw\git_lrt\sphinx-alpha\dutplugin\device\canyon\devicemoduleguadalupecanyon.cpp(4800): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  VisaCaller.cpp
+d:\sw\git_lrt\sphinx-alpha\dutplugin\device\visa\visacaller.cpp(281): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  VisaManager.cpp
+d:\sw\git_lrt\sphinx-alpha\dutplugin\device\visa\visamanager.cpp(220): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  DutController.cpp
+d:\sw\git_lrt\sphinx-alpha\dutplugin\dutcontroller.cpp(542): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  DUTPlugin.cpp
+d:\sw\git_lrt\sphinx-alpha\dutplugin\dutplugin.cpp(39): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  DUTCaller.cpp
+d:\sw\git_lrt\sphinx-alpha\dutplugin\dutcaller.cpp(133): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  DutMainDlg.cpp
+d:\sw\git_lrt\sphinx-alpha\dutplugin\dutmaindlg.cpp(297): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  INIManager.cpp
+d:\sw\git_lrt\sphinx-alpha\dutplugin\inimanager.cpp(253): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  正在生成代码...

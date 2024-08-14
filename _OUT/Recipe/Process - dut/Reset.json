@@ -1,0 +1,58 @@
+{
+	"@processName" : "Reset",
+	"groups" : 
+	[
+		{
+			"@branchName" : "master",
+			"@groupName" : "DeviceReset",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "AxisHome",
+					"@method" : "AxisDILXDILYHome",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "SmuCaller",
+					"@itemName" : "SmuConnect",
+					"@method" : "SmuConnect",
+					"@pluginFileName" : "SmuPlugin.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "OpenDILCamera",
+					"@method" : "OpenDILCamera",
+					"@pluginFileName" : "MilPlugin.dll"
+				},
+				{
+					"@callerName" : "DUTCaller",
+					"@itemName" : "InitCanyon",
+					"@method" : "InitCanyon",
+					"@pluginFileName" : "DUTPlugin.dll"
+				},
+				{
+					"@callerName" : "DUTCaller",
+					"@itemName" : "DutPowerOn",
+					"@method" : "DutPowerOn",
+					"@pluginFileName" : "DUTPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "AxisMoveToSocket",
+					"@method" : "AxisDILXDILYToSocketPos",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "MotionReset",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		}
+	]
+}

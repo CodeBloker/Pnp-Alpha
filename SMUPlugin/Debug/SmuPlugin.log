@@ -1,0 +1,11 @@
+﻿  SmuCaller.cpp
+d:\sw\git_lrt\sphinx-alpha\smuplugin\caller\smucaller.cpp(110): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  SmuControl.cpp
+d:\sw\git_lrt\sphinx-alpha\smuplugin\controller\smucontrol.cpp(461): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  VisaManager.cpp
+d:\sw\git_lrt\sphinx-alpha\smuplugin\controller\visamanager.cpp(281): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  SmuPlugin.cpp
+d:\sw\git_lrt\sphinx-alpha\smuplugin\smuplugin.cpp(29): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  SmuDlg.cpp
+d:\sw\git_lrt\sphinx-alpha\smuplugin\smudlg.cpp(281): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  正在生成代码...

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="1400,900">
+	<Font id="0" name="微软雅黑" size="14" share="true" />
+	<Font id="1" name="微软雅黑" size="22" share="true" bold="true"/>
+	<Font id="2" name="微软雅黑" size="14" share="true" bold="true"/>
+	<VerticalLayout inset="1,1,1,1" bkcolor="0xFF498DFD" bkcolor2="0xFFCFE7F4" bordercolor="0xFF768D9B" bordersize="1">
+		<HorizontalLayout name="dialog_body" inset="0,0,0,3" padding="2,0,2,0" borderround="5,5">
+			<VerticalLayout width="400" padding="0,0,3,0" bkcolor="0xFFFFFFFF">
+				<HorizontalLayout name="board_control" height="40">
+					<Button name="btn_cardConnect" text="连接板卡" padding="3,3,5,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_cardClose" text="断开板卡" padding="5,3,5,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" enabled="false" />
+				</HorizontalLayout>
+				<HorizontalLayout>
+					<VerticalLayout>
+						<List name="list_Axis" itemvlinesize="1" itemvlinecolor="#FAFAD2" bkcolor="ffffffff"  itembkcolor="ffF4F8FF" itemaltbk="true" sepheight="5" itemfont="0" inset="1,1,1,1" bordercolor="#FFC5D4F2" bordersize="1" itemselectedtextcolor="ff048ae0" itemhottextcolor="ff048ae0" itemalign="center"  vscrollbar="true" hscrollbar="true" sepwidth="2">
+							<ListHeader bkimage="list_header_bg.png">
+								<ListHeaderItem text="卡号-轴号" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2"  />
+								<ListHeaderItem text="轴名" width="180" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2"  />
+								<ListHeaderItem text="卡类型" width="90" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+								<ListHeaderItem text="电机类型" sepwidth="1" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" font="2" />
+							</ListHeader>
+						</List>
+					</VerticalLayout>
+				</HorizontalLayout>
+			</VerticalLayout>
+			<VerticalLayout bkcolor="0xFFFFFFFF">
+				<HorizontalLayout height="40" bkcolor="0xFFF0F0F0">
+					<Label name="lable_CurAxis" text="当前轴：NULL" font="1" align="center" padding="3,3,3,3" borderround="3,3" />
+				</HorizontalLayout>
+				<List name="list_AxisPos" itemvlinesize="2" itemvlinecolor="#FFFFC3C3" itemtextcolor="ff048ae0" bkcolor="ffffffff"  itembkcolor="ffF4F8FF" itemaltbk="true"  sepheight="5"  itemfont="1"   inset="1,1,1,1" bordercolor="#FFC5D4F2" bordersize="1" itemselectedtextcolor="ff048ae0" itemhottextcolor="ff048ae0" itemalign="center"  vscrollbar="true" hscrollbar="true" sepwidth="2">
+					<ListHeader bkimage="list_header_bg.png">
+						<ListHeaderItem text="ID" width="40" sepwidth="1" font="2" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" resourceid="9" />
+						<ListHeaderItem text="位置名" sepwidth="1" font="2" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" resourceid="9" />
+						<ListHeaderItem text="示教位置(mm/°)" sepwidth="1" font="2" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" resourceid="9" />
+						<ListHeaderItem text="步长" sepwidth="1" font="2" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" resourceid="9" />
+						<ListHeaderItem text="移动" width="80" sepwidth="1" font="2" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" resourceid="9" />
+						<ListHeaderItem text="调试坐标" sepwidth="1" font="2" hotimage="list_header_hot.png" pushedimage="list_header_pushed.png" sepimage="list_header_sep.png" resourceid="9" />
+					</ListHeader>
+				</List>
+				<HorizontalLayout height="60" childvalign="vcenter">
+					<Button name="btn_AxisParasDlgOpen" text="轴参数配置" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AxisAdd" text="添加轴" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AxisDel" text="删除轴" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AxisPosParasSave" text="轴点位参数" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" enabled="false" />
+					<Button name="btn_AxisPosAdd" text="添加点位" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AxisPosDel" text="删除点位" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<Label height="2" padding="1,3,3,3" bkcolor="0xFFCFE7F4" />
+				<HorizontalLayout height="60" childvalign="vcenter">
+					<Button name="btn_nRelativeMove" text="负相对运动" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Edit name="edit_RelativeMove" height="50" width="100" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" font="0" />
+					<Button name="btn_PositiveMove" text="正相对运动" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AbsMove" text="绝对坐标运动" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Label text="当前位置(mm/°)：" width="120" align="center" padding="30,3,3,3" font="0" />
+					<Label name="lable_CurPos" text="未知" padding="3,3,3,3" font="0" />
+				</HorizontalLayout>
+				<HorizontalLayout height="60" childvalign="vcenter">
+					<Button name="btn_AxisEnable" text="轴使能" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AxisDisable" text="轴失能" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AxisHome" text="轴回零" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AxisStop" text="停止运动" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_vmove_negative" text="&lt;-按住后退" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_vmove_positive" text="按住前进-&gt;" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_AxisClearError" text="清除错误" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_CardReset" text="板卡复位" enabled="false" width="100" padding="3,3,3,3" borderround="3,3" font="0" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+		<HorizontalLayout name="statusBar" height="25" padding="5,0,5,3" bkcolor="0xFFFFFFFF">
+			<Label padding="3,3,3,3" borderround="3,3" />
+			<Label name="lable_CardAlarm" text="报警" width="40" align="center" padding="3,3,3,3" borderround="3,3" bkcolor="#FFC5D4F2" />
+			<Label name="lable_CardServo" text="伺服" width="40" align="center" padding="3,3,3,3" borderround="3,3" bkcolor="#FFC5D4F2" />
+			<Label name="lable_CardPEL" text="正极限" width="40" align="center" padding="3,3,3,3" borderround="3,3" bkcolor="#FFC5D4F2" />
+			<Label name="lable_CardORG" text="原点" width="40" align="center" padding="3,3,3,3" borderround="3,3" bkcolor="#FFC5D4F2" />
+			<Label name="lable_CardNEL" text="负极限" width="40" align="center" padding="3,3,3,3" borderround="3,3" bkcolor="#FFC5D4F2" />
+			<Label name="lable_CardConnectStatus" text="未连接" width="40" align="center" padding="3,3,3,3" borderround="3,3" bkcolor="#FFC5D4F2" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

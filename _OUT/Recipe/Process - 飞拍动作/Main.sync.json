@@ -1,0 +1,14 @@
+{
+	"Policy" : 
+	{
+		"branches" : [ "master" ],
+		"endPolicy" : "restart",
+		"jumps" : null,
+		"master" : 
+		{
+			"groups" : [ "Loading", "GroupA", "GroupB", "GroupC", "UnLoading" ]
+		},
+		"processName" : "Main"
+	},
+	"Sync" : null
+}

@@ -1,0 +1,11 @@
+﻿  HIPACamera.cpp
+d:\sw\git_lrt\sphinx-alpha\hipaplugin\hipacamera.cpp(681): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  HIPAPlugin.cpp
+d:\sw\git_lrt\sphinx-alpha\hipaplugin\hipaplugin.cpp(41): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  HIPACaller.cpp
+d:\sw\git_lrt\sphinx-alpha\hipaplugin\hipacaller.cpp(334): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  HIPAMainWidget.cpp
+d:\sw\git_lrt\sphinx-alpha\hipaplugin\hipamainwidget.cpp(689): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  MvCamera.cpp
+d:\sw\git_lrt\sphinx-alpha\hipaplugin\mvcamera.cpp(322): fatal error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  正在生成代码...

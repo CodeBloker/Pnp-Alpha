@@ -1,0 +1,157 @@
+{
+    "Connections": [
+        {
+            "OriginNode": 17,
+            "OriginPort": 0,
+            "OriginPortType": 2,
+            "TargetNode": 18,
+            "TargetPort": 0,
+            "TargetPortType": 1
+        },
+        {
+            "OriginNode": 18,
+            "OriginPort": 0,
+            "OriginPortType": 2,
+            "TargetNode": 19,
+            "TargetPort": 0,
+            "TargetPortType": 1
+        },
+        {
+            "OriginNode": 19,
+            "OriginPort": 0,
+            "OriginPortType": 2,
+            "TargetNode": 20,
+            "TargetPort": 0,
+            "TargetPortType": 1
+        }
+    ],
+    "Nodes": [
+        {
+            "GroupName": "",
+            "ID": 17,
+            "Name": "TestStart",
+            "NodeType": 1,
+            "Port": [
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 0,
+                    "Type": 2
+                }
+            ],
+            "ProcessName": "Reset",
+            "X": -1315,
+            "Y": 191
+        },
+        {
+            "GroupName": "DeviceReset",
+            "ID": 18,
+            "Name": "TestGroup",
+            "NodeType": 3,
+            "Port": [
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 0,
+                    "Type": 1
+                },
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 0,
+                    "Type": 2
+                },
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 1,
+                    "Type": 3
+                },
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 1,
+                    "Type": 4
+                }
+            ],
+            "ProcessName": "Reset",
+            "X": -1017,
+            "Y": 192
+        },
+        {
+            "GroupName": "MotionReset",
+            "ID": 19,
+            "Name": "TestGroup",
+            "NodeType": 3,
+            "Port": [
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 0,
+                    "Type": 1
+                },
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 0,
+                    "Type": 2
+                },
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 1,
+                    "Type": 3
+                },
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 1,
+                    "Type": 4
+                }
+            ],
+            "ProcessName": "Reset",
+            "X": -695,
+            "Y": 192
+        },
+        {
+            "GroupName": "",
+            "ID": 20,
+            "Name": "TestEnd",
+            "NodeType": 1,
+            "Port": [
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 0,
+                    "Type": 1
+                },
+                {
+                    "Data": "",
+                    "DataType": 0,
+                    "PortID": 1,
+                    "Type": 1
+                }
+            ],
+            "ProcessName": "Reset",
+            "X": -315,
+            "Y": 188
+        }
+    ],
+    "Policy": {
+        "branches": [
+            "master"
+        ],
+        "endPolicy": "finish",
+        "jumps": [
+        ],
+        "master": {
+            "groups": [
+                "DeviceReset",
+                "MotionReset"
+            ]
+        },
+        "processName": "Reset"
+    },
+    "Sync": [
+    ]
+}

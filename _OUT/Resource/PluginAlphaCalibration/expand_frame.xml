@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0">
+		<HorizontalLayout>
+			<VerticalLayout width="350" padding="0,0,1,0" bordercolor="#FF768D9B" bordersize="1">
+				<Label text="相机参数设置" padding="1,0,1,3" font="1" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Label text="TX相机" font="1"/>
+					<Option width="90" height="28" font="1" name="check_CameraTx" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="启用相机" textpadding="15,0,0,0" />
+					<Label name="lable_TxStatus" height="20" width="20" padding="3,3,3,3" bkcolor="#FFACACAC"/>
+				</HorizontalLayout>
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Option width="115" height="27" name="check_TxContinueImage" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="实时计算圆心" textpadding="15,0,0,0" />
+					<Option width="55" height="27" name="check_TxCameraFocal" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="焦距" textpadding="15,0,0,0" />
+					<Label name="lable_TxCameraFocal" width="50" text="0.0" padding="3,3,3,3" />
+					<Label text="阈值:" width="35" align="center"/>
+					<Label name="lable_TxFocalThreshold" width="50" text="0.0" padding="3,3,3,3" />
+				</HorizontalLayout>
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Label text="曝光：" width="35" />
+					<Edit name="edit_TxExposure" text="0" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_TxExposureSet" text="设置" enabled="false"  padding="1,2,2,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Label text="增益：" width="35" />
+					<Edit name="edit_TxGain" text="0" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_TxGainSet" text="设置" enabled="false" padding="1,2,1,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_TxParasGet" text="获取" enabled="false" padding="3,2,1,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Label text="TY相机" font="1"/>
+					<Option width="90" height="28" font="1" name="check_CameraTy" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="启用相机" textpadding="15,0,0,0" />
+					<Label name="lable_TyStatus" height="20" width="20" padding="3,3,3,3" bkcolor="#FFACACAC"/>
+				</HorizontalLayout>
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Option width="115" height="27" name="check_TyContinueImage" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="实时计算圆心" textpadding="15,0,0,0" />
+					<Option width="55" height="27" name="check_TyCameraFocal" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="焦距" textpadding="15,0,0,0" />
+					<Label name="lable_TyCameraFocal" width="50" text="0.0" padding="3,3,3,3" />
+					<Label text="阈值:" width="35" align="center"/>
+					<Label name="lable_TyFocalThreshold1" width="50" text="0.0" padding="3,3,3,3" />				
+				</HorizontalLayout>
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Label text="曝光：" width="35" />
+					<Edit name="edit_TyExposure" text="0" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_TyExposureSet" text="设置" enabled="false" padding="1,2,2,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Label text="增益：" width="35" />
+					<Edit name="edit_TyGain" text="0" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_TyGainSet" text="设置" enabled="false" padding="1,2,1,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_TyParasGet" text="获取" enabled="false" padding="3,2,1,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Label text="Alpha相机" font="1"/>
+					<Option width="90" height="28" font="1" name="check_CameraAlpha" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="启用相机" textpadding="15,0,0,0" />
+					<Label name="lable_IdsStatus" height="20" width="20" padding="3,3,3,3" bkcolor="#FFACACAC"/>
+				</HorizontalLayout>
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Option width="115" height="27" name="check_AlphaContinueImage" padding="0,0,0,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="实时计算圆心" textpadding="15,0,0,0" />
+					<Option width="55" height="27" name="check_AlphaCameraFocal" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="焦距" textpadding="15,0,0,0" />
+					<Label name="lable_AlphaCameraFocal" width="40" text="0.0" padding="3,3,3,3" />
+					<Label text="阈值:" width="35" align="center"/>
+					<Label name="lable_AlphaFocalThreshold1" width="40" text="0.0" padding="3,3,3,3" />	
+					<Button name="btn_AlphaAutoFocal" text="AUTO" enabled="false" padding="1,1,1,1" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="28" font="0" padding="1,1,1,1">
+					<Label text="曝光：" width="35" />
+					<Edit name="edit_IdsExposure" text="0" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_IdsExposureSet" text="设置" enabled="false" padding="1,2,2,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Label text="增益：" width="35" />
+					<Edit name="edit_IdsGain" text="0" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_IdsGainSet" text="设置" enabled="false" padding="1,2,1,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_IdsParasGet" text="获取" enabled="false" padding="3,2,1,2" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" padding="10,3,10,3">
+					<Button name="btn_DeviceOpen" text="打开设备" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_DeviceClose" text="关闭设备" enabled="false" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" padding="10,3,10,3">
+					<Button name="btn_StartGrab" text="开始采集" enabled="false" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_StopGrab" text="停止采集" enabled="false" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="25" insert="0,1,0,1" childpadding="0">
+					<Option name="tab_Calibration" text="Calibration" normalimage="tabbar_normal.png" hotimage="tabbar_hover.png" pushedimage="tabbar_pushed.png" selectedimage="tabbar_pushed.png" bindtablayoutname="tabTest" bindtabindex="0" font="1" group="tabCalibration" />
+					<Option name="tab_Motion" text="Motion" normalimage="tabbar_normal.png" hotimage="tabbar_hover.png" pushedimage="tabbar_pushed.png" selectedimage="tabbar_pushed.png" bindtablayoutname="tabTest" bindtabindex="1" font="1" group="tabCalibration" />
+					<Option name="tab_Analysis" text="Analysis" normalimage="tabbar_normal.png" hotimage="tabbar_hover.png" pushedimage="tabbar_pushed.png" selectedimage="tabbar_pushed.png" bindtablayoutname="tabTest" bindtabindex="2" font="1" group="tabCalibration" />
+					<Option name="tab_Oqc" text="OQC" normalimage="tabbar_normal.png" hotimage="tabbar_hover.png" pushedimage="tabbar_pushed.png" selectedimage="tabbar_pushed.png" bindtablayoutname="tabTest" bindtabindex="3" font="1" group="tabCalibration" />
+				</HorizontalLayout>
+				<TabLayout name="tabTest" bkcolor="#FFFFFFFF" bordercolor="#FF768D9B" bordersize="1" inset="2,2,2,2">
+					<HorizontalLayout>
+						<Include source="calibration_frame.xml" />
+					</HorizontalLayout>
+					<HorizontalLayout>
+						<Include source="motion_frame.xml" />
+					</HorizontalLayout>
+					<HorizontalLayout>
+						<Include source="analysis_frame.xml" />
+					</HorizontalLayout>
+					<HorizontalLayout>
+						<Include source="oqc_frame.xml" />
+					</HorizontalLayout>
+				</TabLayout>
+			</VerticalLayout>
+			<VerticalLayout bordercolor="#FF768D9B" padding="0,0,1,1" bordersize="1">
+				<Label text="图像输出" bkcolor="#FFC5D4F2" font="1" height="20" align="center" />
+				<VerticalLayout >
+					<HorizontalLayout>
+						<Label name="hik_image1" bkcolor="#FFFFFFFF" padding="1,1,1,1" bordercolor="#FF4EA0D1" bordersize="1"/>
+						<Label name="hik_image2" bkcolor="#FFFFFFFF" padding="1,1,1,1" bordercolor="#FF4EA0D1" bordersize="1"/>
+						<Label name="hik_image3" bkcolor="#FFFFFFFF" padding="1,1,1,1" bordercolor="#FF4EA0D1" bordersize="1"/>
+					</HorizontalLayout>
+						<HorizontalLayout>
+						<Label name="hik_image4" bkcolor="#FFFFFFFF" padding="1,1,1,1" bordercolor="#FF4EA0D1" bordersize="1"/>
+						<Label name="hik_image5" bkcolor="#FFFFFFFF" padding="1,1,1,1" bordercolor="#FF4EA0D1" bordersize="1"/>
+						<Label name="hik_image6" bkcolor="#FFFFFFFF" padding="1,1,1,1" bordercolor="#FF4EA0D1" bordersize="1"/>
+					</HorizontalLayout>
+				</VerticalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

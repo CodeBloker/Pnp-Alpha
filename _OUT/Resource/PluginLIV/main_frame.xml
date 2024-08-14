@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="600,400">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0">
+		<HorizontalLayout>
+			<VerticalLayout width="300" bordercolor="#FF768D9B" bordersize="1">
+
+			</VerticalLayout>
+			<VerticalLayout bordercolor="#FF768D9B" bordersize="1">
+
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

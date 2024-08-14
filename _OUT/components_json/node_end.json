@@ -1,0 +1,26 @@
+{
+  "node color": [ 0.7, 0.0, 0.0, 0.5 ],
+  "node color click": [ 0.7, 0.0, 0.0, 0.7 ],
+  "node title": "END",
+  "node width": 100.0,
+  "node image": "",
+  "node image size": [ 0, 0 ],
+  "node sample switch": false,
+  "node sample timer": 200,
+  "node execute path switch": true,
+  "input point": [
+    {
+      "point color": [ 0.92, 0.92, 0.92, 1.0 ],
+      "point text": "finish",
+      "point param type": 1
+    },
+    {
+      "point color": [ 0.92, 0.92, 0.92, 1.0],
+      "point text": "restart",
+      "point param type": 1
+    }
+  ],
+  "output point": [
+  ],
+  "node type": 2
+}

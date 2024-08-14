@@ -1,0 +1,58 @@
+{
+	"@processName" : "Reset",
+	"groups" : 
+	[
+		{
+			"@branchName" : "master",
+			"@groupName" : "DeviceReset",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Reset Motion Data",
+					"@method" : "PnpDoeResetData",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Axis Home",
+					"@method" : "AxisLoadPnpHome",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Reset Position",
+					"@method" : "AxisLoadResetPosition",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "Reset DVP CameraData",
+					"@method" : "LoadPnpDoeResetDatas",
+					"@pluginFileName" : "DvpPlugin.dll"
+				},
+				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "Set DVP TOP Camer",
+					"@method" : "SetTopCameraHwParameter",
+					"@pluginFileName" : "DvpPlugin.dll"
+				},
+				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "Set DVP Buttom Camer",
+					"@method" : "SetDownCameraHwParameter",
+					"@pluginFileName" : "DvpPlugin.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "MotionReset",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		}
+	]
+}

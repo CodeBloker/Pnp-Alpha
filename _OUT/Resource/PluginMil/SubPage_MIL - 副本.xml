@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="12" default="true" />
+	<Font id="1" name="微软雅黑" size="12" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0" bkcolor2="#FFAAAAA0">
+		<HorizontalLayout height="120" padding="0,0,3,3" bordercolor="#FF768D9B" bordersize="1">
+			<VerticalLayout padding="0,0,3,0">
+				<Label text="参数设置" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout height="30" >
+					<Edit name="edit_image_path" text="F:\\FZ_TEST\\TEST0520\\静态\\1\\UDLOut (00D33111644)" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Button name="btn_image_open" width="150" text="打开图片" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+				<HorizontalLayout height="30" >
+					<Label text="SocketIndex：" width="50" padding="3,3,3,3"/>
+					<Combo name="socket_id" dropbuttonsize="21,21" height="28" dropbuttonnormalimage="file='combobox\dropbtn.png' source='0,0,21,21' " dropbuttonhotimage="file='combobox\dropbtn.png' source='21,0,42,21' " dropbuttonpushedimage="file='combobox\dropbtn.png' source='21,0,42,21' " type="dropdown" width="50" textpadding="5,0,5,0" bkcolor="0xFFFFFFFF" bordercolor="0xFFA0A0A4" hotbordercolor="0xFF06A8FF" bordersize="1">
+						<ListLabelElement text="0" selected="true"/>
+						<ListLabelElement text="1" />
+						<ListLabelElement text="2" />
+						<ListLabelElement text="3" />
+						<ListLabelElement text="4" />
+						<ListLabelElement text="5" />
+					</Combo>
+					<Label text="Degree：" width="60" padding="30,3,3,3"/>
+					<Edit name="edit_Degree" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Label text="midPointX：" width="70" padding="30,3,3,3" />
+					<Edit name="midPointX" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+					<Label text="midPointY：" width="70" padding="30,3,3,3"/>
+					<Edit name="midPointY" padding="3,3,3,3" bordercolor="#FF4EA0D1" bordersize="1" />
+				</HorizontalLayout>
+				<HorizontalLayout height="35" >
+					<Label />
+					<Button name="btn_Mil_Calr" width="150" text="计算图片" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+					<Button name="btn_Mil_Clear" width="150" text="清除界面" padding="3,3,3,3" borderround="3,3" normalimage="file='button_normal.png' corner='20,2,20,2'" hotimage="file='button_hover.png' corner='20,2,20,2'" pushedimage="file='button_pushed.png' corner='20,2,20,2'" />
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+		<HorizontalLayout>
+			<VerticalLayout padding="0,0,3,0">
+				<Label text="输出" bkcolor="#FFC5D4F2" height="20" align="center" />
+				<HorizontalLayout padding="1,0,1,3">
+					<RichEdit name="mil_output" vscrollbar="true" multiline="true" bkcolor="#FFFFFFFF" />
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

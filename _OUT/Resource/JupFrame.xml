@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--窗体定义size=初始尺寸;sizebox=可拖动改变窗口大小的边距;caption=可拖动的标题栏大小的边距;showshadow=阴影窗口;shadowsize=阴影大小;shadowposition=阴影位置;shadowcolor=阴影颜色;forcehsl=启用hsl模式-->
+<Window size="1920,1080" sizebox="0,0,4,4" caption="0,0,0,20" showshadow="true" shadowsize="2" shadowposition="2,2" shadowcolor="0xFF4B4B4B" forcehsl="true">
+	<!--字体定义 id=字体编号;name=字体名称;size=字体大小;bold=是否粗体-->
+	<Font id="0" name="微软雅黑" size="14" bold="false" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true"/>
+	<VerticalLayout name="vControl" inset="1,1,1,1" bkcolor="0xFFFFFFFF" bordercolor="0xFF969696" bordersize="1">
+		<HorizontalLayout height="15" childpadding="2" childvalign="vcenter" bkcolor="0xFF4F4F4F">
+			<Option name="system" width="50" height="18" group="group_menu" hotbkcolor="0xFFA6CAF0" textcolor="0xFFFFFFFF" text="System" />
+			<Option name="control" width="50" height="18" group="group_menu" hotbkcolor="0xFFA6CAF0" textcolor="0xFFFFFFFF" text="Control" />
+			<Option name="view" width="50" height="18" group="group_menu" hotbkcolor="0xFFA6CAF0" textcolor="0xFFFFFFFF" text="View" />
+			<Option name="language" width="70" height="18" group="group_menu" hotbkcolor="0xFFA6CAF0" textcolor="0xFFFFFFFF" text="Language" />
+			<Option name="help" width="50" height="18" group="group_menu" hotbkcolor="0xFFA6CAF0" textcolor="0xFFFFFFFF" text="Help" />
+		</HorizontalLayout>
+		<HorizontalLayout name="main">
+			<VerticalLayout width="55" childpadding="1" childalign="center">
+				<Button name="userbtn" width="50" height="50" normalimage="file='user.png'" bottombordersize="2" focusbordercolor="0xFF06A8FF" resourceid="1" tooltip="用户登录" style="style_option_header" />
+				<Button name="systembtn" width="50" height="50" normalimage="sysSetting.png" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="参数设置" style="style_option_header" />
+				<Control width="50" height="1" bkcolor="#FFDBDBDB" />
+				<Button name="startbtn" width="50" height="50" normalimage="sys_start.png" disabledimage="about_48.png" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="开始测试" style="style_option_header" />
+				<Button name="pausebtn" width="50" height="50" normalimage="sys_pause.png" disabledimage="about_48.png" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="暂停测试" style="style_option_header" />
+				<Button name="stopbtn" width="50" height="50" normalimage="sys_stop.png" disabledimage="about_48.png" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="结束测试" style="style_option_header" />
+				<Button name="resetbtn" width="50" height="50" normalimage="sys_reset.png" disabledimage="about_48.png" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="重置测试" style="style_option_header" />
+				<Control width="50" height="1" bkcolor="#FFDBDBDB" />
+				<Button name="mainbtn" width="50" height="50" normalimage="pro_main.png" group="group_control_type" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="主界面" style="style_option_header" />
+				<Button name="configbtn" width="50" height="50" normalimage="pro_config.png" group="group_control_type" bottombordersize="2" focusbordercolor="0xFF06A8FF" style="style_option_header" />
+				<Button name="manualbtn" width="50" height="50" normalimage="pro_manual.png" group="group_control_type" bottombordersize="2" focusbordercolor="0xFF06A8FF" style="style_option_header" />
+				<Button name="logbtn" width="50" height="50" normalimage="pro_log.png" group="group_control_type" bottombordersize="2" focusbordercolor="0xFF06A8FF" style="style_option_header" />
+				<Button name="editbtn" width="50" height="50" normalimage="viewedit.png" group="group_control_type" bottombordersize="2" focusbordercolor="0xFF06A8FF" style="style_option_header" />
+				<Button name="testbtn" width="50" height="50" normalimage="pro_test.png" group="group_control_type" bottombordersize="2" focusbordercolor="0xFF06A8FF" style="style_option_header" />
+				<Button name="alarmbtn" width="50" height="50" normalimage="alarm.png" group="group_control_type" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="错误代码" style="style_option_header" />
+				<VerticalLayout />
+				<Button name="minbtn" width="50" height="50" normalimage="ticon1.png" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="最小化" style="style_option_header" />
+				<Button name="closebtn" width="50" height="50" normalimage="exit.png" bottombordersize="2" focusbordercolor="0xFF06A8FF" tooltip="关闭" style="style_option_header" />
+			</VerticalLayout>
+			<VerticalLayout inset="0,0,1,1" bkcolor="0xFFFFFFFF" bordercolor="0xFF969696" bordersize="1">
+				<HorizontalLayout name="titleLayout" height="100" bkcolor="0xFF33FFFF" sepwidth="1" childpadding="2" childvalign="vcenter">
+					<Include source="TitleBar.xml" />
+					<!--<ChildLayout xmlfile="TitleBar.xml"/>-->
+				</HorizontalLayout>
+				<TabLayout name="Tab_Page" height="25">
+					<HorizontalLayout name="Page_Main" bkcolor="0xFFFFFFFF" sepwidth="1" childpadding="1" childvalign="vcenter" childalign="left" />
+					<HorizontalLayout name="Page_Config" bkcolor="0xFFFFFFFF" sepwidth="1" childpadding="1" childvalign="vcenter" childalign="left" />								
+					<HorizontalLayout name="Page_Manual" bkcolor="0xFFFFFFFF" sepwidth="1" childpadding="1" childvalign="vcenter" childalign="left" />	
+					<HorizontalLayout name="Page_Log" bkcolor="0xFFFFFFFF" sepwidth="1" childpadding="1" childvalign="vcenter" childalign="left" />
+					<HorizontalLayout name="Page_Edit" bkcolor="0xFFFFFFFF" sepwidth="1" childpadding="1" childvalign="vcenter" childalign="left" />
+					<HorizontalLayout name="Page_Test" bkcolor="0xFFFFFFFF" sepwidth="1" childpadding="1" childvalign="vcenter" childalign="left" />									
+				</TabLayout>
+				<HorizontalLayout name="Tab_Frame" bkcolor="0xFFF0F0F0" />
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

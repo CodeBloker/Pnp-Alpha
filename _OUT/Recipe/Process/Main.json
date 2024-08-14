@@ -1,0 +1,71 @@
+{
+	"@processName" : "Main",
+	"groups" : 
+	[
+		{
+			"@branchName" : "master",
+			"@groupName" : "Loading",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Pnp Doe Reset",
+					"@method" : "PnpDoeResetData",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupA",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Move To CailbraReadyPos",
+					"@method" : "moveToReadyPnpPos",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Save Current Pos",
+					"@method" : "saveCurrentPnpPos",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupB",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "GroupC",
+			"cycles" : 1,
+			"items" : null,
+			"policy" : "Next"
+		},
+		{
+			"@branchName" : "master",
+			"@groupName" : "UnLoading",
+			"cycles" : 1,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Move To Home",
+					"@method" : "AxisLoadPnpHome",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
+			"policy" : "Restart"
+		}
+	]
+}

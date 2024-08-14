@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="SmuPlugin.cpp" />
+    <ClCompile Include="SmuDlg.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\SmuControl.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\VisaManager.cpp">
+      <Filter>Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Caller\SmuCaller.cpp">
+      <Filter>Caller</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SmuPlugin.h" />
+    <ClInclude Include="JError.h" />
+    <ClInclude Include="JVersion.h" />
+    <ClInclude Include="SmuDlg.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\SmuControl.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\VisaManager.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="SmuDefine.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Caller\SmuCaller.h">
+      <Filter>Caller</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{dfae9a3c-f17f-4d76-8b49-1a4a0a8cdb8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Caller">
+      <UniqueIdentifier>{65336fb0-2d5a-419c-8acc-a31df3cc13b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{eb28d1a4-eaa1-463c-a166-3d59bd93e479}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
