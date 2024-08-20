@@ -177,6 +177,25 @@ int DvpCamera_Manage::OpenDevice(std::string camera_name, std::string &strError)
 	return 0;
 }
 
+int DvpCamera_Manage::OpenDevice(std::string camera_name, std::string & strError, bool isLoop)
+{
+	if (NULL == m_CameraList[camera_name])
+	{
+		return -1;
+	}
+
+	if (m_CameraList[camera_name]->DVP_IsCameraOpen())
+	{
+		CloseDivice(camera_name);
+	}
+	if (!m_CameraList[camera_name]->DVP_OpenCamera(camera_name, strError, isLoop))
+	{
+		return -2;
+	}
+
+	return 0;
+}
+
 bool DvpCamera_Manage::Camera_IsOpen(std::string camera_name)
 {
 	if (NULL == m_CameraList[camera_name])

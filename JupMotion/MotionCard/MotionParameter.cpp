@@ -204,6 +204,7 @@ bool MotionParameter::LoadAxisInfos()
 			axis->useLimit = sqlite3_column_int(statement, 27);
 			axis->positiveLimit = sqlite3_column_int(statement, 28);
 			axis->negativeLimit = sqlite3_column_int(statement, 29);
+			axis->IsMoveZero = false;
 			m_axises[axisName] = axis;
 			m_axisList.push_back(axisName);
 		}

@@ -5,6 +5,8 @@
 
 #include <direct.h>
 #include <io.h>
+#include "../_INCLUDE/ProjectEvent.h"
+using namespace ProjectEvent;
 
 std::vector<std::string> m_TxAngle;
 std::vector<std::string> m_TyAngle;
@@ -94,6 +96,7 @@ int JupMotionCaller::RegisterMethod()
 	Plugin_Method_Add(JupMotionCaller, IsTheLastStep);
 
 	//Auto 校准动作
+	Plugin_Method_Add(JupMotionCaller, CalibraTestStartCheck);
 	Plugin_Method_Add(JupMotionCaller, moveToReadyPnpPos);
 
 	Plugin_Method_Add(JupMotionCaller, takePhotoToCalibraPosA1);
@@ -107,6 +110,23 @@ int JupMotionCaller::RegisterMethod()
 
 	Plugin_Method_Add(JupMotionCaller, takePhotoToFinalPosA4);
 	Plugin_Method_Add(JupMotionCaller, saveCurrentPnpPos);
+
+	Plugin_Method_Add(JupMotionCaller, moveToReadyNozzlePos);
+
+	Plugin_Method_Add(JupMotionCaller, takePhotoToCalibraPosB1);
+	Plugin_Method_Add(JupMotionCaller, moveToPnpCailbraPosB1);
+
+	Plugin_Method_Add(JupMotionCaller, takePhotoToCalibraPosB2);
+	Plugin_Method_Add(JupMotionCaller, moveToPnpCailbraPosB2);
+
+	Plugin_Method_Add(JupMotionCaller, takePhotoToCalibraPosB3);
+	Plugin_Method_Add(JupMotionCaller, moveToPnpCailbraPosB3);
+
+	Plugin_Method_Add(JupMotionCaller, takePhotoToFinalPosB4);
+	Plugin_Method_Add(JupMotionCaller, saveCurrentPnpAndNozzlePos);
+
+	Plugin_Method_Add(JupMotionCaller, CalPnpDistance);
+
 
 	return 0;
 }
@@ -481,7 +501,7 @@ int JupMotionCaller::AxisLoadPnpHome(JupData & resultTable)
 		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the home position failed"));
 		return -10008;
 	}
-
+	jCore->SendEvent(g_MotionWidget, &JMotionIsHomeEvent(true));
 	return 0;
 }
 
@@ -659,6 +679,15 @@ int JupMotionCaller::AxisDILXDILYToSocketPos(JupData & resultTable)
 	return 0;
 }
 
+int JupMotionCaller::CalibraTestStartCheck(JupData & data)
+{
+	// 更新测试计数
+	data.SetValue("JupMotion", "TestCount", test_count);
+	data.SetValue("JupMotion", "TestStartTime", Jup::GetLocalTime(0));
+	test_count++;
+	return 0;
+}
+
 int JupMotionCaller::moveToReadyPnpPos(JupData & data)
 {
 	//运动到准备位置
@@ -674,7 +703,7 @@ int JupMotionCaller::takePhotoToCalibraPosA1(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosA1(JupData & data)
 {
-	MoveToCailbraPos(-1, -1);
+	MoveToCailbraPos(-10, -10, 60000.0, 5000000.0, 5000000.0);
 	return 0;
 }
 
@@ -686,7 +715,7 @@ int JupMotionCaller::takePhotoToCalibraPosA2(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosA2(JupData & data)
 {
-	MoveToCailbraPos(1, 1);
+	MoveToCailbraPos(10, 10, 60000.0, 5000000.0, 5000000.0);
 	return 0;
 }
 
@@ -698,7 +727,7 @@ int JupMotionCaller::takePhotoToCalibraPosA3(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosA3(JupData & data)
 {
-	MoveToCailbraPos(0, 0);
+	MoveToCailbraPos(5, 5, 60000.0, 5000000.0, 5000000.0);
 	return 0;
 }
 
@@ -716,6 +745,78 @@ int JupMotionCaller::saveCurrentPnpPos(JupData & data)
 	data.SetValue("JupMotion", "PnpAxisXPos_font", AxisX_Pos);
 	data.SetValue("JupMotion", "PnpAxisYPos_font", AxisY_Pos);
 
+	return 0;
+}
+
+int JupMotionCaller::moveToReadyNozzlePos(JupData & data)
+{
+	//运动到准备位置
+	MoveToReadyPos(POSNAME_NozzleCailbraReadyPos);
+	return 0;
+}
+
+int JupMotionCaller::takePhotoToCalibraPosB1(JupData & data)
+{
+	return 0;
+}
+
+int JupMotionCaller::moveToPnpCailbraPosB1(JupData & data)
+{
+	MoveToNozzleCailbraPos(-10, -10, -0.2, 60000.0, 5000000.0, 5000000.0);
+	return 0;
+}
+
+int JupMotionCaller::takePhotoToCalibraPosB2(JupData & data)
+{
+	return 0;
+}
+
+int JupMotionCaller::moveToPnpCailbraPosB2(JupData & data)
+{
+	MoveToNozzleCailbraPos(10, 10, 0.4, 60000.0, 5000000.0, 5000000.0);
+	return 0;
+}
+
+int JupMotionCaller::takePhotoToCalibraPosB3(JupData & data)
+{
+	return 0;
+}
+
+int JupMotionCaller::moveToPnpCailbraPosB3(JupData & data)
+{
+	MoveToNozzleCailbraPos(5, 5, -0.2, 60000.0, 5000000.0, 5000000.0);
+	return 0;
+}
+
+int JupMotionCaller::takePhotoToFinalPosB4(JupData & data)
+{
+	return 0;
+}
+
+int JupMotionCaller::saveCurrentPnpAndNozzlePos(JupData & data)
+{
+	double AxisX_Pos = m_pMotion->GetCurrentPos(AXIS_Name_XPnp);
+	double AxisY_Pos = m_pMotion->GetCurrentPos(AXIS_Name_YPnp);
+
+	data.SetValue("JupMotion", "NozzleCFOV_X", "N/A");
+	data.SetValue("JupMotion", "NozzleCFOV_Y", "N/A");
+	data.SetValue("JupMotion", "NozzleCFOV_R", "N/A");
+	data.SetValue("JupMotion", "NozzleCFOV_PnpXPos", AxisX_Pos);
+	data.SetValue("JupMotion", "NozzleCFOV_PnpYPos", AxisY_Pos);
+	return 0;
+}
+
+int JupMotionCaller::CalPnpDistance(JupData & data)
+{
+	double a = data.GetDouble("JupMotion", "NozzleCFOV_PnpXPos");
+	double b = data.GetDouble("JupMotion", "NozzleCFOV_PnpYPos");
+	double c = data.GetDouble("JupMotion", "PnpAxisXPos_font");
+	double d = data.GetDouble("JupMotion", "PnpAxisYPos_font");
+	double pnpXPosDelta = abs(data.GetDouble("JupMotion", "NozzleCFOV_PnpXPos")) - abs(data.GetDouble("JupMotion", "PnpAxisXPos_font"));
+	double pnpYPosDelta = abs(data.GetDouble("JupMotion", "NozzleCFOV_PnpYPos")) - abs(data.GetDouble("JupMotion", "PnpAxisYPos_font"));
+
+	data.SetValue("JupMotion", "CalPnpDelta_X", pnpXPosDelta);
+	data.SetValue("JupMotion", "CalPnpDelta_Y", pnpYPosDelta);
 	return 0;
 }
 
@@ -786,14 +887,32 @@ void JupMotionCaller::MoveToReadyPos(const std::string & pos_name)
 	int nRet2 = m_pMotion->AxisAbsMove(AXIS_Name_YPnp, info2->distance);
 	m_pMotion->WaitAxisAbsMove(AXIS_Name_XPnp, info1->distance);
 	m_pMotion->WaitAxisAbsMove(AXIS_Name_YPnp, info2->distance);
+
+
+	if (pos_name == POSNAME_NozzleCailbraReadyPos)
+	{
+		auto info3 = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_RPnp, pos_name);
+		int nRet3 = m_pMotion->AxisAbsMove(AXIS_Name_RPnp, info3->distance);
+		m_pMotion->WaitAxisAbsMove(AXIS_Name_RPnp, info3->distance);
+	}
 }
 
-void JupMotionCaller::MoveToCailbraPos(double AxisX_distance, double AxisY_distance)
+void JupMotionCaller::MoveToCailbraPos(double AxisX_distance, double AxisY_distance, double maxVel, double accVel, double decVel)
 {
-	int nRet1 = m_pMotion->AxisMoveDistance(AXIS_Name_XPnp, AxisX_distance);
-	int nRet2 = m_pMotion->AxisMoveDistance(AXIS_Name_YPnp, AxisY_distance);
+	int nRet1 = m_pMotion->AxisMoveDistance(AXIS_Name_XPnp, AxisX_distance, maxVel, accVel, decVel);
+	int nRet2 = m_pMotion->AxisMoveDistance(AXIS_Name_YPnp, AxisY_distance, maxVel, accVel, decVel);
 	m_pMotion->WaitAxisMoveDistance(AXIS_Name_XPnp, AxisX_distance);
 	m_pMotion->WaitAxisMoveDistance(AXIS_Name_YPnp, AxisY_distance);
+}
+
+void JupMotionCaller::MoveToNozzleCailbraPos(double AxisX_distance, double AxisY_distance, double AxisR_distance, double maxVel, double accVel, double decVel)
+{
+	int nRet1 = m_pMotion->AxisMoveDistance(AXIS_Name_XPnp, AxisX_distance, maxVel, accVel, decVel);
+	int nRet2 = m_pMotion->AxisMoveDistance(AXIS_Name_YPnp, AxisY_distance, maxVel, accVel, decVel);
+	int nRet3 = m_pMotion->AxisMoveDistance(AXIS_Name_RPnp, AxisR_distance);
+	m_pMotion->WaitAxisMoveDistance(AXIS_Name_XPnp, AxisX_distance);
+	m_pMotion->WaitAxisMoveDistance(AXIS_Name_YPnp, AxisY_distance);
+	m_pMotion->WaitAxisMoveDistance(AXIS_Name_RPnp, AxisR_distance);
 }
 
 void JupMotionCaller::PluginWriteLog(JLogLevel level, std::string strfunc, const std::string str)

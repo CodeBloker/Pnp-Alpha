@@ -141,6 +141,58 @@ bool DVPCamera_Control::DVP_OpenCamera(std::string strCameraID, std::string &str
 	return false;
 }
 
+bool DVPCamera_Control::DVP_OpenCamera(std::string strCameraID, std::string & strError, bool isLoop)
+{
+	dvpStatus status = DVP_STATUS_OK;
+	dvpUint32 NumCamera;
+	std::string strFriendlyName;
+
+	if (!DVP_IsValidHandle(m_handle))
+	{
+		if (strCameraID != "")
+		{
+			//查找ID对应的friendlyName;
+			strFriendlyName = DVP_FriendlyName(strCameraID);
+			if (strFriendlyName == "")
+			{
+				strError = "Fail to find Camera " + strCameraID;
+				return false;
+			}
+
+			//连接相机;
+			status = dvpOpenByName(strFriendlyName.c_str(), OPEN_NORMAL, &m_handle);
+			if (status != DVP_STATUS_OK)
+			{
+				strError = "Fail to open Camera [Error :" + std::to_string(status) + "][" + strCameraID + "]";
+				return false;
+			}
+			m_strCamID = strCameraID;
+
+			if (isLoop)
+			{
+				//注册回调函数;
+				status = dvpRegisterStreamCallback(m_handle, OnDrawPicture, STREAM_EVENT_FRAME_THREAD, this);
+				if (status != DVP_STATUS_OK)
+				{
+					strError = "Fail to Register Stream Callback [Error :" + std::to_string(status) + "][" + strCameraID + "]";
+					return false;
+				}
+			}
+
+			strError = "Success to open Camera :" + strCameraID;
+			return true;
+		}
+		else
+		{
+			strError = "Fail to open Camera [Error :" + std::to_string(status) + "][" + strCameraID + "]";
+			return false;
+		}
+	}
+
+	strError = "Camera can not open again [Error :" + std::to_string(status) + "][" + strCameraID + "]";
+	return false;
+}
+
 bool DVPCamera_Control::DVP_OpenCamera(unsigned int nCamID, std::string &strError)
 {
 	dvpStatus status = DVP_STATUS_OK;
@@ -276,7 +328,7 @@ bool DVPCamera_Control::DVP_CloseCamera()
 	{
 		status = dvpStop(m_handle);
 	}
-
+	dvpUnregisterStreamCallback(m_handle, OnDrawPicture, STREAM_EVENT_FRAME_THREAD, this);
 	status = dvpClose(m_handle);
 	m_handle = NULL;
 	if (status == DVP_STATUS_OK)
@@ -551,17 +603,14 @@ void DVPCamera_Control::SetSaveImagePath(std::string strSaveImagePath)
 //***********************************************************************************************************************************************
 int DVPCamera_Control::OnDrawPicture(dvpHandle handle, dvpStreamEvent event, void *pContext, dvpFrame *pFrame, void *pBuffer)
 {
-	//保存图片;
+	////保存图片;
 	//std::string strSaveImagePath = m_SaveImagePath;
 	//dvpStatus status = dvpSavePicture(pFrame, pBuffer, m_SaveImagePath.c_str(), 100);
 	//if (status != DVP_STATUS_OK)
 	//{
 	//	std:: string strError = "save photo Error : " + std::to_string(status) + "save path:" + m_SaveImagePath;
 	//}
-	//else
-	//{		
-	//	jCore->PostEvent(ProjectEvent::g_DvpWidget, new ProjectEvent::JDvpEvent(pBuffer, pFrame->iWidth, pFrame->iHeight));
-	//}
-	//jCore->PostEvent(ProjectEvent::g_DvpWidget, new ProjectEvent::JDvpEvent(pBuffer, pFrame->iWidth, pFrame->iHeight));
+	jCore->SendEvent(ProjectEvent::g_DvpWidget, new ProjectEvent::JDvpEvent(pBuffer, pFrame->iWidth, pFrame->iHeight));
+	//Sleep(500);
 	return 0;
 }

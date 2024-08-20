@@ -101,6 +101,11 @@ LRESULT CPluginDlg::CustomEvent(JupCustomEvent * event)
 		auto e = dynamic_cast<JMotionEvent*>(event);
 		bool ret = AxisMoveAndWaitting(e->m_axis, e->m_distance, e->m_speed_ratio);
 	}
+	else if (type == ProjectEvent::e_JMotionIsHomeEvent)
+	{
+		auto e = dynamic_cast<JMotionIsHomeEvent*>(event);
+		m_isAxisHome = e->isAxisHome;
+	}
 
 	return 0;
 }
@@ -683,6 +688,13 @@ void CPluginDlg::OnBtnAxisNegativeRelativeMoveClick(TNotifyUI & msg)
 	double distance = atof(axisPos.c_str());
 
 	CDuiString log;
+
+	if (!m_pMotionParameter->GetAxisParam(axisName)->IsMoveZero)
+	{
+		MessageBox(this->GetHWND(), _T("Please Init Axis First!"), _T("Error"), MB_OK);
+		return;
+	}
+
 	int nRet = m_Adlink->AxisMoveDistance(axisName, -distance);
 	if (nRet != 0)
 	{
@@ -718,6 +730,11 @@ void CPluginDlg::OnBtnAxisPositiveRelativeMoveClick(TNotifyUI & msg)
 	double distance = atof(axisPos.c_str());
 
 	CDuiString log;
+	if (!m_pMotionParameter->GetAxisParam(axisName)->IsMoveZero)
+	{
+		MessageBox(this->GetHWND(), _T("Please Init Axis First!"), _T("Error"), MB_OK);
+		return;
+	}
 	int nRet = m_Adlink->AxisMoveDistance(axisName, distance);
 	if (nRet != 0)
 	{
@@ -751,6 +768,12 @@ void CPluginDlg::OnBtnAxisAbsMoveClick(TNotifyUI & msg)
 
 	std::string axisName = m_pLable_CurAxis->GetText().GetData();
 	std::string axisPos = m_pEdit_RelativeMove->GetText().GetData();
+
+	if (!m_pMotionParameter->GetAxisParam(axisName)->IsMoveZero)
+	{
+		MessageBox(this->GetHWND(), _T("Please Init Axis First!"), _T("Error"), MB_OK);
+		return;
+	}
 
 	int nRet = m_Adlink->AxisAbsMove(axisName, atof(axisPos.c_str()));
 	if (nRet != 0)
@@ -893,12 +916,23 @@ void CPluginDlg::OnBtnAxisPosMoveClick(TNotifyUI & msg)
 	//	MessageBox(this->GetHWND(), _T("Please Init Card First!"), _T("Error"), MB_OK);
 	//	return;
 	//}
+	//if (!m_isAxisHome)
+	//{
+	//	MessageBox(this->GetHWND(), _T("Please Init Axis First!"), _T("Error"), MB_OK);
+	//	return;
+	//}
 	CDuiString log;
 
 	int nIndex = msg.pSender->GetTag();
 	CListContainerElementUI *pLine = static_cast<CListContainerElementUI*>(m_pList_AxisPos->GetItemAt(nIndex));
 	std::string axisPos = pLine->GetItemAt(AxisPosItem::AxisPosDebug)->GetText().GetData();
 	std::string axisName = m_pLable_CurAxis->GetText().GetData();
+
+	if (!m_pMotionParameter->GetAxisParam(axisName)->IsMoveZero)
+	{
+		MessageBox(this->GetHWND(), _T("Please Init Axis First!"), _T("Error"), MB_OK);
+		return;
+	}
 
 	int nRet = m_Adlink->AxisAbsMove(axisName, atof(axisPos.c_str()));
 	if (nRet != 0)

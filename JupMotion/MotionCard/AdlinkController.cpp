@@ -41,17 +41,21 @@ int AdlinkController::InitAdlinkCard()
 	}
 
 	// 飞拍设置
-	auto paras = m_pMotionParameter->GetAxisPosInfo("AxisYPnp", "DownCamera");
-	if (0 != ResetTriggerPos(CardConfig::CardNo, paras->distance))
+	if (0 != ResetTriggerPos("AxisYPnp"))
 	{
 		return JError::ERR_StartFieldBus;
 	}
-	std::vector<double> pos_list;
-	pos_list.push_back(paras->distance);
-	if (0 != SetTriggerListPos("AxisYPnp", EnumMotorTriggerMode::NegativeD01D02Mode, pos_list))
-	{
-		return JError::ERR_StartFieldBus;
-	}
+	//auto paras = m_pMotionParameter->GetAxisPosInfo("AxisYPnp", "DownCamera");
+	//if (0 != ResetTriggerPos(CardConfig::CardNo, paras->distance))
+	//{
+	//	return JError::ERR_StartFieldBus;
+	//}
+	//std::vector<double> pos_list;
+	//pos_list.push_back(paras->distance);
+	//if (0 != SetTriggerListPos("AxisYPnp", EnumMotorTriggerMode::NegativeD01D02Mode, pos_list))
+	//{
+	//	return JError::ERR_StartFieldBus;
+	//}
 
 	auto axisList = m_pMotionParameter->GetAxisNameList();
 	for (auto axis : axisList)
@@ -389,6 +393,28 @@ int AdlinkController::ResetTriggerPos(int axis_id, double pos)
 	return 0;
 }
 
+int AdlinkController::ResetTriggerPos(const std::string& axisName)
+{
+	auto para = m_pMotionParameter->GetAxisParam(axisName);
+	INT32 ReData = 0;
+
+	///////以当前位置为零点
+	UINT16 ODIndex = 0x2018;
+	UINT16 ODSubIndex = 0x5;
+	INT32 CommdData = 1;//0：不使能 //1：使能(上升沿有效)
+	UINT32 DataLen = 2;
+	int ret = WriteReadSDO(para->axisNum, ODIndex, ODSubIndex, CommdData, DataLen, ReData);
+	if (ret < 0) return -1;
+
+	ODIndex = 0x2018;
+	ODSubIndex = 0x5;
+	CommdData = 0;//0：不使能 //1：使能(上升沿有效)
+	DataLen = 2;
+	ret = WriteReadSDO(para->axisNum, ODIndex, ODSubIndex, CommdData, DataLen, ReData);
+	if (ret < 0) return -2;
+	return 0;
+}
+
 int AdlinkController::SetTriggerListPos(std::string axisName, EnumMotorTriggerMode trigger_mode, std::vector<double> pos_list)
 {
 	INT32 ReData = 0;
@@ -564,6 +590,26 @@ MotionParameter * AdlinkController::GetMotionParameter()
 	return m_pMotionParameter;
 }
 
+int AdlinkController::AxisMoveDistance(const std::string & axisName, double distance, double maxVel, double accVel, double decVel)
+{
+	m_bSetStopWait = false;
+	dbBeginPos = 0.0;
+
+	auto para = m_pMotionParameter->GetAxisParam(axisName);
+
+	if (0 != SetAxisParam(para->axisNum, 0, maxVel, 0, accVel, decVel))
+	{
+		return JError::ERR_SetMoveParam;
+	}
+	int nPulse = distance * para->equiv;
+	dbBeginPos = GetCurrentPos(axisName);
+	if (0 != RelativeMove(para->axisNum, nPulse, maxVel))
+	{
+		return JError::ERR_MoveDistance;
+	}
+	return 0;
+}
+
 void AdlinkController::AxisStopWait()
 {
 	m_bSetStopWait = true;
@@ -644,6 +690,11 @@ int AdlinkController::WaitAxisHome(const std::string & axisName)
 	if (0 != SetAxisHomePos(nAxisIndex))
 	{
 		return JError::ERR_MotionHome;
+	}
+	// 轴回零标志位置为true, 代表该轴已经执行过回零保护
+	{
+		auto axisInfo = m_pMotionParameter->GetAxisParam(axisName);
+		axisInfo->IsMoveZero = true;
 	}
 	return 0;
 }

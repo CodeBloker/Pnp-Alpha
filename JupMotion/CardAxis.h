@@ -36,6 +36,7 @@ public:
 	bool useLimit = 0;
 	double positiveLimit = 0.0;
 	double negativeLimit = 0.0;
+	bool IsMoveZero = false;
 
 	inline Json::Value toJSonObject()
 	{

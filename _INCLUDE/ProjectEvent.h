@@ -23,7 +23,23 @@ enum E_CustomEventId {
 	e_JMilFindCenterEvent,
 	e_JMotionEvent,
 	e_JCalibrationEvent,
-	e_JDvpEvent
+	e_JDvpEvent,
+	e_JDvpPnpCalibrationEvent,
+	e_JDvpNozzleCalibrationEvent,
+	e_JMotionIsHomeEvent
+};
+
+class JMotionIsHomeEvent :public JupCustomEvent
+{
+public:
+	JMotionIsHomeEvent(bool isHome)
+		:isAxisHome(isHome){}
+	~JMotionIsHomeEvent() {}
+	JupCustomEvent::eType Type() const override {
+		return static_cast<eType>(e_JMotionIsHomeEvent);
+	}
+public:
+	bool isAxisHome;
 };
 
 class JDvpEvent : public JupCustomEvent
@@ -40,6 +56,40 @@ public:
 	void* m_ptr;
 	int m_width;
 	int m_height;
+};
+
+class JDvpPnpCalibrationEvent : public JupCustomEvent
+{
+public:
+	JDvpPnpCalibrationEvent(double pnp_x, double pnp_y, double m_tempX, double m_tempY, std::string result_img)
+		: Pnp_x(pnp_x), Pnp_y(pnp_y), m_templateX(m_tempX), m_templateY(m_tempY), resultImagePath(result_img) {}
+	~JDvpPnpCalibrationEvent() {}
+	JupCustomEvent::eType Type() const override
+	{
+		return static_cast<eType>(e_JDvpPnpCalibrationEvent);
+	}
+
+public:
+	double Pnp_x, Pnp_y;
+	double m_templateX, m_templateY;
+	std::string resultImagePath;
+};
+
+class JDvpNozzleCalibrationEvent : public JupCustomEvent
+{
+public:
+	JDvpNozzleCalibrationEvent(double nozzleX, double nozzleY, double nozzleR, double tempX, double tempY, double tempR, std::string result_img)
+		: Nozzle_x(nozzleX), Nozzle_y(nozzleY), Nozzle_r(Nozzle_y), m_tempX(tempX), m_tempY(tempY), m_tempR(tempR), resultImagePath(result_img) {}
+	~JDvpNozzleCalibrationEvent() {}
+	JupCustomEvent::eType Type() const override
+	{
+		return static_cast<eType>(e_JDvpNozzleCalibrationEvent);
+	}
+
+public:
+	double Nozzle_x, Nozzle_y, Nozzle_r;
+	double m_tempX, m_tempY, m_tempR;
+	std::string resultImagePath;
 };
 
 class JHikEvent : public JupCustomEvent
@@ -89,21 +139,16 @@ public:
 class JMilEvent : public JupCustomEvent
 {
 public:
-	JMilEvent(std::string ptr, std::string& file_out, std::string file_mmf)
-		: m_ptr(ptr), m_file_out(file_out), m_file_mmf(file_mmf) {}
+	JMilEvent(std::string ptr, int options)
+		: m_image_ptr(ptr), mil_options(options) {}
 	~JMilEvent() {}
 	JupCustomEvent::eType Type() const override {
 		return static_cast<eType>(e_JMilEvent);
 	}
 
 public:
-	std::string m_ptr;
-	std::string& m_file_out;
-	std::string m_file_mmf;
-	double m_pointX = 0.0;
-	double m_pointY = 0.0;
-	double m_angle = 0.0;
-	//const char* m_ptr;
+	std::string m_image_ptr;
+	int mil_options;
 };
 
 class JMilFindModelEvent : public JupCustomEvent

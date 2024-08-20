@@ -73,6 +73,9 @@ private:
 
 	int SaveDOE3TestData(JupData& data);
 
+	// 校准数据写入csv
+	int SaveCalibraData(JupData& data);
+
 private:
 	bool WriteDataToCSV(std::string imageInput, std::vector<std::string> heads, std::vector<std::string> datas);
 	bool WriteDoeTestDataToCSV(std::string path, std::vector<std::string> heads, std::vector<std::string> datas);
@@ -129,4 +132,7 @@ private:
 	, "TyCamera_B1_PointY", "TyCamera_B2_PointY", "TyCamera_B3_PointY", "TyCamera_B4_PointY", "TyCamera_B5_PointY", "TyCamera_B6_PointY", "TyCamera_B7_PointY"
 	, "TyCamera_C1_PointX", "TyCamera_C2_PointX", "TyCamera_C3_PointX", "TyCamera_C4_PointX", "TyCamera_C5_PointX", "TyCamera_C6_PointX", "TyCamera_C7_PointX"
 	, "TyCamera_C1_PointY", "TyCamera_C2_PointY", "TyCamera_C3_PointY", "TyCamera_C4_PointY", "TyCamera_C5_PointY", "TyCamera_C6_PointY", "TyCamera_C7_PointY" };
+
+	std::vector<std::string> m_calibra_head = { "Item","Time","PnpCFOV_X","PnpCFOV_Y","NozzleCFOV_X","NozzleCFOV_Y","PnpPos_X","PnpPos_Y","CalPnpDelta_X","CalPnpDelta_Y" };
+
 };

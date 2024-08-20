@@ -115,6 +115,7 @@ public:
 
 
 	//Auto 校准动作
+	int CalibraTestStartCheck(JupData& data);
 	//Group A
 	int moveToReadyPnpPos(JupData& data);
 
@@ -130,29 +131,30 @@ public:
 	int takePhotoToFinalPosA4(JupData& data);
 	int saveCurrentPnpPos(JupData& data);
 
-	////GroupB
-	//int moveToReadyNozzlePos(JupData& data);
+	//GroupB
+	int moveToReadyNozzlePos(JupData& data);
 
-	//int takePhotoToCalibraPosB1(JupData& data);
-	//int moveToPnpCailbraPosB1(JupData& data);
+	int takePhotoToCalibraPosB1(JupData& data);
+	int moveToPnpCailbraPosB1(JupData& data);
 
-	//int takePhotoToCalibraPosB2(JupData& data);
-	//int moveToPnpCailbraPosB2(JupData& data);
+	int takePhotoToCalibraPosB2(JupData& data);
+	int moveToPnpCailbraPosB2(JupData& data);
 
-	//int takePhotoToCalibraPosB3(JupData& data);
-	//int moveToPnpCailbraPosB3(JupData& data);
+	int takePhotoToCalibraPosB3(JupData& data);
+	int moveToPnpCailbraPosB3(JupData& data);
 
-	//int takePhotoToFinalPosB4(JupData& data);
-	//int saveCurrentPnpAndNozzlePos(JupData& data);
+	int takePhotoToFinalPosB4(JupData& data);
+	int saveCurrentPnpAndNozzlePos(JupData& data);
 
-	////GroupC
-	//int CalPnpDistance(JupData& data);
+	//GroupC
+	int CalPnpDistance(JupData& data);
 
 
 private:
 	void RzTxMoveToPos(const std::string& pos_name);
 	void MoveToReadyPos(const std::string& pos_name);
-	void MoveToCailbraPos(double AxisX_distance, double AxisY_distance);
+	void MoveToCailbraPos(double AxisX_distance, double AxisY_distance, double maxVel, double accVel, double decVel);
+	void MoveToNozzleCailbraPos(double AxisX_distance, double AxisY_distance, double AxisR_distance, double maxVel, double accVel, double decVel);
 
 private:
 	// log

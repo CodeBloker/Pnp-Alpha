@@ -13,6 +13,12 @@
 					"@itemName" : "Pnp Doe Reset",
 					"@method" : "PnpDoeResetData",
 					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Start Check",
+					"@method" : "CalibraTestStartCheck",
+					"@pluginFileName" : "JupMotion.dll"
 				}
 			],
 			"policy" : "Next"
@@ -25,13 +31,31 @@
 			[
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "Move To CailbraReadyPos",
+					"@itemName" : "ReadyPnpPos",
 					"@method" : "moveToReadyPnpPos",
 					"@pluginFileName" : "JupMotion.dll"
 				},
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "Save Current Pos",
+					"@itemName" : "CalibraPosA1",
+					"@method" : "moveToPnpCailbraPosA1",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CalibraPosA2",
+					"@method" : "moveToPnpCailbraPosA2",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CalibraPosA3",
+					"@method" : "moveToPnpCailbraPosA3",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Save Pnp Pos",
 					"@method" : "saveCurrentPnpPos",
 					"@pluginFileName" : "JupMotion.dll"
 				}
@@ -42,7 +66,63 @@
 			"@branchName" : "master",
 			"@groupName" : "GroupB",
 			"cycles" : 1,
-			"items" : null,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "ReadyNozzlePos",
+					"@method" : "moveToReadyNozzlePos",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "takePhotoB1",
+					"@method" : "takePhotoToCalibraPosB1",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CailbraPosB1",
+					"@method" : "moveToPnpCailbraPosB1",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "takePhotoB2",
+					"@method" : "takePhotoToCalibraPosB2",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CailbraPosB2",
+					"@method" : "moveToPnpCailbraPosB2",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "takePhotoB3",
+					"@method" : "takePhotoToCalibraPosB3",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "CailbraPosB3",
+					"@method" : "moveToPnpCailbraPosB3",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "takePhotoB4",
+					"@method" : "takePhotoToFinalPosB4",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "Save Nozzle Pos",
+					"@method" : "saveCurrentPnpAndNozzlePos",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
 			"policy" : "Next"
 		},
 		{
@@ -60,9 +140,15 @@
 			[
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "Move To Home",
-					"@method" : "AxisLoadPnpHome",
+					"@itemName" : "Cal Distance",
+					"@method" : "CalPnpDistance",
 					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "MilCaller",
+					"@itemName" : "Save Data To Csv",
+					"@method" : "SaveCalibraData",
+					"@pluginFileName" : "MilPlugin.dll"
 				}
 			],
 			"policy" : "Restart"

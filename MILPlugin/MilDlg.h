@@ -54,4 +54,14 @@ private:
 private:
 	MilManager* m_milManager;
 	int socketIndex = 0;
+
+public:
+	//PNP视觉与底部视觉的校准
+	void MilDigPnpVisualCalibrationGetResult(std::string m_image_ptr);
+	//PNP吸嘴校准
+	void MilDigNozzleVisualCalibrationGetResult(std::string m_image_ptr);
+
+//用来测试
+public:
+	void funcTest();
 };

@@ -54,6 +54,7 @@ public:
 	// 飞拍相关函数
 	// 位置比较实时位置清零(只有在回原以后的时候使用一次)
 	int ResetTriggerPos(int axis_id, double pos);
+	int ResetTriggerPos(const std::string& axisName);
 	// 设置飞拍驱动器参数
 	int SetTriggerListPos(std::string axisName, EnumMotorTriggerMode trigger_mode, std::vector<double> pos_list);
 	// 读写驱动器
@@ -70,5 +71,10 @@ private:
 	double dbBeginPos;
 	// 板卡初始化状态
 	bool m_IsCardInit = false;
+
+public:
+	// PNP校准时用的轴运动函数
+	// 校准运动到相对坐标（相对运动）
+	int AxisMoveDistance(const std::string& axisName, double distance, double maxVel, double accVel, double decVel);
 };
 

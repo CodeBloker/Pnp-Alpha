@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window sizebox="4,4,4,4" mininfo="1280,800">
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<VerticalLayout bkcolor="#FFF0F0F0">
+		<Option width="145" height="27" name="check_PnpCalibration" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="PNP视觉中心校准" textpadding="15,0,0,0" />
+		<HorizontalLayout height="28" font="0" padding="5,1,1,1">
+			<Label text="十字校准板中心:" width="110" />
+			<Label text="X" width="20" align="right" />
+			<Edit name="edit_m_templateX" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Y" width="20" align="right" />
+			<Edit name="edit_m_templateY" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="28" font="0" padding="5,1,1,1">
+			<Label text="Pnp图像中心:" width="110" />
+			<Label text="X" width="20" align="right" />
+			<Edit name="edit_Pnp_x" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Y" width="20" align="right" />
+			<Edit name="edit_Pnp_y" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="28" font="0" padding="5,1,1,1">
+			<Label text="中心值差异:" width="110" />
+			<Label text="△X" width="20" align="right" />
+			<Edit name="edit_deltaPnpx" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="△Y" width="20" align="right" />
+			<Edit name="edit_deltaPnpy" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<Option width="90" height="27" name="check_NozzleCalibration" padding="0,0,2,0" selectedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='60,0,75,16' " selectedhotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='75,0,90,16' " selectedpushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='90,0,105,16' " selectedfont="1" normalimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='0,0,15,16' " hotimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='15,0,30,16' " pushedimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='30,0,45,16' " disabledimage="file='checkbox\btn_wnd_checkbox.png' dest='5,6,21,22' source='45,0,60,16' " text="吸嘴校准" textpadding="15,0,0,0" />
+		<HorizontalLayout height="28" font="0" padding="5,1,1,1">
+			<Label text="十字校准板中心:" width="110" />
+			<Label text="X" width="20" align="right" />
+			<Edit name="edit_m_tempX" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Y" width="20" align="right" />
+			<Edit name="edit_m_tempY" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="R" width="20" align="right" />
+			<Edit name="edit_m_tempR" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="28" font="0" padding="5,1,1,1">
+			<Label text="吸嘴旋转中心:" width="110" />
+			<Label text="X" width="20" align="right" />
+			<Edit name="edit_Nozzle_x" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="Y" width="20" align="right" />
+			<Edit name="edit_Nozzle_y" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="R" width="20" align="right" />
+			<Edit name="edit_Nozzle_r" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+		<HorizontalLayout height="28" font="0" padding="5,1,1,1">
+			<Label text="中心值差异:" width="110" />
+			<Label text="△X" width="20" />
+			<Edit name="edit_deltaNozzleX" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="△Y" width="20" />
+			<Edit name="edit_deltaNozzleY" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+			<Label text="△R" width="20" />
+			<Edit name="edit_deltaNozzleR" padding="1,3,1,3" bordercolor="#FF4EA0D1" bordersize="1" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

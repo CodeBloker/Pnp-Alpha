@@ -17,6 +17,7 @@ public:
 
 	bool DVP_IsValidHandle(dvpHandle handle);						//相机句柄检查;
 	bool DVP_OpenCamera(std::string strCameraID, std::string &strError);	//根据相机ID代开相机;
+	bool DVP_OpenCamera(std::string strCameraID, std::string &strError, bool isLoop);	//根据相机ID代开相机  0820增加实时采集判断;
 	bool DVP_OpenCamera(unsigned int nCamID, std::string &strError);				//根据索引打开相机;
 	bool DVP_IsCameraOpen();
 

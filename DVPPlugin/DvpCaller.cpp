@@ -3,11 +3,22 @@
 #include <Windows.h>
 #include "JupCore.h"
 #include <filesystem>
+#include <random>
+#include "../_INCLUDE/ProjectEvent.h"
+using namespace ProjectEvent;
 #define Plugin_Method_Add(T, f) appendMethod(#f, transformMethod<T>(&T::f));
 static JError s_error;
 
 std::future<int> m_top_future;
 std::future<int> m_bottom_future;
+
+double getRandomDouble(double min, double max)
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> dis(min, max);
+	return dis(gen);
+}
 
 DvpCaller::DvpCaller()
 {
@@ -201,6 +212,7 @@ int DvpCaller::StartCaptureTopImageThread(JupData & data)
 	}
 
 	// 计算结果
+	jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(getRandomDouble(10,50), getRandomDouble(10, 50), getRandomDouble(10, 50), getRandomDouble(10, 50), file_name));
 	data.SetValue("ImageData", "TopImageFile", file_name);
 
 	return 0;

@@ -54,6 +54,8 @@ public:
 
 	// 打开设备
 	int OpenDevice(std::string camera_name, std::string &strError);
+	// 打开设备 0820增加实时采集判断
+	int OpenDevice(std::string camera_name, std::string &strError, bool isLoop);
 
 	// 设备打开状态
 	bool Camera_IsOpen(std::string camera_name);

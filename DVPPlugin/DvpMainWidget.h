@@ -51,6 +51,9 @@ private:
 	void OnBtnSoftwareOnceClick(TNotifyUI & msg);
 	void OnBtnOpenParamsGUIClick(TNotifyUI & msg);
 
+	void OnCheckPnpCalibrationSelectClick(TNotifyUI & msg);
+	void OnCheckNozzleCalibrationSelectClick(TNotifyUI & msg);
+
 private:
 	CComboUI*  m_pCombo_DeviceList;
 	CButtonUI* m_pBtn_DeviceSerch;
@@ -70,8 +73,29 @@ private:
 	COptionUI* m_pOp_ContinueMode;
 	COptionUI* m_pOp_SwTriggerMode;
 	COptionUI* m_pOp_HwTriggerMode;
+
+	CEditUI* m_edit_m_templateX;
+	CEditUI* m_edit_m_templateY;
+	CEditUI* m_edit_Pnp_x;
+	CEditUI* m_edit_Pnp_y;
+	CEditUI* m_edit_deltaPnpx;
+	CEditUI* m_edit_deltaPnpy;
+
+	CEditUI* m_edit_m_tempX;
+	CEditUI* m_edit_m_tempY;
+	CEditUI* m_edit_m_tempR;
+	CEditUI* m_edit_Nozzle_x;
+	CEditUI* m_edit_Nozzle_y;
+	CEditUI* m_edit_Nozzle_r;
+	CEditUI* m_edit_deltaNozzleX;
+	CEditUI* m_edit_deltaNozzleY;
+	CEditUI* m_edit_deltaNozzleR;
+
+	COptionUI* m_pOp_PnpCalibration;
+	COptionUI* m_pOp_NozzleCalibration;
 	
 private:
 	DvpCamera_Manage* m_dvpCamera;
 	std::string m_curCamera;
+	std::mutex m_Mutex;
 };

@@ -112,5 +112,6 @@
 
 
 //Auto 校准点位
-#define POSNAME_CailbraReadyPos		"CailbraReadyPos"
+#define POSNAME_CailbraReadyPos			"CailbraReadyPos"
+#define POSNAME_NozzleCailbraReadyPos	"NozzleCailbraReadyPos"
 

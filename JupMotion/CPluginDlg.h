@@ -155,4 +155,7 @@ private:
 	CButtonUI*	m_pBtn_OutputConfig;
 	CButtonUI*	m_pBtn_OutputAdd;
 	CButtonUI*	m_pBtn_OutputDel;
+
+private:
+	bool m_isAxisHome = false;
 };
