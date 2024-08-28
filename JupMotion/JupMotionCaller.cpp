@@ -81,7 +81,9 @@ int JupMotionCaller::RegisterMethod()
 	Plugin_Method_Add(JupMotionCaller, AxisLoadPnpToPosPhoto);
 	Plugin_Method_Add(JupMotionCaller, AxisLoadPnpToPosTray);
 	Plugin_Method_Add(JupMotionCaller, AxisXRLoadPnpToPosTray);
-	Plugin_Method_Add(JupMotionCaller, AxisZPeriodicMotion);
+	Plugin_Method_Add(JupMotionCaller, AxisZPeriodicMotionUP);
+	Plugin_Method_Add(JupMotionCaller, AxisZPeriodicMotionDown);
+	Plugin_Method_Add(JupMotionCaller, AxisZPeriodicMotionTest);
 	Plugin_Method_Add(JupMotionCaller, CylLoadPnpToPickDut);
 	Plugin_Method_Add(JupMotionCaller, AxisLoadSetParameter);
 	Plugin_Method_Add(JupMotionCaller, AxisLoadPnpCommandToPosSocket);
@@ -480,20 +482,27 @@ int JupMotionCaller::PnpDoeResetData(JupData & data)
 
 int JupMotionCaller::AxisLoadPnpHome(JupData & resultTable)
 {
+	m_pMotion->IO_SetOutput(CardConfig::CardNo, IO_ModNo::No1, IO_Out_Channel::SocketCoverUp, IO_Status::OFF);
+	m_pMotion->IO_SetOutput(CardConfig::CardNo, IO_ModNo::No1, IO_Out_Channel::SocketCoverOut, IO_Status::OFF);
+	//XZ轴回零
 	int nRet_x = m_pMotion->AxisHome(AXIS_Name_XPnp);
 	int nRet_z = m_pMotion->AxisHome(AXIS_Name_ZPnp);
-	int nRet_r = m_pMotion->AxisHome(AXIS_Name_RPnp);
-	if (nRet_x != 0 && nRet_z != 0 && nRet_r != 0)
+	if (nRet_x != 0 && nRet_z != 0)
 	{
 		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the home position failed"));
 		return -10008;
 	}
 	m_pMotion->WaitAxisHome(AXIS_Name_XPnp);
 	m_pMotion->WaitAxisHome(AXIS_Name_ZPnp);
+	//R轴回零
+	int nRet_r = m_pMotion->AxisHome(AXIS_Name_RPnp);
 	m_pMotion->WaitAxisHome(AXIS_Name_RPnp);
-	m_pMotion->IO_SetOutput(CardConfig::CardNo, IO_ModNo::No1, IO_Out_Channel::SocketCoverUp, IO_Status::OFF);
-	m_pMotion->IO_SetOutput(CardConfig::CardNo, IO_ModNo::No1, IO_Out_Channel::SocketCoverOut, IO_Status::OFF);
-
+	if (nRet_r != 0)
+	{
+		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the home position failed"));
+		return -10008;
+	}
+	//Y轴回零
 	int nRet = m_pMotion->AxisHome(AXIS_Name_YPnp);
 	m_pMotion->WaitAxisHome(AXIS_Name_YPnp);
 	if (nRet != 0)
@@ -515,16 +524,23 @@ int JupMotionCaller::AxisLoadResetPosition(JupData & resultTable)
 int JupMotionCaller::AxisLoadPnpToPosPhoto(JupData & resultTable)
 {
 	auto info = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_YPnp, POSNAME_YPnp_TopCam);
+	auto info_x = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_XPnp, POSNAME_XPnp_WorkPos);
+	auto info_r = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_RPnp, POSNAME_RPnp_WorkPos);
 	int nRet = m_pMotion->AxisAbsMove(AXIS_Name_YPnp, info->distance);
-	if (nRet != 0)
+	int nRet_x = m_pMotion->AxisAbsMove(AXIS_Name_XPnp, info_x->distance);
+	int nRet_r = m_pMotion->AxisAbsMove(AXIS_Name_RPnp, info_r->distance);
+	if (nRet != 0 && nRet_x != 0 && nRet_r != 0)
 	{
 		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the set position failed"));
 		return -10009;
 	}
 	m_pMotion->WaitAxisAbsMove(AXIS_Name_YPnp, info->distance);
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_XPnp, info_x->distance);
+	//m_pMotion->WaitAxisAbsMove(AXIS_Name_RPnp, info_r->distance);
 	std::string takeDutImagePath = "TakeUp";
 	resultTable.SetValue("MotionData", "TakeDutImagePath", takeDutImagePath);
 	resultTable.SetValue("MotionData", "TakeUpOrLayDown", true);
+	Sleep(100);
 	return 0;
 }
 
@@ -560,10 +576,10 @@ int JupMotionCaller::AxisXRLoadPnpToPosTray(JupData & resultTable)
 	return 0;
 }
 
-int JupMotionCaller::AxisZPeriodicMotion(JupData & resultTable)
+int JupMotionCaller::AxisZPeriodicMotionUP(JupData & resultTable)
 {
 	//Z轴下落
-	auto info_z = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_ZPnp, POSNAME_ZPnp_WorkPos);
+	auto info_z = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_ZPnp, POSNAME_ZPutDownDut_Pos);
 	int nRet_z = m_pMotion->AxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
 	if (nRet_z != 0)
 	{
@@ -573,6 +589,8 @@ int JupMotionCaller::AxisZPeriodicMotion(JupData & resultTable)
 	m_pMotion->WaitAxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
 
 	//启动吸嘴
+	m_pMotion->IO_SetOutput(CardConfig::CardNo, IO_ModNo::No1, IO_Out_Channel::SocketCoverOut, IO_Status::ON);
+	Sleep(100);
 
 	//Z轴上升
 	info_z = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_ZPnp, POSNAME_ZPnp_SafetyPos);
@@ -605,7 +623,7 @@ int JupMotionCaller::AxisLoadSetParameter(JupData & resultTable)
 
 int JupMotionCaller::AxisLoadPnpCommandToPosSocket(JupData & resultTable)
 {
-	auto info = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_YPnp, POSNAME_YPnp_UnLoadCam);
+	auto info = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_YPnp, POSNAME_XYPnp_UnLoadCam);
 
 	int nRet = m_pMotion->AxisAbsMove(AXIS_Name_YPnp, info->distance);
 	if (nRet != 0)
@@ -619,9 +637,19 @@ int JupMotionCaller::AxisLoadPnpCommandToPosSocket(JupData & resultTable)
 
 int JupMotionCaller::AxisLoadPnpWaitMoveToPosSocket(JupData & resultTable)
 {
-	auto info = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_YPnp, POSNAME_YPnp_UnLoadCam);
+	auto info = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_YPnp, POSNAME_XYPnp_UnLoadCam);
 
 	m_pMotion->WaitAxisAbsMove(AXIS_Name_YPnp, info->distance);
+
+	//移动X轴到下料位准备
+	auto info_x = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_XPnp, POSNAME_XYPnp_UnLoadCam);
+	int nRet_x = m_pMotion->AxisAbsMove(AXIS_Name_XPnp, info_x->distance);
+	if (nRet_x != 0)
+	{
+		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the set position failed"));
+		return -10009;
+	}
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_XPnp, info_x->distance);
 
 	std::string takeDutImagePath = "PutDown";
 	resultTable.SetValue("MotionData", "TakeDutImagePath", takeDutImagePath);
@@ -703,7 +731,10 @@ int JupMotionCaller::takePhotoToCalibraPosA1(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosA1(JupData & data)
 {
-	MoveToCailbraPos(-10, -10, 60000.0, 5000000.0, 5000000.0);
+	double offsetX_distance = data.GetDouble("DvpCallerData", "UpDutOffsetX") - 2.5;
+	double offsetY_distance = data.GetDouble("DvpCallerData", "UpDutOffsetY") - 97.046;
+	MoveToCailbraPos(offsetX_distance, offsetY_distance, 60000.0, 5000000.0, 5000000.0);
+	Sleep(100);
 	return 0;
 }
 
@@ -715,7 +746,42 @@ int JupMotionCaller::takePhotoToCalibraPosA2(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosA2(JupData & data)
 {
-	MoveToCailbraPos(10, 10, 60000.0, 5000000.0, 5000000.0);
+	//R轴移动到下料位置
+	auto info_r = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_RPnp, POSName_RNozzle_DownDutPos);
+	int nRet_r = m_pMotion->AxisAbsMove(AXIS_Name_RPnp, info_r->distance);
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_RPnp, info_r->distance);
+
+	double offsetX_distance = data.GetDouble("DvpCallerData", "PutDownDutOffsetX") - 2.5;
+	double offsetY_distance = data.GetDouble("DvpCallerData", "PutDownDutOffsetX") - 97.046;
+	MoveToCailbraPos(offsetX_distance, offsetY_distance, 60000.0, 5000000.0, 5000000.0);
+	Sleep(100);
+	return 0;
+}
+
+int JupMotionCaller::AxisZPeriodicMotionDown(JupData & resultTable)
+{
+	//Z轴下落
+	auto info_z = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_ZPnp, POSNAME_ZPutDownDut_Pos);
+	int nRet_z = m_pMotion->AxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
+	if (nRet_z != 0)
+	{
+		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the set position failed"));
+		return -10009;
+	}
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
+
+	//启动吸嘴
+	m_pMotion->IO_SetOutput(CardConfig::CardNo, IO_ModNo::No1, IO_Out_Channel::SocketCoverOut, IO_Status::OFF);
+
+	//Z轴上升
+	info_z = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_ZPnp, POSNAME_ZPnp_SafetyPos);
+	nRet_z = m_pMotion->AxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
+	if (nRet_z != 0)
+	{
+		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the set position failed"));
+		return -10009;
+	}
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
 	return 0;
 }
 
@@ -727,7 +793,25 @@ int JupMotionCaller::takePhotoToCalibraPosA3(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosA3(JupData & data)
 {
-	MoveToCailbraPos(5, 5, 60000.0, 5000000.0, 5000000.0);
+	//吸嘴移动到上料口位置进行放料
+	auto info = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_YPnp, POSNAME_YPnp_Load);
+	auto info_x = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_XPnp, POSNAME_XPnp_WorkPos);
+	auto info_r = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_RPnp, POSNAME_RPnp_WorkPos);
+	int nRet = m_pMotion->AxisAbsMove(AXIS_Name_YPnp, info->distance);
+	int nRet_x = m_pMotion->AxisAbsMove(AXIS_Name_XPnp, info_x->distance);
+	int nRet_r = m_pMotion->AxisAbsMove(AXIS_Name_RPnp, info_r->distance);
+	if (nRet != 0 && nRet_x != 0 && nRet_r != 0)
+	{
+		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the set position failed"));
+		return -10009;
+	}
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_YPnp, info->distance);
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_XPnp, info_x->distance);
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_RPnp, info_r->distance);
+	//double offsetX_distance = data.GetDouble("DvpCallerData", "PutDownDutOffsetX") - 2.5;
+	//double offsetY_distance = data.GetDouble("DvpCallerData", "PutDownDutOffsetX") - 97.046;
+	//MoveToCailbraPos(offsetX_distance, offsetY_distance, 60000.0, 5000000.0, 5000000.0);
+	Sleep(100);
 	return 0;
 }
 
@@ -762,7 +846,11 @@ int JupMotionCaller::takePhotoToCalibraPosB1(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosB1(JupData & data)
 {
-	MoveToNozzleCailbraPos(-10, -10, -0.2, 60000.0, 5000000.0, 5000000.0);
+	//用来多次校准
+	double offsetX_distance = data.GetDouble("DvpCallerData", "UpDutOffsetX");
+	double offsetY_distance = data.GetDouble("DvpCallerData", "UpDutOffsetY");
+	MoveToCailbraPos(offsetX_distance, offsetY_distance, 60000.0, 5000000.0, 5000000.0);
+	Sleep(100);
 	return 0;
 }
 
@@ -773,7 +861,7 @@ int JupMotionCaller::takePhotoToCalibraPosB2(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosB2(JupData & data)
 {
-	MoveToNozzleCailbraPos(10, 10, 0.4, 60000.0, 5000000.0, 5000000.0);
+	MoveToNozzleCailbraPos(2.5, 97.046, 0, 60000.0, 5000000.0, 5000000.0);
 	return 0;
 }
 
@@ -784,7 +872,7 @@ int JupMotionCaller::takePhotoToCalibraPosB3(JupData & data)
 
 int JupMotionCaller::moveToPnpCailbraPosB3(JupData & data)
 {
-	MoveToNozzleCailbraPos(5, 5, -0.2, 60000.0, 5000000.0, 5000000.0);
+	MoveToNozzleCailbraPos(-2.5, -97.046, 0, 60000.0, 5000000.0, 5000000.0);
 	return 0;
 }
 
@@ -817,6 +905,32 @@ int JupMotionCaller::CalPnpDistance(JupData & data)
 
 	data.SetValue("JupMotion", "CalPnpDelta_X", pnpXPosDelta);
 	data.SetValue("JupMotion", "CalPnpDelta_Y", pnpYPosDelta);
+	return 0;
+}
+
+int JupMotionCaller::AxisZPeriodicMotionTest(JupData & resultTable)
+{
+	//Z轴下落
+	auto info_z = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_ZPnp, POSNAME_ZPnp_WorkPos);
+	int nRet_z = m_pMotion->AxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
+	if (nRet_z != 0)
+	{
+		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the set position failed"));
+		return -10009;
+	}
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
+
+	//启动吸嘴
+	m_pMotion->IO_SetOutput(CardConfig::CardNo, IO_ModNo::No1, IO_Out_Channel::SocketCoverOut, IO_Status::OFF);
+	//Z轴上升
+	info_z = m_pMotion->GetMotionParameter()->GetAxisPosInfo(AXIS_Name_ZPnp, POSNAME_ZPnp_SafetyPos);
+	nRet_z = m_pMotion->AxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
+	if (nRet_z != 0)
+	{
+		PluginWriteLog(JLogLevel::Error, __FUNCTION__, _T("Moving to the set position failed"));
+		return -10009;
+	}
+	m_pMotion->WaitAxisAbsMove(AXIS_Name_ZPnp, info_z->distance);
 	return 0;
 }
 

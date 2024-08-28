@@ -37,12 +37,6 @@
 					"@itemName" : "Set DVP TOP Camer",
 					"@method" : "SetTopCameraHwParameter",
 					"@pluginFileName" : "DvpPlugin.dll"
-				},
-				{
-					"@callerName" : "DvpCaller",
-					"@itemName" : "Set DVP Buttom Camer",
-					"@method" : "SetDownCameraHwParameter",
-					"@pluginFileName" : "DvpPlugin.dll"
 				}
 			],
 			"policy" : "Next"

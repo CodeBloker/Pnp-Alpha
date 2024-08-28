@@ -424,6 +424,79 @@ std::string MilManager::VisionButtomCircleCamerResult(std::string strFilePathIma
 	return sErr.empty() ? strFileOut : sErr;
 }
 
+std::string MilManager::VisionB2BTopCenterCamerResult(std::string strFilePathImage, std::string & strFileOut, const std::string MMFFilename_Model, float & deltaX, float & deltaY)
+{
+	//读取图片
+	MIL_ID MilImage;
+	MbufRestoreA(strFilePathImage, m_mil.milSystem, &MilImage);
+	//计算结果
+	MIL_ID MilImageOut;
+	string sErr = "";
+	sErr = visionManager.ExecuteTopCameraB2BCenterResult(m_mil.milSystem, MilImage, MilImageOut, MMFFilename_Model, deltaX, deltaY);
+
+	// 存图
+	if (sErr.empty())
+	{
+		std::string file = strFilePathImage;
+		Jup::Replace(file, ".bmp", "_Result.jpg");
+		strFileOut = file;
+		MbufExport(file, M_JPEG_LOSSY, MilImageOut);
+	}
+	//释放资源
+	MbufFree(MilImage);
+	MbufFree(MilImageOut);
+	return sErr.empty() ? strFileOut : sErr;
+}
+
+std::string MilManager::VisionSocketMarkCenterCamerResult(std::string strFilePathImage, std::string & strFileOut, const std::string MMFFilename_Model, const std::vector<MilRect> RectROI_Circle, float & deltaX, float & deltaY)
+{
+	//读取图片
+	MIL_ID MilImage;
+	MbufRestoreA(strFilePathImage, m_mil.milSystem, &MilImage);
+	//计算结果
+	MIL_ID MilImageOut;
+	string sErr = "";
+	sErr = visionManager.ExecuteTopCameraDownSocketMarkResult(m_mil.milSystem, MilImage, MilImageOut, MMFFilename_Model, RectROI_Circle, deltaX, deltaY);
+
+	// 存图
+	if (sErr.empty())
+	{
+		std::string file = strFilePathImage;
+		Jup::Replace(file, ".bmp", "_Result.jpg");
+		strFileOut = file;
+		MbufExport(file, M_JPEG_LOSSY, MilImageOut);
+	}
+	//释放资源
+	MbufFree(MilImage);
+	MbufFree(MilImageOut);
+	return sErr.empty() ? strFileOut : sErr;
+}
+
+std::string MilManager::VisionSocketMarkAndB2BDistanceResult(std::string strFilePathImage, std::string & strFileOut, const std::string MMFFilename_Model
+	, const std::string MMFFilename_Circle_Model, const std::vector<MilRect> RectROI_Circle, float &SocketAngle, float & distance)
+{
+	//读取图片
+	MIL_ID MilImage;
+	MbufRestoreA(strFilePathImage, m_mil.milSystem, &MilImage);
+	//计算结果
+	MIL_ID MilImageOut;
+	string sErr = "";
+	sErr = visionManager.ExecuteTopCamerDownSocketMarkDistance(m_mil.milSystem, MilImage, MilImageOut, MMFFilename_Model, MMFFilename_Circle_Model, RectROI_Circle, SocketAngle, distance);
+
+	// 存图
+	if (sErr.empty())
+	{
+		std::string file = strFilePathImage;
+		Jup::Replace(file, ".bmp", "_Result.jpg");
+		strFileOut = file;
+		MbufExport(file, M_JPEG_LOSSY, MilImageOut);
+	}
+	//释放资源
+	MbufFree(MilImage);
+	MbufFree(MilImageOut);
+	return sErr.empty() ? strFileOut : sErr;
+}
+
 void MilManager::loadParasFromFile(const char * file_name)
 {
 	m_IniParas = new JIniSettings(file_name);

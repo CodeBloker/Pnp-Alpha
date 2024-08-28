@@ -83,22 +83,35 @@ void DvpMainWidget::InitWindow()
 	m_pOp_SwTriggerMode = static_cast<COptionUI*>(m_PaintManager.FindControl(_T("btn_SwTriggerMode")));
 	m_pOp_HwTriggerMode = static_cast<COptionUI*>(m_PaintManager.FindControl(_T("btn_HwTriggerMode")));
 
-	m_edit_m_templateX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_templateX")));
-	m_edit_m_templateY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_templateY")));
-	m_edit_Pnp_x = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Pnp_x")));
-	m_edit_Pnp_y = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Pnp_y")));
-	m_edit_deltaPnpx = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaPnpx")));
-	m_edit_deltaPnpy = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaPnpy")));
+	//m_edit_m_templateX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_templateX")));
+	//m_edit_m_templateY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_templateY")));
+	//m_edit_Pnp_x = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Pnp_x")));
+	//m_edit_Pnp_y = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Pnp_y")));
+	//m_edit_deltaPnpx = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaPnpx")));
+	//m_edit_deltaPnpy = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaPnpy")));
 
-	m_edit_m_tempX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_tempX")));
-	m_edit_m_tempY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_tempY")));
-	m_edit_m_tempR = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_tempR")));
-	m_edit_Nozzle_x = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Nozzle_x")));
-	m_edit_Nozzle_y = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Nozzle_y")));
-	m_edit_Nozzle_r = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Nozzle_r")));
-	m_edit_deltaNozzleX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaNozzleX")));
-	m_edit_deltaNozzleY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaNozzleY")));
-	m_edit_deltaNozzleR = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaNozzleR")));
+	//m_edit_m_tempX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_tempX")));
+	//m_edit_m_tempY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_tempY")));
+	//m_edit_m_tempR = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_m_tempR")));
+	//m_edit_Nozzle_x = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Nozzle_x")));
+	//m_edit_Nozzle_y = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Nozzle_y")));
+	//m_edit_Nozzle_r = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_Nozzle_r")));
+	//m_edit_deltaNozzleX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaNozzleX")));
+	//m_edit_deltaNozzleY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaNozzleY")));
+	//m_edit_deltaNozzleR = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaNozzleR")));
+
+	m_edit_normalX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_normalX")));
+	m_edit_normalY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_normalY")));
+	m_edit_normalR = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_normalR")));
+
+	m_edit_actualX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_actualX")));
+	m_edit_actualY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_actualY")));
+	m_edit_actualR = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_actualR")));
+
+	m_edit_deltaX = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaX")));
+	m_edit_deltaY = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaY")));
+	m_edit_deltaR = static_cast<CEditUI*>(m_PaintManager.FindControl(_T("edit_deltaR")));
+
 
 	m_pOp_PnpCalibration = static_cast<COptionUI*>(m_PaintManager.FindControl(_T("check_PnpCalibration")));
 	m_pOp_NozzleCalibration = static_cast<COptionUI*>(m_PaintManager.FindControl(_T("check_NozzleCalibration")));
@@ -201,29 +214,28 @@ LRESULT DvpMainWidget::CustomEvent(JupCustomEvent * event)
 	}
 	else if (type == ProjectEvent::e_JDvpPnpCalibrationEvent)
 	{
+		//清空背景图片
+		//m_pLable_Image->SetBkImage("");
+		//m_pLable_Image->Invalidate();
 		auto e = dynamic_cast<JDvpPnpCalibrationEvent*>(event);
-		m_edit_m_templateX->SetText(std::to_string(e->m_templateX).c_str());
-		m_edit_m_templateY->SetText(std::to_string(e->m_templateY).c_str());
-		m_edit_Pnp_x->SetText(std::to_string(e->Pnp_x).c_str());
-		m_edit_Pnp_y->SetText(std::to_string(e->Pnp_y).c_str());
-		m_edit_deltaPnpx->SetText(std::to_string(e->Pnp_x - e->m_templateX).c_str());
-		m_edit_deltaPnpy->SetText(std::to_string(e->Pnp_y - e->m_templateY).c_str());
-		//m_pLable_Image->SetBkImage(e->resultImagePath.c_str());
-	}
-	else if (type == ProjectEvent::e_JDvpNozzleCalibrationEvent)
-	{
-		auto e = dynamic_cast<JDvpNozzleCalibrationEvent*>(event);
-		m_edit_m_tempX->SetText(std::to_string(e->m_tempX).c_str());
-		m_edit_m_tempY->SetText(std::to_string(e->m_tempY).c_str());
-		m_edit_m_tempR->SetText(std::to_string(e->m_tempR).c_str());
-		m_edit_m_tempR->SetText(std::to_string(e->m_tempR).c_str());
-		m_edit_Nozzle_x->SetText(std::to_string(e->Nozzle_x).c_str());
-		m_edit_Nozzle_y->SetText(std::to_string(e->Nozzle_y).c_str());
-		m_edit_Nozzle_r->SetText(std::to_string(e->Nozzle_r).c_str());
-		m_edit_deltaNozzleX->SetText(std::to_string(e->Nozzle_x - e->m_tempX).c_str());
-		m_edit_deltaNozzleY->SetText(std::to_string(e->Nozzle_y - e->m_tempY).c_str());
-		m_edit_deltaNozzleR->SetText(std::to_string(e->Nozzle_r - e->m_tempR).c_str());
-		m_pLable_Image->SetBkImage(e->resultImagePath.c_str());
+		if (m_pOp_PnpCalibration->IsSelected())
+		{
+			std::string testImage = "C:\\Users\\CTOS\\Desktop\\TEST0812\\2024-08-10_10-41-04_314.bmp";
+			GetImagePointResult(e->resultImagePath, true);
+			m_pLable_Image->SetBkImage(e->resultImagePath.c_str());
+		}
+		else if (m_pOp_NozzleCalibration->IsSelected())
+		{
+			std::string testImage = "C:\\Users\\CTOS\\Desktop\\TEST0812\\2024-08-12_09-44-12_376.bmp";
+			GetImagePointResult(e->resultImagePath, true);
+			m_pLable_Image->SetBkImage(e->resultImagePath.c_str());
+		}
+		else
+		{
+			GetImagePointResult(e->resultImagePath, true);
+			m_pLable_Image->SetBkImage(e->resultImagePath.c_str());
+		}
+		
 	}
 
 	return 0;
@@ -354,8 +366,19 @@ void DvpMainWidget::OnBtnDeviceOpenClick(TNotifyUI & msg)
 			MessageBox(this->GetHWND(), "Open Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 			return;
 		}
+		// 修改触发模式
+		if (!m_dvpCamera->SetTriggerMode(m_curCamera, false))
+		{
+			MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+			return;
+		}
+		m_pBtn_SoftOnce->SetEnabled(false);
+		m_pOp_ContinueMode->SetEnabled(false);
+		m_pOp_SwTriggerMode->SetEnabled(false);
+		m_pOp_HwTriggerMode->SetEnabled(false);
+		MessageBox(this->GetHWND(), "Open Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 	}
-	else
+	else if(m_pOp_SwTriggerMode->IsSelected())
 	{
 		int ret = m_dvpCamera->OpenDevice(m_curCamera, strErrorMsg);
 		if (ret != 0)
@@ -364,18 +387,48 @@ void DvpMainWidget::OnBtnDeviceOpenClick(TNotifyUI & msg)
 			return;
 		}
 		m_pOp_ContinueMode->SetEnabled(false);
-		// 获取并显示参数
-		bool TrigerMode = false;
-		if (m_dvpCamera->GetTriggerMode(m_curCamera, TrigerMode))
+		// 修改触发源
+		if (!m_dvpCamera->SetTriggerSource(m_curCamera, TRIGGER_SOURCE_SOFTWARE))
 		{
-			if (TrigerMode)
-			{
-				m_pOp_SwTriggerMode->Selected(true);
-				OnRadioSwTrigerModeClick(msg);
-			}
+			MessageBox(this->GetHWND(), "Set Trigger Source Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+			return;
 		}
+		// 修改触发模式
+		if (!m_dvpCamera->SetTriggerMode(m_curCamera, true))
+		{
+			MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+			return;
+		}
+		m_pBtn_SoftOnce->SetEnabled(true);
+		m_pOp_ContinueMode->SetEnabled(false);
+		m_pOp_SwTriggerMode->SetEnabled(false);
+		m_pOp_HwTriggerMode->SetEnabled(false);
+		MessageBox(this->GetHWND(), "Open Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 	}
-	
+	else if (m_pOp_HwTriggerMode->IsSelected())
+	{
+		// 修改触发源
+		if (!m_dvpCamera->SetTriggerSource(m_curCamera, TRIGGER_SOURCE_LINE3))
+		{
+			MessageBox(this->GetHWND(), "Set Trigger Source Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+			return;
+		}
+		// 修改触发模式
+		if (!m_dvpCamera->SetTriggerMode(m_curCamera, true))
+		{
+			MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+			return;
+		}
+		m_pBtn_SoftOnce->SetEnabled(false);
+		m_pOp_ContinueMode->SetEnabled(false);
+		m_pOp_SwTriggerMode->SetEnabled(false);
+		m_pOp_HwTriggerMode->SetEnabled(false);
+		MessageBox(this->GetHWND(), "Open Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	}
+	else
+	{
+		MessageBox(this->GetHWND(), "Please Select Trigger Mode!", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	}
 	//// 获取并显示参数
 	//bool TrigerMode = false;
 	//if (m_dvpCamera->GetTriggerMode(m_curCamera, TrigerMode))
@@ -391,7 +444,7 @@ void DvpMainWidget::OnBtnDeviceOpenClick(TNotifyUI & msg)
 	//		OnRadioContinueModeClick(msg);
 	//	}
 	//}
-	MessageBox(this->GetHWND(), "Open Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//MessageBox(this->GetHWND(), "Open Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 }
 
 void DvpMainWidget::OnBtnDeviceCloseClick(TNotifyUI & msg)
@@ -402,55 +455,58 @@ void DvpMainWidget::OnBtnDeviceCloseClick(TNotifyUI & msg)
 		MessageBox(this->GetHWND(), "Close Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 		return;
 	}
+	m_pOp_ContinueMode->SetEnabled(true);
+	m_pOp_SwTriggerMode->SetEnabled(true);
+	m_pOp_HwTriggerMode->SetEnabled(true);
 	MessageBox(this->GetHWND(), "Close Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 }
 
 void DvpMainWidget::OnRadioContinueModeClick(TNotifyUI & msg)
 {
 	// 修改触发模式
-	if (!m_dvpCamera->SetTriggerMode(m_curCamera, false))
-	{
-		MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
-		return;
-	}
-	m_pBtn_SoftOnce->SetEnabled(false);
-	MessageBox(this->GetHWND(), "Set Trigger Mode Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//if (!m_dvpCamera->SetTriggerMode(m_curCamera, false))
+	//{
+	//	MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//	return;
+	//}
+	//m_pBtn_SoftOnce->SetEnabled(false);
+	//MessageBox(this->GetHWND(), "Set Trigger Mode Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 }
 
 void DvpMainWidget::OnRadioSwTrigerModeClick(TNotifyUI & msg)
 {
 	// 修改触发源
-	if (!m_dvpCamera->SetTriggerSource(m_curCamera, TRIGGER_SOURCE_SOFTWARE))
-	{
-		MessageBox(this->GetHWND(), "Set Trigger Source Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
-		return;
-	}
-	// 修改触发模式
-	if (!m_dvpCamera->SetTriggerMode(m_curCamera, true))
-	{
-		MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
-		return;
-	}
-	m_pBtn_SoftOnce->SetEnabled(true);
-	MessageBox(this->GetHWND(), "Set Trigger Mode Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//if (!m_dvpCamera->SetTriggerSource(m_curCamera, TRIGGER_SOURCE_SOFTWARE))
+	//{
+	//	MessageBox(this->GetHWND(), "Set Trigger Source Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//	return;
+	//}
+	//// 修改触发模式
+	//if (!m_dvpCamera->SetTriggerMode(m_curCamera, true))
+	//{
+	//	MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//	return;
+	//}
+	//m_pBtn_SoftOnce->SetEnabled(true);
+	//MessageBox(this->GetHWND(), "Set Trigger Mode Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 }
 
 void DvpMainWidget::OnRadioHwTrigerModeClick(TNotifyUI & msg)
 {
 	// 修改触发源
-	if (!m_dvpCamera->SetTriggerSource(m_curCamera, TRIGGER_SOURCE_LINE3))
-	{
-		MessageBox(this->GetHWND(), "Set Trigger Source Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
-		return;
-	}
-	// 修改触发模式
-	if (!m_dvpCamera->SetTriggerMode(m_curCamera, true))
-	{
-		MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
-		return;
-	}
-	m_pBtn_SoftOnce->SetEnabled(false);
-	MessageBox(this->GetHWND(), "Set Trigger Mode Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//if (!m_dvpCamera->SetTriggerSource(m_curCamera, TRIGGER_SOURCE_LINE3))
+	//{
+	//	MessageBox(this->GetHWND(), "Set Trigger Source Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//	return;
+	//}
+	//// 修改触发模式
+	//if (!m_dvpCamera->SetTriggerMode(m_curCamera, true))
+	//{
+	//	MessageBox(this->GetHWND(), "Set Trigger Mode Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+	//	return;
+	//}
+	//m_pBtn_SoftOnce->SetEnabled(false);
+	//MessageBox(this->GetHWND(), "Set Trigger Mode Success", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 }
 
 void DvpMainWidget::OnBtnStartGrabbingClick(TNotifyUI & msg)
@@ -461,11 +517,12 @@ void DvpMainWidget::OnBtnStartGrabbingClick(TNotifyUI & msg)
 		MessageBox(this->GetHWND(), "StartGrabbing Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 		return;
 	}
-	m_pOp_ContinueMode->SetEnabled(false);
-	m_pOp_SwTriggerMode->SetEnabled(false);
-	m_pOp_HwTriggerMode->SetEnabled(false);
+	//m_pOp_ContinueMode->SetEnabled(false);
+	//m_pOp_SwTriggerMode->SetEnabled(false);
+	//m_pOp_HwTriggerMode->SetEnabled(false);
 	m_pBtn_DeviceStart->SetEnabled(false);
 	m_pBtn_DeviceStop->SetEnabled(true);
+	m_dvpCamera->SetSaveImagePath(m_curCamera, CALIBRATION_IMAGE_PATH_DEFAULT);
 }
 
 void DvpMainWidget::OnBtnStopGrabbingClick(TNotifyUI & msg)
@@ -476,9 +533,9 @@ void DvpMainWidget::OnBtnStopGrabbingClick(TNotifyUI & msg)
 		MessageBox(this->GetHWND(), "StopGrabbing Fail", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 		return;
 	}
-	m_pOp_ContinueMode->SetEnabled(true);
-	m_pOp_SwTriggerMode->SetEnabled(true);
-	m_pOp_HwTriggerMode->SetEnabled(true);
+	//m_pOp_ContinueMode->SetEnabled(true);
+	//m_pOp_SwTriggerMode->SetEnabled(true);
+	//m_pOp_HwTriggerMode->SetEnabled(true);
 	m_pBtn_DeviceStart->SetEnabled(true);
 	m_pBtn_DeviceStop->SetEnabled(false);
 }
@@ -486,22 +543,27 @@ void DvpMainWidget::OnBtnStopGrabbingClick(TNotifyUI & msg)
 void DvpMainWidget::OnBtnSoftwareOnceClick(TNotifyUI & msg)
 {
 	std::string strErrorMsg, strPath;
+	strPath = CALIBRATION_IMAGE_PATH_DEFAULT;
 	if (m_pOp_ImageSaveBmp->IsSelected())
 	{
-		strPath = "./SoftwareOnce.bmp";
+		strPath += "SoftwareOnce_" + Jup::GetLocalTime(3) + ".bmp";
 	}
-	else if (m_pOp_ImageSaveJepg->IsSelected())
+	else
 	{
-		strPath = "./SoftwareOnce.jpg";
+		return;
 	}
-	else if (m_pOp_ImageSavePng->IsSelected())
-	{
-		strPath = "./SoftwareOnce.png";
-	}
-	else if (m_pOp_ImageSaveTif->IsSelected())
-	{
-		strPath = "./SoftwareOnce.tif";
-	}
+	//else if (m_pOp_ImageSaveJepg->IsSelected())
+	//{
+	//	strPath = "./SoftwareOnce.jpg";
+	//}
+	//else if (m_pOp_ImageSavePng->IsSelected())
+	//{
+	//	strPath = "./SoftwareOnce.png";
+	//}
+	//else if (m_pOp_ImageSaveTif->IsSelected())
+	//{
+	//	strPath = "./SoftwareOnce.tif";
+	//}
 	if (std::filesystem::exists(strPath))
 	{
 		std::filesystem::remove(strPath);
@@ -513,16 +575,16 @@ void DvpMainWidget::OnBtnSoftwareOnceClick(TNotifyUI & msg)
 		MessageBox(this->GetHWND(), str.c_str(), TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
 		return;
 	}
-	if (m_pOp_PnpCalibration->IsSelected())
-	{
-		std::string testPath = "C:/Users/CTOS/Desktop/TEST0812/2024-08-10_10-41-04_314.bmp";
-		jCore->PostEvent(ProjectEvent::g_MilWidget, new ProjectEvent::JMilEvent(testPath, 1));
-	}
-	else if (m_pOp_NozzleCalibration->IsSelected())
-	{
-		std::string testPath = "C:/Users/CTOS/Desktop/TEST0812/2024-08-12_09-44-12_376.bmp";
-		jCore->PostEvent(ProjectEvent::g_MilWidget, new ProjectEvent::JMilEvent(testPath, 2));
-	}
+	//if (m_pOp_PnpCalibration->IsSelected())
+	//{
+	//	std::string testPath = "C:/Users/CTOS/Desktop/TEST0812/2024-08-10_10-41-04_314.bmp";
+	//	jCore->PostEvent(ProjectEvent::g_MilWidget, new ProjectEvent::JMilEvent(testPath, 1));
+	//}
+	//else if (m_pOp_NozzleCalibration->IsSelected())
+	//{
+	//	std::string testPath = "C:/Users/CTOS/Desktop/TEST0812/2024-08-12_09-44-12_376.bmp";
+	//	jCore->PostEvent(ProjectEvent::g_MilWidget, new ProjectEvent::JMilEvent(testPath, 2));
+	//}
 
 	//m_pLable_Image->SetBkImage(strPath.c_str());
 }
@@ -551,4 +613,130 @@ void DvpMainWidget::OnCheckNozzleCalibrationSelectClick(TNotifyUI & msg)
 	{
 		m_pOp_PnpCalibration->Selected(false);
 	}
+}
+
+void DvpMainWidget::GetImagePointResult(std::string &file_name, bool wait_result)
+{
+	// MIL计算坐标
+	std::string file_mmf;
+	std::string file_out;
+	std::string m_file_name = file_name;
+	bool isRun = false;
+	if (m_pOp_PnpCalibration->IsSelected())
+	{
+		file_mmf = "C:\\Users\\CTOS\\Desktop\\TEST0812\\Top Cross.mmf";
+		JMilFindModelPnpEvent milEvent(m_file_name, file_mmf, file_out);
+		jCore->SendEvent(g_MilWidget, &milEvent);
+		//在这里输出到界面上
+		//通过milEvent去获得要输出的东西，也就是说milEvent里面包含了（XYR）标定板和（XYR）实际
+		CDuiString strVal;
+
+		strVal.Format("%.2f", milEvent.m_calibrationPointX);
+		m_edit_normalX->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_calibrationPointY);
+		m_edit_normalY->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_calibrationAngle);
+		m_edit_normalR->SetText(strVal);
+
+		strVal.Format("%.2f", milEvent.m_actualPointX);
+		m_edit_actualX->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_actualPointY);
+		m_edit_actualY->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_actualPointAngle);
+		m_edit_actualR->SetText(strVal);
+
+		strVal.Format("%.2f", milEvent.m_calibrationPointX - milEvent.m_actualPointX);
+		m_edit_deltaX->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_calibrationPointY - milEvent.m_actualPointY);
+		m_edit_deltaY->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_calibrationAngle - milEvent.m_actualPointAngle);
+		m_edit_deltaR->SetText(strVal);
+
+		//这里加个图片路径判断，若成功返回结果，就返回结果图片；若失败就返回原图
+		if (!file_out.empty())
+		{
+			file_name = file_out;
+		}
+		//isRun = true;
+	}
+	else if (m_pOp_NozzleCalibration->IsSelected())
+	{
+		std::string file_cross_mmf = "C:\\Users\\CTOS\\Desktop\\TEST0812\\Bottom Cross.mmf";
+		std::string file_circle_mmf = "C:\\Users\\CTOS\\Desktop\\TEST0812\\Bottom Circleli-1.mmf";
+
+		JMilFindModelNozzleEvent milEvent(m_file_name, file_cross_mmf, file_circle_mmf, file_out);
+		jCore->SendEvent(g_MilWidget, &milEvent);
+
+		CDuiString strVal;
+
+		strVal.Format("%.2f", milEvent.m_calibrationPointX);
+		m_edit_normalX->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_calibrationPointY);
+		m_edit_normalY->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_calibrationAngle);
+		m_edit_normalR->SetText(strVal);
+
+		strVal.Format("%.2f", milEvent.m_actualPointX);
+		m_edit_actualX->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_actualPointY);
+		m_edit_actualY->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_actualPointAngle);
+		m_edit_actualR->SetText(strVal);
+
+		strVal.Format("%.2f", milEvent.m_calibrationPointX - milEvent.m_actualPointX);
+		m_edit_deltaX->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_calibrationPointY - milEvent.m_actualPointY);
+		m_edit_deltaY->SetText(strVal);
+		strVal.Format("%.2f", milEvent.m_calibrationAngle - milEvent.m_actualPointAngle);
+		m_edit_deltaR->SetText(strVal);
+
+		//这里加个图片路径判断，若成功返回结果，就返回结果图片；若失败就返回原图
+		if (!file_out.empty())
+		{
+			file_name = file_out;
+		}
+		//isRun = true;
+	}
+	else
+	{
+		//MessageBox(this->GetHWND(), "Please select calibration mode", TEXT("PROMPT"), MB_OK | MB_ICONWARNING);
+		//isRun = false;
+		// 计算结果
+		//std::string file_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\ping.mmf";
+		//std::string file_out;
+		//JMilFindCenterEvent milEvent(file_name, file_mmf, file_out);
+		//jCore->SendEvent(g_MilWidget, &milEvent);
+		//double offset_centerY = -24.1141;
+		//double offset_centerX = 3.6997;
+		//double result_offsetX = -((-milEvent.m_event_deltaX) + offset_centerX) * 0.0139;
+		//double result_offsetY = ((-milEvent.m_event_deltaY) + offset_centerY) * 0.0139;
+
+		//std::string file_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\socket.mmf";
+		//std::string file_out;
+		//JMilFindSocketMarkCenterEvent milEvent(file_name, file_mmf, file_out);
+		//jCore->SendEvent(g_MilWidget, &milEvent);
+		//double offset_centerY = -1.616;
+		//double offset_centerX = -194.021;
+		//double result_offsetX = -((-milEvent.m_event_deltaX) + offset_centerX) * 0.0139;
+		//double result_offsetY = ((-milEvent.m_event_deltaY) + offset_centerY) * 0.0139;
+
+
+		//CDuiString strVal;
+		//strVal.Format("%.3f", result_offsetY);
+		//m_edit_deltaX->SetText(strVal);
+		//strVal.Format("%.3f", result_offsetX);
+		//m_edit_deltaY->SetText(strVal);
+
+		std::string file_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\ping.mmf";
+		std::string file_circle_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\socket.mmf";
+
+		std::string file_out;
+		JMilFindSocketMarkAndB2BDistanceEvent milEvent(file_name, file_mmf, file_circle_mmf, file_out);
+		jCore->SendEvent(g_MilWidget, &milEvent);
+	}
+	
+	//if (isRun)
+	//{
+	//	//file_name = file_out;
+	//}
 }

@@ -291,44 +291,45 @@ int DvpCamera_Manage::TakePhoto(std::string camera_name, std::string strSaveImag
 	std::string localSaveImagePath = strSaveImagePath;
 	bool localIsSoftwareTrigger = is_SoftwareTrigger;
 
-	if (localCamerName == std::string("DVP Bottom Vision") && !localIsSoftwareTrigger)
-	{
-		for (size_t i = 0; i < 2; i++)
-		{
-			size_t lastSlashPos = localSaveImagePath.find_last_of('/');
-			if (lastSlashPos == std::string::npos)
-			{
-				strError = "Not found '\'";
-				jCore->Logger("DvpPlugin.dll").LogError(__FUNCTION__, strError);
-				return -3;
-			}
-			std::string directory = localSaveImagePath.substr(0, lastSlashPos + 1);
-			std::string filename = localSaveImagePath.substr(lastSlashPos + 1);
-			std::string newFilename;
-			if (i != 0)
-			{
-				newFilename = std::to_string(i + 1) + filename;
-			}
-			else
-			{
-				newFilename = filename;
-			}
-			std::string newPath = directory + newFilename;
-			std::thread([this, localCamerName, newPath, strError, localIsSoftwareTrigger]()
-			{
-				std::string subStrError = strError;
-				m_CameraList[localCamerName]->DVP_TakePhoto(newPath, subStrError, localIsSoftwareTrigger);
-			}).detach();
-		}
-	}
-	else
-	{
-		if (!m_CameraList[camera_name]->DVP_TakePhoto(strSaveImagePath, strError, is_SoftwareTrigger))
-		{
-			jCore->Logger("DvpPlugin.dll").LogError(__FUNCTION__, strError);
-			return -2;
-		}
-	}
+	//if (localCamerName == std::string("DVP Bottom Vision") && !localIsSoftwareTrigger)
+	//{
+	//	for (size_t i = 0; i < 2; i++)
+	//	{
+	//		size_t lastSlashPos = localSaveImagePath.find_last_of('/');
+	//		if (lastSlashPos == std::string::npos)
+	//		{
+	//			strError = "Not found '\'";
+	//			jCore->Logger("DvpPlugin.dll").LogError(__FUNCTION__, strError);
+	//			return -3;
+	//		}
+	//		std::string directory = localSaveImagePath.substr(0, lastSlashPos + 1);
+	//		std::string filename = localSaveImagePath.substr(lastSlashPos + 1);
+	//		std::string newFilename;
+	//		if (i != 0)
+	//		{
+	//			newFilename = std::to_string(i + 1) + filename;
+	//		}
+	//		else
+	//		{
+	//			newFilename = filename;
+	//		}
+	//		std::string newPath = directory + newFilename;
+	//		std::thread([this, localCamerName, newPath, strError, localIsSoftwareTrigger]()
+	//		{
+	//			std::string subStrError = strError;
+	//			m_CameraList[localCamerName]->DVP_TakePhoto(newPath, subStrError, localIsSoftwareTrigger);
+	//		}).detach();
+	//	}
+	//}
+	//else
+	//{
+	//	if (!m_CameraList[camera_name]->DVP_TakePhoto(strSaveImagePath, strError, is_SoftwareTrigger))
+	//	{
+	//		jCore->Logger("DvpPlugin.dll").LogError(__FUNCTION__, strError);
+	//		return -2;
+	//	}
+	//}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//std::thread([this, localCamerName, localSaveImagePath, strError, localIsSoftwareTrigger]()
 	//{
 	//	std::string subStrError = strError;
@@ -337,10 +338,11 @@ int DvpCamera_Manage::TakePhoto(std::string camera_name, std::string strSaveImag
 	//		
 	//	}
 	//}).detach();
-	//if (!m_CameraList[camera_name]->DVP_TakePhoto(strSaveImagePath, strError, is_SoftwareTrigger))
-	//{
-	//	return -2;
-	//}
+
+	if (!m_CameraList[camera_name]->DVP_TakePhoto(strSaveImagePath, strError, is_SoftwareTrigger))
+	{
+		return -2;
+	}
 	return 0;
 }
 

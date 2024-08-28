@@ -1,10 +1,16 @@
 ﻿#include "MilDlg.h"
 #include "Common/JupCommon.h"
 
-#include "JupCore.h"
-#include "../_INCLUDE/ProjectEvent.h"
-using namespace ProjectEvent;
 int number = 1;
+
+double getRandomDouble(double min, double max)
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> dis(min, max);
+	return dis(gen);
+}
+
 MilDlg::MilDlg()
 {
 	m_milManager = MilManager::GetInstance();
@@ -125,29 +131,31 @@ LRESULT MilDlg::CustomEvent(JupCustomEvent * event)
 	if (type == ProjectEvent::e_JMilEvent)
 	{
 		auto e = dynamic_cast<JMilEvent*>(event);
-		//std::vector<PointXYA> Result{ {std::get<0>(e->mResult),std::get<1>(e->mResult), std::get<2>(e->mResult)} };
-		//std::vector<PointXYA> Result;
-		//m_milManager->VisionModelFindGetResult(e->m_ptr, e->m_file_out, e->m_file_mmf, Result);
-		//if (!Result.empty())
-		//{
-		//	e->m_pointX = Result[0].X;
-		//	e->m_pointY = Result[0].Y;
-		//	e->m_angle = Result[0].R;
-		//}
-		int m_Option = e->mil_options;
-		switch (m_Option)
-		{
-			case 1:
-				MilDigPnpVisualCalibrationGetResult(e->m_image_ptr);
-				break;
-			case 2:
-				MilDigNozzleVisualCalibrationGetResult(e->m_image_ptr);
-				break;
-			case 3:
-				break;
-			default:
-				break;
-		}
+	}
+	else if (type == ProjectEvent::e_JMilFindModelPnpEvent) {
+		auto e = dynamic_cast<JMilFindModelPnpEvent*>(event);
+		MilTestVisualGetResult(e->m_file, e->m_file_mmf, e, e->m_file_out);
+	}
+	else if (type == ProjectEvent::e_JMilFindModelNozzleEvent)
+	{
+		auto e = dynamic_cast<JMilFindModelNozzleEvent*>(event);
+		MILTestNozzleVisualGetResult(e->m_file, e->m_file_mmf, e->m_file2_mmf, e, e->m_file_out);
+	}
+	else if (type == ProjectEvent::e_JMilFindCenterEvent)
+	{
+		auto e = dynamic_cast<JMilFindCenterEvent*>(event);
+		MilTestB2BTopVisualGetResult(e->m_file, e->m_file_mmf, e);
+		//MilTestDownSocketMarkVisualGetResult(e->m_file, e->m_file_mmf, e);
+	}
+	else if (type == ProjectEvent::e_JMilFindSocketMarkCenterEvent)
+	{
+		auto e = dynamic_cast<JMilFindSocketMarkCenterEvent*>(event);
+		MilTestDownSocketMarkVisualGetResult(e->m_file, e->m_file_mmf, e);
+	}
+	else if (type == ProjectEvent::e_JMilFindSocketMarkAndB2BDistanceEvent)
+	{
+		auto e = dynamic_cast<JMilFindSocketMarkAndB2BDistanceEvent*>(event);
+		MilTestDownSocketMarkAndB2BDistanceVisualGetResult(e->m_file, e->m_file_mmf, e->m_file_circle_mmf, e);
 	}
 	return 0;
 }
@@ -462,10 +470,10 @@ void MilDlg::MilDigPnpVisualCalibrationGetResult(std::string m_image_ptr)
 		std::string str = m_milManager->VisionTopCrossCamerResult(m_image_ptr, m_file_out, file_cross_mmf, ROIs, Result, fdistance, fSocketAngle, deltaX, deltaY);
 		//若执行成功则返回图片路径，然后使用sentEvent传给Dvp模块界面上
 		const std::string imageSuffix = "_Result.jpg";
-		if (str.find(imageSuffix) != std::string::npos)
-			jCore->PostEvent(ProjectEvent::g_DvpWidget, new ProjectEvent::JDvpPnpCalibrationEvent(Result.back().X, Result.back().Y, 2448 / 2.0, 2048 / 2.0, str));
-		else
-			return;
+		//if (str.find(imageSuffix) != std::string::npos)
+		//	jCore->PostEvent(ProjectEvent::g_DvpWidget, new ProjectEvent::JDvpPnpCalibrationEvent(Result.back().X, Result.back().Y, 2448 / 2.0, 2048 / 2.0, str));
+		//else
+		//	return;
 	}
 }
 
@@ -497,10 +505,159 @@ void MilDlg::MilDigNozzleVisualCalibrationGetResult(std::string m_image_ptr)
 		std::string str = m_milManager->VisionButtomCircleCamerResult(m_image_ptr, m_file_out, file_cross_mmf, file_circle_mmf, ROIs, Circle_ROIs, Result, Circle_Result, fdistance, fSocketAngle, deltaX, deltaY);
 		//若执行成功则返回图片路径，然后使用sentEvent传给Dvp模块界面上
 		const std::string imageSuffix = "_Result.jpg";
+		//if (str.find(imageSuffix) != std::string::npos)
+		//	jCore->PostEvent(ProjectEvent::g_DvpWidget, new ProjectEvent::JDvpNozzleCalibrationEvent(Circle_Result.back().X, Circle_Result.back().Y, Circle_Result.back().R, Result.back().X, Result.back().Y, Result.back().R, str));
+		//else
+		//	return;
+	}
+}
+
+void MilDlg::MilTestVisualGetResult(std::string image_file, std::string mmf_file, JMilFindModelPnpEvent* e, std::string & file_out)
+{
+	//std::string file_cross_mmf = "C:\\Users\\CTOS\\Desktop\\TEST0812\\Top Cross.mmf";
+	std::vector<PointXYA> Result;
+	std::vector<MilRect> ROIs;
+	ROIs.push_back(MilRect(416, 284, 573, 549));	//左上
+	ROIs.push_back(MilRect(436, 1332, 521, 501));	//左下
+	ROIs.push_back(MilRect(1336, 324, 489, 509));	//右上
+	ROIs.push_back(MilRect(1304, 1320, 525, 553));	//右下
+	std::string m_file_out;
+	if (!image_file.empty())
+	{
+		float fSocketAngle;
+		float fdistance;
+		float deltaX, deltaY;
+		std::string str = m_milManager->VisionTopCrossCamerResult(image_file, m_file_out, mmf_file, ROIs, Result, fdistance, fSocketAngle, deltaX, deltaY);
+		//若执行成功则返回图片路径，然后使用sentEvent传给Dvp模块界面上
+		const std::string imageSuffix = "_Result.jpg";
 		if (str.find(imageSuffix) != std::string::npos)
-			jCore->PostEvent(ProjectEvent::g_DvpWidget, new ProjectEvent::JDvpNozzleCalibrationEvent(Circle_Result.back().X, Circle_Result.back().Y, Circle_Result.back().R, Result.back().X, Result.back().Y, Result.back().R, str));
+		{
+			file_out = str;
+			e->m_calibrationPointX = Result.at(0).X;
+			e->m_calibrationPointY = Result.at(0).Y;
+			e->m_calibrationAngle = Result.at(0).R;
+			e->m_actualPointX = Result.at(1).X;
+			e->m_actualPointY = Result.at(1).Y;
+			e->m_actualPointAngle = Result.at(1).R;
+		}
 		else
-			return;
+			file_out = "";
+	}
+
+
+
+	//file_out = "Test...";
+}
+
+void MilDlg::MILTestNozzleVisualGetResult(std::string image_file, std::string mmf_file, std::string mmf_file2, JMilFindModelNozzleEvent *e, std::string & file_out)
+{
+	//std::string file_cross_mmf = "C:\\Users\\CTOS\\Desktop\\TEST0812\\Bottom Cross.mmf";
+	//std::string file_circle_mmf = "C:\\Users\\CTOS\\Desktop\\TEST0812\\Bottom Circleli-1.mmf";
+	//十字
+	std::vector<PointXYA> Result;
+	std::vector<MilRect> ROIs;
+	ROIs.push_back(MilRect(544, 480, 1025, 1089));	//左上
+	ROIs.push_back(MilRect(512, 3840, 1073, 1057));	//左下
+	ROIs.push_back(MilRect(3848, 432, 1105, 1089));	//右上
+	ROIs.push_back(MilRect(3880, 3768, 1137, 1153));//右下
+
+	//圆点
+	std::vector<PointXYA> Circle_Result;
+	std::vector<MilRect> Circle_ROIs;
+	Circle_ROIs.push_back(MilRect(1600, 792, 1049, 1169));	//左上
+	Circle_ROIs.push_back(MilRect(1680, 3264, 849, 1057));	//左下
+	Circle_ROIs.push_back(MilRect(2528, 864, 849, 1041));	//右上
+	Circle_ROIs.push_back(MilRect(2432, 3280, 993, 1137));	//右下
+	std::string m_file_out;
+
+	if (!image_file.empty())
+	{
+		float fSocketAngle;
+		float fdistance;
+		float deltaX, deltaY;
+		std::string str = m_milManager->VisionButtomCircleCamerResult(image_file, m_file_out, mmf_file, mmf_file2, ROIs, Circle_ROIs, Result, Circle_Result, fdistance, fSocketAngle, deltaX, deltaY);
+		//若执行成功则返回图片路径，然后使用sentEvent传给Dvp模块界面上
+		const std::string imageSuffix = "_Result.jpg";
+		if (str.find(imageSuffix) != std::string::npos)
+		{
+			file_out = str;
+			e->m_calibrationPointX = Result.at(0).X;
+			e->m_calibrationPointY = Result.at(0).Y;
+			e->m_calibrationAngle = Result.at(0).R;
+			e->m_actualPointX = Circle_Result.at(0).X;
+			e->m_actualPointY = Circle_Result.at(0).Y;
+			e->m_actualPointAngle = Circle_Result.at(0).R;
+		}
+		else
+			file_out = "";
+	}
+
+
+}
+
+void MilDlg::MilTestB2BTopVisualGetResult(std::string image_file, std::string mmf_file, JMilFindCenterEvent* e)
+{
+	//std::string file_name = "D:\\AlphaDoeImage\\temp\\SoftwareOnce_20240822141024.bmp";
+	//std::string file_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\ping.mmf";
+	std::string m_file_out;
+	float deltaX = 0.0, deltaY = 0.0;
+	if (!image_file.empty())
+	{
+		std::string str = m_milManager->VisionB2BTopCenterCamerResult(image_file, m_file_out, mmf_file, deltaX, deltaY);
+		//若执行成功则返回图片路径，然后使用sentEvent传给Dvp模块界面上
+		const std::string imageSuffix = "_Result.jpg";
+		if (str.find(imageSuffix) != std::string::npos)
+		{
+			e->m_event_deltaX = deltaX;
+			e->m_event_deltaY = deltaY;
+		}
+	}
+
+}
+
+void MilDlg::MilTestDownSocketMarkVisualGetResult(std::string image_file, std::string mmf_file, JMilFindSocketMarkCenterEvent * e)
+{
+	std::string m_file_out;
+	float deltaX = 0.0, deltaY = 0.0;
+	std::vector<MilRect> Circle_ROIs;
+	Circle_ROIs.push_back(MilRect(0, 0, 2448, 2048));	//整张图
+	//Circle_ROIs.push_back(MilRect(0, 960, 2440, 1085));	//下
+	if (!image_file.empty())
+	{
+		std::string str = m_milManager->VisionSocketMarkCenterCamerResult(image_file, m_file_out, mmf_file, Circle_ROIs, deltaX, deltaY);
+		//若执行成功则返回图片路径，然后使用sentEvent传给Dvp模块界面上
+		const std::string imageSuffix = "_Result.jpg";
+		if (str.find(imageSuffix) != std::string::npos)
+		{
+			e->m_event_deltaX = deltaX;
+			e->m_event_deltaY = deltaY;
+		}
+	}
+}
+
+void MilDlg::MilTestDownSocketMarkAndB2BDistanceVisualGetResult(std::string image_file, std::string mmf_file, std::string mmf_circle_file, JMilFindSocketMarkAndB2BDistanceEvent * e)
+{
+	std::string m_file_out;
+	float distance = 0.0;
+	float SocketAngle = 0.0;
+	std::vector<MilRect> Circle_ROIs;
+	Circle_ROIs.push_back(MilRect(0, 0, 2448, 2048));	//整张图
+	//Circle_ROIs.push_back(MilRect(0, 960, 2440, 1085));	//下
+	if (!image_file.empty())
+	{
+		std::string str = m_milManager->VisionSocketMarkAndB2BDistanceResult(image_file, m_file_out, mmf_file, mmf_circle_file, Circle_ROIs, SocketAngle, distance);
+		//若执行成功则返回图片路径，然后使用sentEvent传给Dvp模块界面上
+		const std::string imageSuffix = "_Result.jpg";
+		if (str.find(imageSuffix) != std::string::npos)
+		{
+			e->m_SocketAngle = SocketAngle;
+			e->m_distance = distance;
+		}
+		else
+		{
+			e->m_SocketAngle = 0.0;
+			e->m_distance = 0.0;
+		}
 	}
 }
 
@@ -512,11 +669,11 @@ void MilDlg::funcTest()
 	//jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(33.232, 42.433, 12.323, 40.3232, path2));
 	while (true)
 	{
-		if (number % 2 == 0)
-			jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(10.322, 20.543, 30.314, 54.342, path1));
-		else
-			jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(33.232, 42.433, 12.323, 40.3232, path2));
-		number++;
+		//if (number % 2 == 0)
+		//	jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(10.322, 20.543, 30.314, 54.342, path1));
+		//else
+		//	jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(33.232, 42.433, 12.323, 40.3232, path2));
+		//number++;
 		Sleep(500);
 	}
 }

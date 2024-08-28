@@ -171,6 +171,8 @@ bool DVPCamera_Control::DVP_OpenCamera(std::string strCameraID, std::string & st
 			if (isLoop)
 			{
 				//注册回调函数;
+				dvpUnregisterStreamCallback(m_handle, OnDrawPicture, STREAM_EVENT_FRAME_THREAD, this);
+				Sleep(100);
 				status = dvpRegisterStreamCallback(m_handle, OnDrawPicture, STREAM_EVENT_FRAME_THREAD, this);
 				if (status != DVP_STATUS_OK)
 				{
@@ -415,7 +417,7 @@ bool DVPCamera_Control::DVP_TakePhoto(std::string strSaveImagePath, std::string 
 		m_DVP_Lock.unlock();
 		return false;
 	}
-
+	//jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(strSaveImagePath));//用来校准的时候用的
 	m_DVP_Lock.unlock();
 	return true;
 }
@@ -603,14 +605,14 @@ void DVPCamera_Control::SetSaveImagePath(std::string strSaveImagePath)
 //***********************************************************************************************************************************************
 int DVPCamera_Control::OnDrawPicture(dvpHandle handle, dvpStreamEvent event, void *pContext, dvpFrame *pFrame, void *pBuffer)
 {
-	////保存图片;
-	//std::string strSaveImagePath = m_SaveImagePath;
-	//dvpStatus status = dvpSavePicture(pFrame, pBuffer, m_SaveImagePath.c_str(), 100);
+	//std::string strSaveImagePath = m_SaveImagePath + "AliveGet" + Jup::GetLocalTime(1) + ".bmp";
+	//// 保存新图片
+	//dvpStatus status = dvpSavePicture(pFrame, pBuffer, strSaveImagePath.c_str(), 100);
 	//if (status != DVP_STATUS_OK)
 	//{
-	//	std:: string strError = "save photo Error : " + std::to_string(status) + "save path:" + m_SaveImagePath;
+	//	std:: string strError = "save photo Error : " + std::to_string(status) + "save path:" + strSaveImagePath;
 	//}
+	//jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(pBuffer, pFrame->iWidth, pFrame->iHeight,strSaveImagePath));
 	jCore->SendEvent(ProjectEvent::g_DvpWidget, new ProjectEvent::JDvpEvent(pBuffer, pFrame->iWidth, pFrame->iHeight));
-	//Sleep(500);
 	return 0;
 }

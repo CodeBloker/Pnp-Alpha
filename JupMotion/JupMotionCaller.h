@@ -87,21 +87,21 @@ public:
 	// 重置飞拍实时位置
 	int AxisLoadResetPosition(JupData& resultTable);
 	// pnp轴移动到拍照位置
-	int AxisLoadPnpToPosPhoto(JupData& resultTable);
+	//int AxisLoadPnpToPosPhoto(JupData& resultTable);
 	// pnp轴移动到tray盘位置
 	int AxisLoadPnpToPosTray(JupData& resultTable);
 	// X&R轴移动到工作位置
 	int AxisXRLoadPnpToPosTray(JupData& resultTable);
 	// Z轴上下移动一次
-	int AxisZPeriodicMotion(JupData& resultTable);
+	//int AxisZPeriodicMotion(JupData& resultTable);
 	// pnp吸嘴从tray盘取dut
 	int CylLoadPnpToPickDut(JupData& resultTable);
 	// 设置飞拍参数
 	int AxisLoadSetParameter(JupData& resultTable);
 	// 发送pnp轴移动到socket放dut位置指令
-	int AxisLoadPnpCommandToPosSocket(JupData& resultTable);
+	//int AxisLoadPnpCommandToPosSocket(JupData& resultTable);
 	// 检查等待pnp轴移动到socket放dut位置指令完成
-	int AxisLoadPnpWaitMoveToPosSocket(JupData& resultTable);
+	//int AxisLoadPnpWaitMoveToPosSocket(JupData& resultTable);
 	// pnp吸嘴放dut到socket
 	int CylLoadPnpToPutDut(JupData& resultTable);
 
@@ -120,10 +120,10 @@ public:
 	int moveToReadyPnpPos(JupData& data);
 
 	int takePhotoToCalibraPosA1(JupData& data);
-	int moveToPnpCailbraPosA1(JupData& data);
+	//int moveToPnpCailbraPosA1(JupData& data);
 
 	int takePhotoToCalibraPosA2(JupData& data);
-	int moveToPnpCailbraPosA2(JupData& data);
+	//int moveToPnpCailbraPosA2(JupData& data);
 
 	int takePhotoToCalibraPosA3(JupData& data);
 	int moveToPnpCailbraPosA3(JupData& data);
@@ -148,6 +148,38 @@ public:
 
 	//GroupC
 	int CalPnpDistance(JupData& data);
+
+
+	//上料取料动作
+	// pnp轴移动到拍照位置
+	int AxisLoadPnpToPosPhoto(JupData& resultTable);
+	// 拍图获取偏移量-----DVPCaller(上料拍照）
+	// 吸嘴移动到DUT上方
+	int moveToPnpCailbraPosA1(JupData& data);
+	// Z轴上下移动一次（吸料）
+	int AxisZPeriodicMotionUP(JupData& resultTable);
+	// 发送pnp轴移动到socket拍照位置指令
+	int AxisLoadPnpCommandToPosSocket(JupData& resultTable);
+	// 检查等待pnp轴移动到socket拍照位置指令完成
+	int AxisLoadPnpWaitMoveToPosSocket(JupData& resultTable);
+	// 拍照获取偏移量-----DVPCaller(下料拍照）
+	// 吸嘴一定到Socket上方
+	int moveToPnpCailbraPosA2(JupData& data);
+	// Z轴上下移动一次（放料）
+	int AxisZPeriodicMotionDown(JupData& resultTable);
+
+	// pnp轴移动到下料拍照位（算出Mark与B2B距离）
+	// moveToPnpCailbraPosB2
+	// 运算得出结果 ---- DVPCaller（距离采集）
+	// 吸嘴移动回Socket上方
+	// moveToPnpCailbraPosB3
+
+	// Z轴上下移动一次（吸料）
+	// pnp轴移动到上料拍照位置
+	// 拍照获取偏移量-----DVPCaller(下料拍照）
+	// Z轴上下移动一次（放料）
+	int AxisZPeriodicMotionTest(JupData& resultTable);
+
 
 
 private:

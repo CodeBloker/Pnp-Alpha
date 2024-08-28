@@ -20,12 +20,15 @@ enum E_CustomEventId {
 	e_JIdsEvent,
 	e_JMilEvent,
 	e_JMilFindModelEvent,
+	e_JMilFindModelPnpEvent,
+	e_JMilFindModelNozzleEvent,
 	e_JMilFindCenterEvent,
+	e_JMilFindSocketMarkCenterEvent,
+	e_JMilFindSocketMarkAndB2BDistanceEvent,
 	e_JMotionEvent,
 	e_JCalibrationEvent,
 	e_JDvpEvent,
 	e_JDvpPnpCalibrationEvent,
-	e_JDvpNozzleCalibrationEvent,
 	e_JMotionIsHomeEvent
 };
 
@@ -61,8 +64,8 @@ public:
 class JDvpPnpCalibrationEvent : public JupCustomEvent
 {
 public:
-	JDvpPnpCalibrationEvent(double pnp_x, double pnp_y, double m_tempX, double m_tempY, std::string result_img)
-		: Pnp_x(pnp_x), Pnp_y(pnp_y), m_templateX(m_tempX), m_templateY(m_tempY), resultImagePath(result_img) {}
+	JDvpPnpCalibrationEvent(std::string result_img)
+		: resultImagePath(result_img) {}
 	~JDvpPnpCalibrationEvent() {}
 	JupCustomEvent::eType Type() const override
 	{
@@ -70,25 +73,9 @@ public:
 	}
 
 public:
-	double Pnp_x, Pnp_y;
-	double m_templateX, m_templateY;
-	std::string resultImagePath;
-};
-
-class JDvpNozzleCalibrationEvent : public JupCustomEvent
-{
-public:
-	JDvpNozzleCalibrationEvent(double nozzleX, double nozzleY, double nozzleR, double tempX, double tempY, double tempR, std::string result_img)
-		: Nozzle_x(nozzleX), Nozzle_y(nozzleY), Nozzle_r(Nozzle_y), m_tempX(tempX), m_tempY(tempY), m_tempR(tempR), resultImagePath(result_img) {}
-	~JDvpNozzleCalibrationEvent() {}
-	JupCustomEvent::eType Type() const override
-	{
-		return static_cast<eType>(e_JDvpNozzleCalibrationEvent);
-	}
-
-public:
-	double Nozzle_x, Nozzle_y, Nozzle_r;
-	double m_tempX, m_tempY, m_tempR;
+	void* m_ptr;
+	int m_width;
+	int m_height;
 	std::string resultImagePath;
 };
 
@@ -171,26 +158,100 @@ public:
 	bool m_is_wait;
 };
 
+class JMilFindModelPnpEvent : public JupCustomEvent
+{
+public:
+	JMilFindModelPnpEvent(std::string ptr, std::string file_mmf, std::string &file_out)
+		: m_file(ptr), m_file_mmf(file_mmf), m_file_out(file_out) {}
+	~JMilFindModelPnpEvent() {}
+	JupCustomEvent::eType Type() const override {
+		return static_cast<eType>(e_JMilFindModelPnpEvent);
+	}
+
+public:
+	std::string m_file;//需要传参
+	std::string &m_file_out;//需要传参
+	std::string m_file_mmf;//需要传参
+	double m_calibrationPointX = 0.0;
+	double m_calibrationPointY = 0.0;
+	double m_calibrationAngle = 0.0;
+	double m_actualPointX = 0.0;
+	double m_actualPointY = 0.0;
+	double m_actualPointAngle = 0.0;
+	//bool m_is_wait;//需要传参
+};
+
+class JMilFindModelNozzleEvent : public JupCustomEvent
+{
+public:
+	JMilFindModelNozzleEvent(std::string ptr, std::string file_mmf, std::string file2_mmf, std::string &file_out)
+		: m_file(ptr), m_file_mmf(file_mmf), m_file2_mmf(file2_mmf), m_file_out(file_out) {}
+	~JMilFindModelNozzleEvent(){}
+	JupCustomEvent::eType Type() const override {
+		return static_cast<eType>(e_JMilFindModelNozzleEvent);
+	}
+
+public:
+	std::string m_file;//需要传参
+	std::string &m_file_out;//需要传参
+	std::string m_file_mmf,m_file2_mmf;//需要传参
+	double m_calibrationPointX = 0.0;
+	double m_calibrationPointY = 0.0;
+	double m_calibrationAngle = 0.0;
+	double m_actualPointX = 0.0;
+	double m_actualPointY = 0.0;
+	double m_actualPointAngle = 0.0;
+};
+
 class JMilFindCenterEvent : public JupCustomEvent
 {
 public:
-	JMilFindCenterEvent(double x1, double y1, double x2, double y2, double x3, double y3)
-		: m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_x3(x3), m_y3(y3) {}
+	JMilFindCenterEvent(std::string ptr, std::string file_mmf, std::string &file_out)
+		: m_file(ptr), m_file_mmf(file_mmf), m_file_out(file_out) {}
 	~JMilFindCenterEvent() {}
 	JupCustomEvent::eType Type() const override {
 		return static_cast<eType>(e_JMilFindCenterEvent);
 	}
 
 public:
-	double m_x1;
-	double m_y1;
-	double m_x2;
-	double m_y2;
-	double m_x3;
-	double m_y3;
-	double m_pointX = 0.0;
-	double m_pointY = 0.0;
-	double m_pointR = 0.0;
+	std::string m_file;
+	std::string &m_file_out;
+	std::string m_file_mmf;
+	double m_event_deltaX, m_event_deltaY;
+};
+
+class JMilFindSocketMarkCenterEvent : public JupCustomEvent
+{
+public:
+	JMilFindSocketMarkCenterEvent(std::string ptr, std::string file_mmf, std::string &file_out)
+		: m_file(ptr), m_file_mmf(file_mmf), m_file_out(file_out) {}
+	~JMilFindSocketMarkCenterEvent() {}
+	JupCustomEvent::eType Type() const override {
+		return static_cast<eType>(e_JMilFindSocketMarkCenterEvent);
+	}
+
+public:
+	std::string m_file;
+	std::string &m_file_out;
+	std::string m_file_mmf;
+	float m_event_deltaX, m_event_deltaY;
+
+};
+
+class JMilFindSocketMarkAndB2BDistanceEvent : public JupCustomEvent
+{
+public:
+	JMilFindSocketMarkAndB2BDistanceEvent(std::string ptr, std::string file_mmf, std::string file_circle_mmf, std::string &file_out)
+	: m_file(ptr), m_file_mmf(file_mmf), m_file_circle_mmf(file_circle_mmf), m_file_out(file_out) {}
+	~JMilFindSocketMarkAndB2BDistanceEvent() {}
+	JupCustomEvent::eType Type() const override {
+		return static_cast<eType>(e_JMilFindSocketMarkAndB2BDistanceEvent);
+	}
+public:
+	std::string m_file;
+	std::string &m_file_out;
+	std::string m_file_mmf,m_file_circle_mmf;
+	float m_SocketAngle,m_distance;
 };
 
 class JMotionEvent : public JupCustomEvent

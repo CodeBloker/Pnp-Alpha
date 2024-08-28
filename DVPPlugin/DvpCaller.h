@@ -44,6 +44,9 @@ private:
 	int SetDownCameraHwParameter(JupData& data);
 	// 开启采集线程，等待触发信号获得图片
 	int StartCaptureTopImageThread(JupData& data);
+	int StartCaptureTopImageUpDutThread(JupData& data);//用来上料的时候触发拍照求出补偿
+	int StartCaptureTopImagePutDownDutThread(JupData& data);//用来下料的时候触发拍照求出补偿
+	int StartCaptureTopImageSocketMarkAndB2BThread(JupData& data);//用来下料完成的时候触发拍照求出SocketMark点和B2B的距离
 	int StartCaptureBottomImageThread(JupData& data);
 
 private:

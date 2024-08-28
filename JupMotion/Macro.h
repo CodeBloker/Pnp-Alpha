@@ -94,12 +94,14 @@
 
 #define POSNAME_YPnp_Load		"PickUpDut" 
 #define POSNAME_YPnp_UnLoad		"PutDownDut" 
-#define POSNAME_YPnp_UnLoadCam	"UnLoadCam"
+#define POSNAME_XYPnp_UnLoadCam	"UnLoadCam"
 #define POSNAME_YPnp_BottomCam	"DownCamera" 
 #define POSNAME_YPnp_TopCam		"UpCamera" 
 #define POSNAME_RPnp_WorkPos	"AxisRWorkPos"
+#define POSName_RNozzle_DownDutPos	"NozzleDownDutPos"
 #define POSNAME_XPnp_WorkPos	"AxisXWorkPos"
 #define POSNAME_ZPnp_WorkPos	"AxisZWorkPos"
+#define POSNAME_ZPutDownDut_Pos	"PutDownDutPos"
 #define POSNAME_ZPnp_SafetyPos	"AxisZSafetyPos"
 
 //DUT两个飞拍点位

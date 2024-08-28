@@ -10,6 +10,7 @@
 
 #define MAX_DEVICE_NUM          9
 #define IMAGE_PATH_DEFAULT		"D:/AlphaDoeImage/"
+#define CALIBRATION_IMAGE_PATH_DEFAULT "D:/AlphaDoeImage/temp/"
 
 
 class DvpCamera_Manage

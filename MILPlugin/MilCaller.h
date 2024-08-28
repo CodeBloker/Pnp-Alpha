@@ -76,6 +76,9 @@ private:
 	// 校准数据写入csv
 	int SaveCalibraData(JupData& data);
 
+	// 距离和角度数据写入CSV
+	int SaveCaldistanceAngleData(JupData& data);
+
 private:
 	bool WriteDataToCSV(std::string imageInput, std::vector<std::string> heads, std::vector<std::string> datas);
 	bool WriteDoeTestDataToCSV(std::string path, std::vector<std::string> heads, std::vector<std::string> datas);
@@ -134,5 +137,8 @@ private:
 	, "TyCamera_C1_PointY", "TyCamera_C2_PointY", "TyCamera_C3_PointY", "TyCamera_C4_PointY", "TyCamera_C5_PointY", "TyCamera_C6_PointY", "TyCamera_C7_PointY" };
 
 	std::vector<std::string> m_calibra_head = { "Item","Time","PnpCFOV_X","PnpCFOV_Y","NozzleCFOV_X","NozzleCFOV_Y","PnpPos_X","PnpPos_Y","CalPnpDelta_X","CalPnpDelta_Y" };
+
+	//B2B跟Socket两个Mark点的距离
+	std::vector<std::string> m_cal_distanceAngle_head = { "Item","Time","Distance","SocketAngle" };
 
 };

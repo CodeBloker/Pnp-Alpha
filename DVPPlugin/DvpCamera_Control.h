@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <mutex>
+#include <filesystem>
+#include <future>
 
 class DVPCamera_Control
 {

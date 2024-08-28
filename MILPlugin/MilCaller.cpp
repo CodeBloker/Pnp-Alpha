@@ -70,6 +70,7 @@ int MilCaller::RegisterMethod()
 	Plugin_Method_Add(MilCaller, SaveDOE3TestData);
 	Plugin_Method_Add(MilCaller, WriteTestResultToCSV);
 	Plugin_Method_Add(MilCaller, SaveCalibraData);
+	Plugin_Method_Add(MilCaller, SaveCaldistanceAngleData);
 	return 0;
 }
 
@@ -726,6 +727,32 @@ int MilCaller::SaveCalibraData(JupData & data)
 		return -1;
 	}
 
+	return 0;
+}
+
+int MilCaller::SaveCaldistanceAngleData(JupData & data)
+{
+	int test_count = data.GetInt("JupMotion", "TestCount") + 1;
+	std::string test_startTime = data.GetValue("JupMotion", "TestStartTime");
+	double test_distance = data.GetDouble("DvpCallerData", "Distance");
+	double test_socketAngle = data.GetDouble("DvpCallerData", "SocketAngle");
+
+	//....其他的一些测试数据
+
+	// 按格式拼接结果
+	std::vector<std::string> resultDatas;
+	resultDatas.push_back(std::to_string(test_count));
+	resultDatas.push_back(test_startTime);
+	resultDatas.push_back(std::to_string(test_distance));
+	resultDatas.push_back(std::to_string(test_socketAngle));
+
+	// 写入文件
+	std::string strStartTime_1 = data.GetValue("MotionData", "StartTime_1");
+	std::string path_Calibra = "D:/AlphaDoeImage/" + strStartTime_1 + "/AutoTeachVision.csv";
+	if (!WriteDoeTestDataToCSV(path_Calibra, m_cal_distanceAngle_head, resultDatas))
+	{
+		return -1;
+	}
 	return 0;
 }
 

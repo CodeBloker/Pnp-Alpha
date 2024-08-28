@@ -1413,184 +1413,184 @@ std::vector<std::string> AlphaCalibrationPluginView::chooseFiles()
 
 void AlphaCalibrationPluginView::StartAutoCalibrationAsync()
 {
-	// 先关闭实时计算
-	bool tx_select = m_tx_select;
-	bool ty_select = m_ty_select;
-	bool ids_select = m_ids_select;
-	if (m_pOp_TxContinueCapture->IsSelected())
-		m_pOp_TxContinueCapture->Selected(false);
-	if (m_pOp_TyContinueCapture->IsSelected())
-		m_pOp_TyContinueCapture->Selected(false);
-	if (m_pOp_IdsContinueCapture->IsSelected())
-		m_pOp_IdsContinueCapture->Selected(false);
+	//// 先关闭实时计算
+	//bool tx_select = m_tx_select;
+	//bool ty_select = m_ty_select;
+	//bool ids_select = m_ids_select;
+	//if (m_pOp_TxContinueCapture->IsSelected())
+	//	m_pOp_TxContinueCapture->Selected(false);
+	//if (m_pOp_TyContinueCapture->IsSelected())
+	//	m_pOp_TyContinueCapture->Selected(false);
+	//if (m_pOp_IdsContinueCapture->IsSelected())
+	//	m_pOp_IdsContinueCapture->Selected(false);
 
-	// 获取运动点位信息
-	std::string current_cam;
-	double distance_pos1;
-	double distance_pos2;
-	double distance_pos3;
-	GetAutoCalibrationPosInfos(current_cam, distance_pos1, distance_pos2, distance_pos3);
+	//// 获取运动点位信息
+	//std::string current_cam;
+	//double distance_pos1;
+	//double distance_pos2;
+	//double distance_pos3;
+	//GetAutoCalibrationPosInfos(current_cam, distance_pos1, distance_pos2, distance_pos3);
 
-	// 执行第一个点位
-	double point1_x;
-	double point1_y;
-	GetPosImagePointResult(current_cam, distance_pos1, point1_x, point1_y);
-	CDuiString strVal;
-	strVal.Format("%.2f", point1_x);
-	m_pEdit_Pos1PointX->SetText(strVal);
-	strVal.Format("%.2f", point1_y);
-	m_pEdit_Pos1PointY->SetText(strVal);
+	//// 执行第一个点位
+	//double point1_x;
+	//double point1_y;
+	//GetPosImagePointResult(current_cam, distance_pos1, point1_x, point1_y);
+	//CDuiString strVal;
+	//strVal.Format("%.2f", point1_x);
+	//m_pEdit_Pos1PointX->SetText(strVal);
+	//strVal.Format("%.2f", point1_y);
+	//m_pEdit_Pos1PointY->SetText(strVal);
 
-	// 执行第二个点位
-	double point2_x;
-	double point2_y;
-	GetPosImagePointResult(current_cam, distance_pos2, point2_x, point2_y);
-	strVal.Format("%.2f", point2_x);
-	m_pEdit_Pos2PointX->SetText(strVal);
-	strVal.Format("%.2f", point2_y);
-	m_pEdit_Pos2PointY->SetText(strVal);
+	//// 执行第二个点位
+	//double point2_x;
+	//double point2_y;
+	//GetPosImagePointResult(current_cam, distance_pos2, point2_x, point2_y);
+	//strVal.Format("%.2f", point2_x);
+	//m_pEdit_Pos2PointX->SetText(strVal);
+	//strVal.Format("%.2f", point2_y);
+	//m_pEdit_Pos2PointY->SetText(strVal);
 
-	// 执行第三个点位
-	double point3_x;
-	double point3_y;
-	GetPosImagePointResult(current_cam, distance_pos3, point3_x, point3_y);
-	strVal.Format("%.2f", point3_x);
-	m_pEdit_Pos3PointX->SetText(strVal);
-	strVal.Format("%.2f", point3_y);
-	m_pEdit_Pos3PointY->SetText(strVal);
+	//// 执行第三个点位
+	//double point3_x;
+	//double point3_y;
+	//GetPosImagePointResult(current_cam, distance_pos3, point3_x, point3_y);
+	//strVal.Format("%.2f", point3_x);
+	//m_pEdit_Pos3PointX->SetText(strVal);
+	//strVal.Format("%.2f", point3_y);
+	//m_pEdit_Pos3PointY->SetText(strVal);
 
-	// 获取三个点计算结果（Max-Min 与阈值比较）
-	bool point_x_result = false;
-	bool point_y_result = false;
-	if (m_is_tx_calibration)
-	{
-		if (m_oqc_enable)
-			point_x_result = GetCircleCenterResult(current_cam, m_pEdit_OqcTxResultX, point1_x, point2_x, point3_x);
-		else
-			point_x_result = GetCircleCenterResult(current_cam, m_pEdit_TxResultX, point1_x, point2_x, point3_x);
-	}
-	else
-	{
-		if (m_oqc_enable)
-			point_x_result = GetCircleCenterResult(current_cam, m_pEdit_OqcTyResultX, point1_x, point2_x, point3_x);
-		else
-			point_x_result = GetCircleCenterResult(current_cam, m_pEdit_TyResultX, point1_x, point2_x, point3_x);
-	}
+	//// 获取三个点计算结果（Max-Min 与阈值比较）
+	//bool point_x_result = false;
+	//bool point_y_result = false;
+	//if (m_is_tx_calibration)
+	//{
+	//	if (m_oqc_enable)
+	//		point_x_result = GetCircleCenterResult(current_cam, m_pEdit_OqcTxResultX, point1_x, point2_x, point3_x);
+	//	else
+	//		point_x_result = GetCircleCenterResult(current_cam, m_pEdit_TxResultX, point1_x, point2_x, point3_x);
+	//}
+	//else
+	//{
+	//	if (m_oqc_enable)
+	//		point_x_result = GetCircleCenterResult(current_cam, m_pEdit_OqcTyResultX, point1_x, point2_x, point3_x);
+	//	else
+	//		point_x_result = GetCircleCenterResult(current_cam, m_pEdit_TyResultX, point1_x, point2_x, point3_x);
+	//}
 
-	if (m_is_tx_calibration)
-	{
-		if (m_oqc_enable)
-			point_y_result = GetCircleCenterResult(current_cam, m_pEdit_OqcTxResultY, point1_y, point2_y, point3_y);
-		else
-			point_y_result = GetCircleCenterResult(current_cam, m_pEdit_TxResultY, point1_y, point2_y, point3_y);
-	}	
-	else
-	{
-		if (m_oqc_enable)
-			point_y_result = GetCircleCenterResult(current_cam, m_pEdit_OqcTyResultY, point1_y, point2_y, point3_y);
-		else
-			point_y_result = GetCircleCenterResult(current_cam, m_pEdit_TyResultY, point1_y, point2_y, point3_y);
-	}
-	
-	// 计算拟合圆心坐标
-	JMilFindCenterEvent milEvent(point1_x, point1_y, point2_x, point2_y, point3_x, point3_y);
-	jCore->SendEvent(g_MilWidget, &milEvent);
-	strVal.Format("%.2f", milEvent.m_pointX);
-	m_pEdit_PointX->SetText(strVal);
-	strVal.Format("%.2f", milEvent.m_pointY);
-	m_pEdit_PointY->SetText(strVal);
-	strVal.Format("%.2f", milEvent.m_pointR);
-	m_pEdit_PointR->SetText(strVal);
-	std::string image_name = ScalarCircle(current_cam, point1_x, point1_y, point2_x, point2_y, point3_x, point3_y, milEvent.m_pointX, milEvent.m_pointY, milEvent.m_pointR);
-	CDuiString imageStr;
-	imageStr.Format("file='%s' dest='40,0,460,420'", image_name.c_str());
-	if (current_cam == "TX")
-		m_pLable_Image4->SetAttribute("bkimage", imageStr);
-	else
-		m_pLable_Image5->SetAttribute("bkimage", imageStr);
+	//if (m_is_tx_calibration)
+	//{
+	//	if (m_oqc_enable)
+	//		point_y_result = GetCircleCenterResult(current_cam, m_pEdit_OqcTxResultY, point1_y, point2_y, point3_y);
+	//	else
+	//		point_y_result = GetCircleCenterResult(current_cam, m_pEdit_TxResultY, point1_y, point2_y, point3_y);
+	//}	
+	//else
+	//{
+	//	if (m_oqc_enable)
+	//		point_y_result = GetCircleCenterResult(current_cam, m_pEdit_OqcTyResultY, point1_y, point2_y, point3_y);
+	//	else
+	//		point_y_result = GetCircleCenterResult(current_cam, m_pEdit_TyResultY, point1_y, point2_y, point3_y);
+	//}
+	//
+	//// 计算拟合圆心坐标
+	//JMilFindCenterEvent milEvent(point1_x, point1_y, point2_x, point2_y, point3_x, point3_y);
+	//jCore->SendEvent(g_MilWidget, &milEvent);
+	//strVal.Format("%.2f", milEvent.m_pointX);
+	//m_pEdit_PointX->SetText(strVal);
+	//strVal.Format("%.2f", milEvent.m_pointY);
+	//m_pEdit_PointY->SetText(strVal);
+	//strVal.Format("%.2f", milEvent.m_pointR);
+	//m_pEdit_PointR->SetText(strVal);
+	//std::string image_name = ScalarCircle(current_cam, point1_x, point1_y, point2_x, point2_y, point3_x, point3_y, milEvent.m_pointX, milEvent.m_pointY, milEvent.m_pointR);
+	//CDuiString imageStr;
+	//imageStr.Format("file='%s' dest='40,0,460,420'", image_name.c_str());
+	//if (current_cam == "TX")
+	//	m_pLable_Image4->SetAttribute("bkimage", imageStr);
+	//else
+	//	m_pLable_Image5->SetAttribute("bkimage", imageStr);
 
-	// 计算补偿偏移值 （X_Center-X2  Y_Center-Y2）
-	m_circle_point_x = milEvent.m_pointX;
-	m_circle_point_y = milEvent.m_pointY;
-	double derta_x = point2_x - m_circle_point_x;
-	double derta_y = point2_y - m_circle_point_y;
-	if (m_is_tx_calibration)
-	{
-		if (!m_oqc_enable)
-		{
-			strVal.Format("%.2f", derta_x);
-			m_pEdit_TxDertaX->SetText(strVal);
-			double threshold_x = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TxDertaXThreshold");
-			if (abs(derta_x) <= threshold_x)
-				m_pEdit_TxDertaX->SetBkColor(0xFF00FF00);
-			else
-				m_pEdit_TxDertaX->SetBkColor(0xFFFF0000);
-			strVal.Format("%.2f", derta_y);
-			m_pEdit_TxDertaY->SetText(strVal);
-			double threshold_y = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TxDertaYThreshold");
-			if (abs(derta_y) <= threshold_y)
-				m_pEdit_TxDertaY->SetBkColor(0xFF00FF00);
-			else
-				m_pEdit_TxDertaY->SetBkColor(0xFFFF0000);
-		}
-	}
-	else
-	{
-		if (!m_oqc_enable)
-		{
-			strVal.Format("%.2f", derta_x);
-			m_pEdit_TyDertaX->SetText(strVal);
-			double threshold_x = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TyDertaXThreshold");
-			if (abs(derta_x) <= threshold_x)
-				m_pEdit_TyDertaX->SetBkColor(0xFF00FF00);
-			else
-				m_pEdit_TyDertaX->SetBkColor(0xFFFF0000);
-			strVal.Format("%.2f", derta_y);
-			m_pEdit_TyDertaY->SetText(strVal);
-			double threshold_y = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TyDertaYThreshold");
-			if (abs(derta_y) <= threshold_y)
-				m_pEdit_TyDertaY->SetBkColor(0xFF00FF00);
-			else
-				m_pEdit_TyDertaY->SetBkColor(0xFFFF0000);
-		}
-	}
+	//// 计算补偿偏移值 （X_Center-X2  Y_Center-Y2）
+	//m_circle_point_x = milEvent.m_pointX;
+	//m_circle_point_y = milEvent.m_pointY;
+	//double derta_x = point2_x - m_circle_point_x;
+	//double derta_y = point2_y - m_circle_point_y;
+	//if (m_is_tx_calibration)
+	//{
+	//	if (!m_oqc_enable)
+	//	{
+	//		strVal.Format("%.2f", derta_x);
+	//		m_pEdit_TxDertaX->SetText(strVal);
+	//		double threshold_x = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TxDertaXThreshold");
+	//		if (abs(derta_x) <= threshold_x)
+	//			m_pEdit_TxDertaX->SetBkColor(0xFF00FF00);
+	//		else
+	//			m_pEdit_TxDertaX->SetBkColor(0xFFFF0000);
+	//		strVal.Format("%.2f", derta_y);
+	//		m_pEdit_TxDertaY->SetText(strVal);
+	//		double threshold_y = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TxDertaYThreshold");
+	//		if (abs(derta_y) <= threshold_y)
+	//			m_pEdit_TxDertaY->SetBkColor(0xFF00FF00);
+	//		else
+	//			m_pEdit_TxDertaY->SetBkColor(0xFFFF0000);
+	//	}
+	//}
+	//else
+	//{
+	//	if (!m_oqc_enable)
+	//	{
+	//		strVal.Format("%.2f", derta_x);
+	//		m_pEdit_TyDertaX->SetText(strVal);
+	//		double threshold_x = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TyDertaXThreshold");
+	//		if (abs(derta_x) <= threshold_x)
+	//			m_pEdit_TyDertaX->SetBkColor(0xFF00FF00);
+	//		else
+	//			m_pEdit_TyDertaX->SetBkColor(0xFFFF0000);
+	//		strVal.Format("%.2f", derta_y);
+	//		m_pEdit_TyDertaY->SetText(strVal);
+	//		double threshold_y = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TyDertaYThreshold");
+	//		if (abs(derta_y) <= threshold_y)
+	//			m_pEdit_TyDertaY->SetBkColor(0xFF00FF00);
+	//		else
+	//			m_pEdit_TyDertaY->SetBkColor(0xFFFF0000);
+	//	}
+	//}
 
-	if (point_x_result && point_y_result)
-	{
-		// 判断结果，X,Y都小于阈值时，实时计算拟合中心坐标改为三点重心
-		m_circle_point_x = (point1_x + point2_x + point3_x) / 3;
-		m_circle_point_y = (point1_y + point2_y + point3_y) / 3;
-	}
+	//if (point_x_result && point_y_result)
+	//{
+	//	// 判断结果，X,Y都小于阈值时，实时计算拟合中心坐标改为三点重心
+	//	m_circle_point_x = (point1_x + point2_x + point3_x) / 3;
+	//	m_circle_point_y = (point1_y + point2_y + point3_y) / 3;
+	//}
 
-	is_thread_start = false;
-    
-	// 回到点位2
-	if (!m_pOp_OfflineMode->IsSelected())
-	{
-		// 移动到点位2（发消息）
-		std::string axis_name;
-		double speed_ratio;
-		if (m_is_tx_calibration)
-		{
-			axis_name = "AxisTx";
-			speed_ratio = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TxAxisSpeedRatio");
-		}
-		else
-		{
-			axis_name = "AxisTy";
-			speed_ratio = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TyAxisSpeedRatio");
-		}
-		JMotionEvent motionEvent(axis_name.c_str(), distance_pos2, speed_ratio);
-		jCore->SendEvent(g_MotionWidget, &motionEvent);
-	}
+	//is_thread_start = false;
+ //   
+	//// 回到点位2
+	//if (!m_pOp_OfflineMode->IsSelected())
+	//{
+	//	// 移动到点位2（发消息）
+	//	std::string axis_name;
+	//	double speed_ratio;
+	//	if (m_is_tx_calibration)
+	//	{
+	//		axis_name = "AxisTx";
+	//		speed_ratio = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TxAxisSpeedRatio");
+	//	}
+	//	else
+	//	{
+	//		axis_name = "AxisTy";
+	//		speed_ratio = jCore->GlobalSettings().ReadDouble("AlphaAutoCalibration", "TyAxisSpeedRatio");
+	//	}
+	//	JMotionEvent motionEvent(axis_name.c_str(), distance_pos2, speed_ratio);
+	//	jCore->SendEvent(g_MotionWidget, &motionEvent);
+	//}
 
-	// 开启实时计算
-	if (tx_select && m_is_tx_calibration)
-		m_pOp_TxContinueCapture->Selected(true);
-	if (ty_select && !m_is_tx_calibration)
-		m_pOp_TyContinueCapture->Selected(true);
-	if (ids_select && m_is_tx_calibration)
-		m_pOp_IdsContinueCapture->Selected(true);
+	//// 开启实时计算
+	//if (tx_select && m_is_tx_calibration)
+	//	m_pOp_TxContinueCapture->Selected(true);
+	//if (ty_select && !m_is_tx_calibration)
+	//	m_pOp_TyContinueCapture->Selected(true);
+	//if (ids_select && m_is_tx_calibration)
+	//	m_pOp_IdsContinueCapture->Selected(true);
 }
 
 void AlphaCalibrationPluginView::EnableBtn(bool is_enable)

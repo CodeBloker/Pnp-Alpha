@@ -12,13 +12,13 @@ static JError s_error;
 std::future<int> m_top_future;
 std::future<int> m_bottom_future;
 
-double getRandomDouble(double min, double max)
-{
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_real_distribution<> dis(min, max);
-	return dis(gen);
-}
+//double getRandomDouble(double min, double max)
+//{
+//	std::random_device rd;
+//	std::mt19937 gen(rd());
+//	std::uniform_real_distribution<> dis(min, max);
+//	return dis(gen);
+//}
 
 DvpCaller::DvpCaller()
 {
@@ -52,6 +52,9 @@ int DvpCaller::RegisterMethod()
 	Plugin_Method_Add(DvpCaller, SetTopCameraHwParameter);
 	Plugin_Method_Add(DvpCaller, SetDownCameraHwParameter);
 	Plugin_Method_Add(DvpCaller, StartCaptureTopImageThread);
+	Plugin_Method_Add(DvpCaller, StartCaptureTopImageUpDutThread);
+	Plugin_Method_Add(DvpCaller, StartCaptureTopImagePutDownDutThread);
+	Plugin_Method_Add(DvpCaller, StartCaptureTopImageSocketMarkAndB2BThread);
 	Plugin_Method_Add(DvpCaller, StartCaptureBottomImageThread);
 
 	return 0;
@@ -212,8 +215,167 @@ int DvpCaller::StartCaptureTopImageThread(JupData & data)
 	}
 
 	// 计算结果
-	jCore->SendEvent(ProjectEvent::g_DvpWidget, &ProjectEvent::JDvpPnpCalibrationEvent(getRandomDouble(10,50), getRandomDouble(10, 50), getRandomDouble(10, 50), getRandomDouble(10, 50), file_name));
-	data.SetValue("ImageData", "TopImageFile", file_name);
+
+	return 0;
+}
+
+int DvpCaller::StartCaptureTopImageUpDutThread(JupData & data)
+{
+	// 保存图片
+	std::string strStartTime_1, strStartTime_3, strErrorMsg;
+	strStartTime_1 = data.GetValue("MotionData", "StartTime_1");
+	//strStartTime_3 = data.GetValue("MotionData", "StartTime_3");
+	strStartTime_3 = Jup::GetLocalTime(3);
+	std::string imagePath = IMAGE_PATH_DEFAULT;
+	std::string file_name = imagePath + strStartTime_1 + "/";
+	if (!std::filesystem::exists(file_name))
+	{
+		std::filesystem::create_directory(file_name);
+	}
+	file_name += "temp/";
+	if (!std::filesystem::exists(file_name))
+	{
+		std::filesystem::create_directory(file_name);
+	}
+	bool takeOrLay = data.GetInt("MotionData", "TakeUpOrLayDown");
+	if (takeOrLay)
+	{
+		std::string takeUpDutPath = data.GetValue("MotionData", "TakeDutImagePath");
+		file_name += cameraTop_serial + "_" + strStartTime_3 + "_" + takeUpDutPath + "_dvp.bmp";
+	}
+	else
+	{
+		std::string takeUpDutPath = data.GetValue("MotionData", "TakeDutImagePath");
+		file_name += cameraTop_serial + "_" + strStartTime_3 + "_" + takeUpDutPath + "_dvp.bmp";
+	}
+
+
+	// 软触发一次拍照
+	int nRet = m_pCamera->TakePhoto(cameraTop_serial, file_name, strErrorMsg);
+	if (nRet != 0)
+	{
+		// 软触发失败
+		return -1;
+	}
+
+	// 计算结果
+	std::string file_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\ping.mmf";
+	std::string file_out;
+	JMilFindCenterEvent milEvent(file_name, file_mmf, file_out);
+	jCore->SendEvent(g_MilWidget, &milEvent);
+	data.SetValue("DvpCallerData", "TopImageFile", file_name);
+	double offset_centerY = -24.1141;
+	double offset_centerX = 3.6997;
+	double result_offsetX = -((-milEvent.m_event_deltaX) + offset_centerX) * 0.0139;
+	double result_offsetY = ((-milEvent.m_event_deltaY) + offset_centerY) * 0.0139;
+	data.SetValue("DvpCallerData", "UpDutOffsetX", result_offsetY);
+	data.SetValue("DvpCallerData", "UpDutOffsetY", result_offsetX);
+	Sleep(100);
+	return 0;
+}
+
+int DvpCaller::StartCaptureTopImagePutDownDutThread(JupData & data)
+{
+	// 保存图片
+	std::string strStartTime_1, strStartTime_3, strErrorMsg;
+	strStartTime_1 = data.GetValue("MotionData", "StartTime_1");
+	//strStartTime_3 = data.GetValue("MotionData", "StartTime_3");
+	strStartTime_3 = Jup::GetLocalTime(3);
+	std::string imagePath = IMAGE_PATH_DEFAULT;
+	std::string file_name = imagePath + strStartTime_1 + "/";
+	if (!std::filesystem::exists(file_name))
+	{
+		std::filesystem::create_directory(file_name);
+	}
+	file_name += "temp/";
+	if (!std::filesystem::exists(file_name))
+	{
+		std::filesystem::create_directory(file_name);
+	}
+	bool takeOrLay = data.GetInt("MotionData", "TakeUpOrLayDown");
+	if (takeOrLay)
+	{
+		std::string takeUpDutPath = data.GetValue("MotionData", "TakeDutImagePath");
+		file_name += cameraTop_serial + "_" + strStartTime_3 + "_" + takeUpDutPath + "_dvp.bmp";
+	}
+	else
+	{
+		std::string takeUpDutPath = data.GetValue("MotionData", "TakeDutImagePath");
+		file_name += cameraTop_serial + "_" + strStartTime_3 + "_" + takeUpDutPath + "_dvp.bmp";
+	}
+
+
+	// 软触发一次拍照
+	int nRet = m_pCamera->TakePhoto(cameraTop_serial, file_name, strErrorMsg);
+	if (nRet != 0)
+	{
+		// 软触发失败
+		return -1;
+	}
+
+	// 计算结果
+	std::string file_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\socket.mmf";
+	std::string file_out;
+	JMilFindSocketMarkCenterEvent milEvent(file_name, file_mmf, file_out);
+	jCore->SendEvent(g_MilWidget, &milEvent);
+	double offset_centerY = -1.616;
+	double offset_centerX = -194.021;
+	double result_offsetX = -((-milEvent.m_event_deltaX) + offset_centerX) * 0.0139;
+	double result_offsetY = ((-milEvent.m_event_deltaY) + offset_centerY) * 0.0139;
+	data.SetValue("DvpCallerData", "PutDownDutOffsetX", result_offsetY);
+	data.SetValue("DvpCallerData", "PutDownDutOffsetY", result_offsetX);
+	return 0;
+}
+
+int DvpCaller::StartCaptureTopImageSocketMarkAndB2BThread(JupData & data)
+{
+	// 保存图片
+	std::string strStartTime_1, strStartTime_3, strErrorMsg;
+	strStartTime_1 = data.GetValue("MotionData", "StartTime_1");
+	//strStartTime_3 = data.GetValue("MotionData", "StartTime_3");
+	strStartTime_3 = Jup::GetLocalTime(3);
+	std::string imagePath = IMAGE_PATH_DEFAULT;
+	std::string file_name = imagePath + strStartTime_1 + "/";
+	if (!std::filesystem::exists(file_name))
+	{
+		std::filesystem::create_directory(file_name);
+	}
+	file_name += "temp/";
+	if (!std::filesystem::exists(file_name))
+	{
+		std::filesystem::create_directory(file_name);
+	}
+	bool takeOrLay = data.GetInt("MotionData", "TakeUpOrLayDown");
+	if (takeOrLay)
+	{
+		std::string takeUpDutPath = data.GetValue("MotionData", "TakeDutImagePath");
+		file_name += cameraTop_serial + "_" + strStartTime_3 + "_" + takeUpDutPath + "_dvp.bmp";
+	}
+	else
+	{
+		std::string takeUpDutPath = data.GetValue("MotionData", "TakeDutImagePath");
+		file_name += cameraTop_serial + "_" + strStartTime_3 + "_" + takeUpDutPath + "_dvp.bmp";
+	}
+
+	// 软触发一次拍照
+	int nRet = m_pCamera->TakePhoto(cameraTop_serial, file_name, strErrorMsg);
+	if (nRet != 0)
+	{
+		// 软触发失败
+		return -1;
+	}
+
+	std::string file_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\ping.mmf";
+	std::string file_circle_mmf = "D:\\VISION\\FZ-TEST\\TEST0807\\socket.mmf";
+
+	std::string file_out;
+	JMilFindSocketMarkAndB2BDistanceEvent milEvent(file_name, file_mmf, file_circle_mmf, file_out);
+	jCore->SendEvent(g_MilWidget, &milEvent);
+
+	data.SetValue("DvpCallerData", "Distance", milEvent.m_distance * 0.0139);
+	data.SetValue("DvpCallerData", "SocketAngle", milEvent.m_SocketAngle);
+	//std::string strInfo = "distance is " + std::to_string(milEvent.m_distance * 0.0139) + "，Angle is " + std::to_string(milEvent.m_SocketAngle);
+	//jCore->Logger("DvpPlugin.dll").LogInfo(__FUNCTION__, strInfo);
 
 	return 0;
 }

@@ -53,6 +53,15 @@ public:
 	//计算四个圆点和四个十字
 	std::string VisionButtomCircleCamerResult(std::string strFilePathImage, std::string& strFileOut, const std::string MMFFilename_Model, const std::string MMFFilename_Circle_Model, const std::vector<MilRect> RectROI_Cross, const std::vector<MilRect> RectROI_Circle, std::vector<PointXYA>& ResultLists, std::vector<PointXYA>& ResultCircleLists, float &fdistance, float &fSocketAngle, float &deltaX, float &deltaY);
 
+	//计算上料时 B2B正面中心
+	std::string VisionB2BTopCenterCamerResult(std::string strFilePathImage, std::string& strFileOut, const std::string MMFFilename_Model, float &deltaX, float &deltaY);
+
+	//计算下料时 Socket俩Mark点中心
+	std::string VisionSocketMarkCenterCamerResult(std::string strFilePathImage, std::string& strFileOut, const std::string MMFFilename_Model, const std::vector<MilRect> RectROI_Circle, float &deltaX, float &deltaY);
+
+	//计算放进下料口后 B2B跟Socket两个Mark点的距离
+	std::string VisionSocketMarkAndB2BDistanceResult(std::string strFilePathImage, std::string& strFileOut, const std::string MMFFilename_Model
+		, const std::string MMFFilename_Circle_Model, const std::vector<MilRect> RectROI_Circle, float &SocketAngle, float &distance);
 private:
 	void loadParasFromFile(const char* file_name);
 	void saveMilImage(std::string strFilePath, MIL_ID MilImageOut);

@@ -874,6 +874,7 @@ std::string VisionManager::ExecuteTopCamerCrossResult(MIL_ID MSystem, MIL_ID MIm
 	bool ModelFind = false;
 	bool CircleFind = false;
 	bool ImageCenterFind = false;
+	std::vector<PointXYA> m_TempVar;
 	ResultLists.clear();
 	MIL_ID ClonedImage = M_NULL;
 	MIL_ID MmfContext_Model = M_NULL;
@@ -925,8 +926,8 @@ std::string VisionManager::ExecuteTopCamerCrossResult(MIL_ID MSystem, MIL_ID MIm
 
 				temX += RectROI_Circle.at(i).X;
 				temY += RectROI_Circle.at(i).Y;
-
-				ResultLists.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+				//这里用临时容器用来存储roi的中心坐标，不再用外部容器存储
+				m_TempVar.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
 
 				MgraControl(GraphicsContext, M_DRAW_OFFSET_X, -RectROI_Circle.at(i).X);
 				MgraControl(GraphicsContext, M_DRAW_OFFSET_Y, -RectROI_Circle.at(i).Y);
@@ -949,8 +950,8 @@ std::string VisionManager::ExecuteTopCamerCrossResult(MIL_ID MSystem, MIL_ID MIm
 		if (CircleFind)
 		{
 			_Point point_Center;
-			point_Center.X = (ResultLists.at(0).X + ResultLists.at(1).X + ResultLists.at(2).X + ResultLists.at(3).X) / 4.0;
-			point_Center.Y = (ResultLists.at(0).Y + ResultLists.at(1).Y + ResultLists.at(2).Y + ResultLists.at(3).Y) / 4.0;
+			point_Center.X = (m_TempVar.at(0).X + m_TempVar.at(1).X + m_TempVar.at(2).X + m_TempVar.at(3).X) / 4.0;
+			point_Center.Y = (m_TempVar.at(0).Y + m_TempVar.at(1).Y + m_TempVar.at(2).Y + m_TempVar.at(3).Y) / 4.0;
 			ResultLists.emplace_back(static_cast<float>(point_Center.X), static_cast<float>(point_Center.Y), static_cast<float>(0));
 			//画结果图
 			MIL_INT XStart[2], YStart[2], XEnd[2], YEnd[2];
@@ -977,19 +978,21 @@ std::string VisionManager::ExecuteTopCamerCrossResult(MIL_ID MSystem, MIL_ID MIm
 			float angle, distance;
 			_Point point_img_Center;
 			_Point point_A, point_B, point_C, point_D;
-			point_A.X = ResultLists.at(0).X;
-			point_A.Y = ResultLists.at(0).Y;
-			point_B.X = ResultLists.at(2).X;
-			point_B.Y = ResultLists.at(2).Y;
-			point_C.X = ResultLists.back().X;
-			point_C.Y = ResultLists.back().Y;
+			point_A.X = m_TempVar.at(0).X;
+			point_A.Y = m_TempVar.at(0).Y;
+			point_B.X = m_TempVar.at(2).X;
+			point_B.Y = m_TempVar.at(2).Y;
+			//标定板的中心
+			point_C.X = ResultLists.at(0).X;
+			point_C.Y = ResultLists.at(0).Y;
+			//实际图像中心
 			point_img_Center.X = 2448 / 2.0;
 			point_img_Center.Y = 2048 / 2.0;
-
-			fSocketAngle = Calculate_Angle_Points(point_A, point_B);
-			fdistance = sqrt(pow(point_C.X - point_img_Center.X, 2) + pow(point_C.Y - point_img_Center.Y, 2));
-			deltaX = point_C.X - point_img_Center.X;
-			deltaY = point_C.Y - point_img_Center.Y;
+			ResultLists.emplace_back(static_cast<float>(point_img_Center.X), static_cast<float>(point_img_Center.Y), static_cast<float>(0));
+			//fSocketAngle = Calculate_Angle_Points(point_A, point_B);
+			//fdistance = sqrt(pow(point_C.X - point_img_Center.X, 2) + pow(point_C.Y - point_img_Center.Y, 2));
+			//deltaX = point_C.X - point_img_Center.X;
+			//deltaY = point_C.Y - point_img_Center.Y;
 			//画结果图
 			MIL_INT XStart[2], YStart[2], XEnd[2], YEnd[2];
 			int crossWidth = 100;
@@ -1049,6 +1052,7 @@ std::string VisionManager::ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImag
 	bool CircleFind = false;
 	bool CrossFind = false;
 	bool ImageCenterFind = false;
+	std::vector<PointXYA> m_TempVar, m_TempVar_circle;
 	ResultLists.clear();
 	ResultCircleLists.clear();
 	MIL_ID ClonedImage = M_NULL;
@@ -1105,7 +1109,7 @@ std::string VisionManager::ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImag
 					temX += RectROI_Cross.at(i).X;
 					temY += RectROI_Cross.at(i).Y;
 
-					ResultLists.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+					m_TempVar.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
 
 					MgraControl(GraphicsContext, M_DRAW_OFFSET_X, -RectROI_Cross.at(i).X);
 					MgraControl(GraphicsContext, M_DRAW_OFFSET_Y, -RectROI_Cross.at(i).Y);
@@ -1121,7 +1125,7 @@ std::string VisionManager::ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImag
 				else
 				{
 					CrossFind = false;
-					sErr += "Failed to find circle, No :" + std::to_string(i);
+					sErr += "Failed to find Cross, No :" + std::to_string(i);
 				}
 			}
 		}
@@ -1129,8 +1133,8 @@ std::string VisionManager::ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImag
 		if (CrossFind)
 		{
 			_Point point_Center;
-			point_Center.X = (ResultLists.at(0).X + ResultLists.at(1).X + ResultLists.at(2).X + ResultLists.at(3).X) / 4.0;
-			point_Center.Y = (ResultLists.at(0).Y + ResultLists.at(1).Y + ResultLists.at(2).Y + ResultLists.at(3).Y) / 4.0;
+			point_Center.X = (m_TempVar.at(0).X + m_TempVar.at(1).X + m_TempVar.at(2).X + m_TempVar.at(3).X) / 4.0;
+			point_Center.Y = (m_TempVar.at(0).Y + m_TempVar.at(1).Y + m_TempVar.at(2).Y + m_TempVar.at(3).Y) / 4.0;
 			ResultLists.emplace_back(static_cast<float>(point_Center.X), static_cast<float>(point_Center.Y), static_cast<float>(0));
 			//画结果图
 			MIL_INT XStart[2], YStart[2], XEnd[2], YEnd[2];
@@ -1181,7 +1185,7 @@ std::string VisionManager::ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImag
 					temX += RectROI_Circle.at(i).X;
 					temY += RectROI_Circle.at(i).Y;
 
-					ResultCircleLists.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+					m_TempVar_circle.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
 
 					MgraControl(GraphicsContext, M_DRAW_OFFSET_X, -RectROI_Circle.at(i).X);
 					MgraControl(GraphicsContext, M_DRAW_OFFSET_Y, -RectROI_Circle.at(i).Y);
@@ -1205,8 +1209,8 @@ std::string VisionManager::ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImag
 		if (CircleFind)
 		{
 			_Point point_Center;
-			point_Center.X = (ResultCircleLists.at(0).X + ResultCircleLists.at(1).X + ResultCircleLists.at(2).X + ResultCircleLists.at(3).X) / 4.0;
-			point_Center.Y = (ResultCircleLists.at(0).Y + ResultCircleLists.at(1).Y + ResultCircleLists.at(2).Y + ResultCircleLists.at(3).Y) / 4.0;
+			point_Center.X = (m_TempVar_circle.at(0).X + m_TempVar_circle.at(1).X + m_TempVar_circle.at(2).X + m_TempVar_circle.at(3).X) / 4.0;
+			point_Center.Y = (m_TempVar_circle.at(0).Y + m_TempVar_circle.at(1).Y + m_TempVar_circle.at(2).Y + m_TempVar_circle.at(3).Y) / 4.0;
 			ResultCircleLists.emplace_back(static_cast<float>(point_Center.X), static_cast<float>(point_Center.Y), static_cast<float>(0));
 			//画结果图
 			MIL_INT XStart[2], YStart[2], XEnd[2], YEnd[2];
@@ -1232,22 +1236,24 @@ std::string VisionManager::ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImag
 		{
 			float angle, distance;
 			_Point point_img_Center;
-			_Point point_A, point_B, point_C, point_D;
-			point_A.X = ResultLists.back().X;
-			point_A.Y = ResultLists.back().Y;
-			point_B.X = ResultCircleLists.back().X;
-			point_B.Y = ResultCircleLists.back().Y;
-			point_C.X = ResultCircleLists.at(0).X;
-			point_C.Y = ResultCircleLists.at(0).Y;
-			point_D.X = ResultCircleLists.at(2).X;
-			point_D.Y = ResultCircleLists.at(2).Y;
+			_Point point_A, point_B, point_C, point_D, point_E;
+			point_A.X = m_TempVar.at(0).X;
+			point_A.Y = m_TempVar.at(0).Y;
+			point_B.X = m_TempVar.at(2).X;
+			point_B.Y = m_TempVar.at(2).Y;
+			point_C.X = m_TempVar_circle.at(0).X;
+			point_C.Y = m_TempVar_circle.at(0).Y;
+			point_D.X = m_TempVar_circle.at(2).X;
+			point_D.Y = m_TempVar_circle.at(2).Y;
 			//point_img_Center.X = 2448 / 2.0;
 			//point_img_Center.Y = 2048 / 2.0;
 
-			fSocketAngle = Calculate_Angle_Points(point_C, point_D);
-			fdistance = sqrt(pow(point_B.X - point_A.X, 2) + pow(point_B.Y - point_A.Y, 2));
-			deltaX = point_B.X - point_A.X;
-			deltaY = point_B.Y - point_A.Y;
+			//fSocketAngle = Calculate_Angle_Points(point_C, point_D);
+			ResultCircleLists.at(0).R = Calculate_Angle_Points(point_C, point_D);
+			ResultLists.at(0).R = Calculate_Angle_Points(point_A, point_B);
+			//fdistance = sqrt(pow(point_B.X - point_A.X, 2) + pow(point_B.Y - point_A.Y, 2));
+			//deltaX = point_B.X - point_A.X;
+			//deltaY = point_B.Y - point_A.Y;
 			//画结果图
 			//MIL_INT XStart[2], YStart[2], XEnd[2], YEnd[2];
 			//int crossWidth = 100;
@@ -1264,6 +1270,470 @@ std::string VisionManager::ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImag
 			//MgraColor(GraphicsContext, M_COLOR_BLUE);
 			//MgraControl(GraphicsContext, M_LINE_THICKNESS, brushSize);
 			//MgraLines(GraphicsContext, ImageOut, 2, XStart, YStart, XEnd, YEnd, M_DEFAULT);
+		}
+
+	}
+	catch (const std::exception& ex) {
+		sErr += ex.what();
+	}
+	if (GraphicsContext != M_NULL)
+	{
+		MgraFree(GraphicsContext);
+	}
+	if (ROIImage != M_NULL) {
+		MbufFree(ROIImage);
+	}
+	if (ClonedImage != M_NULL) {
+		MbufFree(ClonedImage);
+	}
+	if (MmfContext_Model != M_NULL) {
+		MmodFree(MmfContext_Model);
+	}
+	if (MetContextD != M_NULL) {
+		MmetFree(MetContextD);
+	}
+	if (MmfContext_Circle != M_NULL) {
+		MmodFree(MmfContext_Circle);
+	}
+	if (ResultContext_Model != M_NULL) {
+		MmodFree(ResultContext_Model);
+	}
+	if (MetRusult != M_NULL) {
+		MmetFree(MetRusult);
+	}
+	if (ResultContext_Circle != M_NULL) {
+		MmodFree(ResultContext_Circle);
+	}
+	return sErr;
+}
+std::string VisionManager::ExecuteTopCameraB2BCenterResult(MIL_ID MSystem, MIL_ID MImage, MIL_ID & ImageOut, const std::string MMFFilename_Model, float & deltaX, float & deltaY)
+{
+	std::string sErr = "";
+	bool ModelFind = false;
+	std::vector<PointXYA> ResultLists;
+	MIL_ID ClonedImage = M_NULL;
+	MIL_ID MmfContext_Model = M_NULL;
+	MIL_ID ResultContext_Model = M_NULL;
+	MIL_ID GraphicsContext = M_NULL;
+
+	try
+	{
+		if (MImage == M_NULL)
+		{
+			throw std::runtime_error("Invalid image or null");
+		}
+
+		// 克隆图像
+		MbufClone(MImage, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_COPY_SOURCE_DATA, &ClonedImage);
+
+		// 获取图像尺寸
+		MIL_INT img_W, img_H;
+		MbufInquire(ClonedImage, M_SIZE_X, &img_W);
+		MbufInquire(ClonedImage, M_SIZE_Y, &img_H);
+
+		// 分配彩色图像缓冲区
+		MbufAllocColor(MSystem, 3, img_W, img_H, 8 + M_UNSIGNED, M_IMAGE + M_PROC + M_DISP, &ImageOut);
+
+		// 转换为RGB图像
+		MimConvert(ClonedImage, ImageOut, M_L_TO_RGB);
+
+		// 分配图形上下文
+		MgraAlloc(MSystem, &GraphicsContext);
+
+		// 恢复和预处理模型上下文
+		MmodRestoreA(MMFFilename_Model.data(), MSystem, M_DEFAULT, &MmfContext_Model);
+		MmodPreprocess(MmfContext_Model, M_DEFAULT);
+
+		// 分配和执行结果上下文
+		MmodAllocResult(MSystem, M_DEFAULT, &ResultContext_Model);
+		MmodFind(MmfContext_Model, ClonedImage, ResultContext_Model);
+
+		MIL_INT ResultCount = 0;
+		MmodGetResult(ResultContext_Model, M_DEFAULT, M_NUMBER + M_TYPE_MIL_INT, &ResultCount);
+
+		if (ResultCount == 1)
+		{
+			ModelFind = true;
+			double mmfX, mmfY, mmfAngle;
+			MmodGetResult(ResultContext_Model, 0, M_POSITION_X, &mmfX);
+			MmodGetResult(ResultContext_Model, 0, M_POSITION_Y, &mmfY);
+			MmodGetResult(ResultContext_Model, 0, M_ANGLE, &mmfAngle);
+
+			// 记录结果
+			ResultLists.emplace_back(static_cast<float>(mmfX), static_cast<float>(mmfY), static_cast<float>(mmfAngle));
+
+			// 绘制结果
+			MgraColor(GraphicsContext, M_COLOR_BLUE);
+			MmodDraw(GraphicsContext, ResultContext_Model, ImageOut, M_DRAW_POSITION, 0, M_DEFAULT);
+			MgraColor(GraphicsContext, M_COLOR_RED);
+			MmodDraw(GraphicsContext, ResultContext_Model, ImageOut, M_DRAW_EDGES, 0, M_DEFAULT);
+		}
+		else
+		{
+			sErr += "Failed to find Model";
+		}
+
+		if (ModelFind)
+		{
+			_Point point_img_Center = { 2448 / 2.0, 2048 / 2.0 };
+			_Point point_topB2B_Center = { ResultLists.at(0).X, ResultLists.at(0).Y };
+
+			deltaX = point_topB2B_Center.X - point_img_Center.X;
+			deltaY = point_topB2B_Center.Y - point_img_Center.Y;
+
+			// 绘制十字线
+			MIL_INT XStart[2], YStart[2], XEnd[2], YEnd[2];
+			int crossWidth = 100;
+			int brushSize = 47;
+			XStart[0] = point_img_Center.X - crossWidth;
+			YStart[0] = point_img_Center.Y;
+			XEnd[0] = point_img_Center.X + crossWidth;
+			YEnd[0] = point_img_Center.Y;
+
+			XStart[1] = point_img_Center.X;
+			YStart[1] = point_img_Center.Y - crossWidth;
+			XEnd[1] = point_img_Center.X;
+			YEnd[1] = point_img_Center.Y + crossWidth;
+			MgraColor(GraphicsContext, M_COLOR_GREEN);
+			MgraControl(GraphicsContext, M_LINE_THICKNESS, brushSize);
+			MgraLines(GraphicsContext, ImageOut, 2, XStart, YStart, XEnd, YEnd, M_DEFAULT);
+		}
+
+	}
+	catch (const std::exception& ex)
+	{
+		sErr += ex.what();
+	}
+
+	// 释放所有 MIL 资源
+	if (GraphicsContext != M_NULL) MgraFree(GraphicsContext);
+	if (ResultContext_Model != M_NULL) MmodFree(ResultContext_Model);
+	if (MmfContext_Model != M_NULL) MmodFree(MmfContext_Model);
+	if (ClonedImage != M_NULL) MbufFree(ClonedImage);
+
+	return sErr;
+}
+std::string VisionManager::ExecuteTopCameraDownSocketMarkResult(MIL_ID MSystem, MIL_ID MImage, MIL_ID & ImageOut, const std::string MMFFilename_Model, std::vector<MilRect> RectROI_Circle, float & deltaX, float & deltaY)
+{
+	std::string sErr = "";
+	bool CircleFind = false;
+	std::vector<PointXYA> ResultLists;
+	MIL_ID ClonedImage = M_NULL;
+	MIL_ID MmfContext_Circle = M_NULL;
+	MIL_ID ResultContext_Circle = M_NULL;
+	MIL_ID ROIImage = M_NULL;
+	MIL_ID GraphicsContext = M_NULL;
+
+	try
+	{
+		if (MImage == M_NULL)
+		{
+			throw std::runtime_error("Invalid image or null");
+		}
+
+		// 克隆图像
+		MbufClone(MImage, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_COPY_SOURCE_DATA, &ClonedImage);
+
+		// 获取图像尺寸
+		MIL_INT img_W, img_H;
+		MbufInquire(ClonedImage, M_SIZE_X, &img_W);
+		MbufInquire(ClonedImage, M_SIZE_Y, &img_H);
+
+		// 分配彩色图像缓冲区
+		MbufAllocColor(MSystem, 3, img_W, img_H, 8 + M_UNSIGNED, M_IMAGE + M_PROC + M_DISP, &ImageOut);
+
+		// 转换为RGB图像
+		MimConvert(ClonedImage, ImageOut, M_L_TO_RGB);
+
+		// 分配图形上下文
+		MgraAlloc(MSystem, &GraphicsContext);
+
+		// 恢复和预处理圆形模板上下文
+		MmodRestoreA(MMFFilename_Model.data(), MSystem, M_DEFAULT, &MmfContext_Circle);
+		MmodPreprocess(MmfContext_Circle, M_DEFAULT);
+
+		// 分配结果上下文
+		MmodAllocResult(MSystem, M_DEFAULT, &ResultContext_Circle);
+
+		for (int i = 0; i < RectROI_Circle.size(); i++)
+		{
+			if (ROIImage != M_NULL)
+			{
+				MbufFree(ROIImage); // 释放前一个 ROIImage 以避免内存泄漏
+				ROIImage = M_NULL;  // 避免重复释放
+			}
+
+			// 分配新的 ROIImage
+			MbufChild2d(ClonedImage, RectROI_Circle.at(i).X, RectROI_Circle.at(i).Y, RectROI_Circle.at(i).W, RectROI_Circle.at(i).H, &ROIImage);
+
+			MIL_INT ResultCount = 0;
+			MmodFind(MmfContext_Circle, ROIImage, ResultContext_Circle);
+			MmodGetResult(ResultContext_Circle, M_DEFAULT, M_NUMBER + M_TYPE_MIL_INT, &ResultCount);
+
+			if (ResultCount == 2)
+			{
+				for (int j = 0; j < ResultCount; j++)
+				{
+					CircleFind = true;
+					double temX = 0.0, temY = 0.0, temRadius = 0.0;
+					MmodGetResult(ResultContext_Circle, j, M_POSITION_X, &temX);
+					MmodGetResult(ResultContext_Circle, j, M_POSITION_Y, &temY);
+					MmodGetResult(ResultContext_Circle, j, M_RADIUS, &temRadius);
+
+					temX += RectROI_Circle.at(i).X;
+					temY += RectROI_Circle.at(i).Y;
+
+					if (ResultLists.empty())
+						ResultLists.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+					else
+					{
+						if (static_cast<float>(temY) < ResultLists.back().Y)
+							ResultLists.emplace(ResultLists.begin(), static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+						else
+							ResultLists.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+					}
+
+					// 绘制结果
+					MgraControl(GraphicsContext, M_DRAW_OFFSET_X, -RectROI_Circle.at(i).X);
+					MgraControl(GraphicsContext, M_DRAW_OFFSET_Y, -RectROI_Circle.at(i).Y);
+					MgraColor(GraphicsContext, M_COLOR_GREEN);
+					MmodDraw(GraphicsContext, ResultContext_Circle, ImageOut, M_DRAW_POSITION, 0, M_DEFAULT);
+					MgraColor(GraphicsContext, M_COLOR_GREEN);
+					MmodDraw(GraphicsContext, ResultContext_Circle, ImageOut, M_DRAW_BOX, 0, M_DEFAULT);
+					MgraColor(GraphicsContext, M_COLOR_RED);
+					MmodDraw(GraphicsContext, ResultContext_Circle, ImageOut, M_DRAW_EDGES, 0, M_DEFAULT);
+					MgraControl(GraphicsContext, M_DRAW_OFFSET_X, 0);
+					MgraControl(GraphicsContext, M_DRAW_OFFSET_Y, 0);
+				}
+			}
+			else
+			{
+				CircleFind = false;
+				sErr += "Failed to find circle, No :" + std::to_string(i);
+			}
+		}
+
+		if (CircleFind && ResultLists.size() == 2)
+		{
+			// 计算两个Mark点的中心
+			_Point point_A = { ResultLists.at(0).X, ResultLists.at(0).Y };
+			_Point point_B = { ResultLists.at(1).X, ResultLists.at(1).Y };
+			_Point point_C = { (ResultLists.at(0).X + ResultLists.at(1).X) / 2.0, (ResultLists.at(0).Y + ResultLists.at(1).Y) / 2.0 };
+
+			// 绘制结果
+			MIL_INT XStart[2], YStart[2], XEnd[2], YEnd[2];
+			int crossWidth = 50;
+			int brushSize = 5;
+			XStart[0] = point_C.X - crossWidth;
+			YStart[0] = point_C.Y;
+			XEnd[0] = point_C.X + crossWidth;
+			YEnd[0] = point_C.Y;
+
+			XStart[1] = point_C.X;
+			YStart[1] = point_C.Y - crossWidth;
+			XEnd[1] = point_C.X;
+			YEnd[1] = point_C.Y + crossWidth;
+			MgraColor(GraphicsContext, M_COLOR_BLUE);
+			MgraControl(GraphicsContext, M_LINE_THICKNESS, brushSize);
+			MgraLines(GraphicsContext, ImageOut, 2, XStart, YStart, XEnd, YEnd, M_DEFAULT);
+
+			// 图像中心
+			_Point point_img_Center = { 2448 / 2.0, 2048 / 2.0 };
+			int crossWidth_Center = 100;
+			int brushSize_Center = 47;
+			XStart[0] = point_img_Center.X - crossWidth_Center;
+			YStart[0] = point_img_Center.Y;
+			XEnd[0] = point_img_Center.X + crossWidth_Center;
+			YEnd[0] = point_img_Center.Y;
+
+			XStart[1] = point_img_Center.X;
+			YStart[1] = point_img_Center.Y - crossWidth_Center;
+			XEnd[1] = point_img_Center.X;
+			YEnd[1] = point_img_Center.Y + crossWidth_Center;
+			MgraColor(GraphicsContext, M_COLOR_GREEN);
+			MgraControl(GraphicsContext, M_LINE_THICKNESS, brushSize_Center);
+			MgraLines(GraphicsContext, ImageOut, 2, XStart, YStart, XEnd, YEnd, M_DEFAULT);
+
+			deltaX = point_C.X - point_img_Center.X;
+			deltaY = point_C.Y - point_img_Center.Y;
+		}
+	}
+	catch (const std::exception& ex) {
+		sErr += ex.what();
+	}
+
+	// 释放所有 MIL 资源
+	if (GraphicsContext != M_NULL) MgraFree(GraphicsContext);
+	if (ROIImage != M_NULL) MbufFree(ROIImage);
+	if (ClonedImage != M_NULL) MbufFree(ClonedImage);
+	if (MmfContext_Circle != M_NULL) MmodFree(MmfContext_Circle);
+	if (ResultContext_Circle != M_NULL) MmodFree(ResultContext_Circle);
+
+	return sErr;
+}
+std::string VisionManager::ExecuteTopCamerDownSocketMarkDistance(MIL_ID MSystem, MIL_ID MImage, MIL_ID & ImageOut, const std::string MMFFilename_Model
+	, const std::string MMFFilename_Circle_Model, std::vector<MilRect> RectROI_Circle, float &fSocketAngle, float &fdistance)
+{
+	std::string sErr = "";
+	bool ModelFind = false;
+	bool CircleFind = false;
+	std::vector<PointXYA> ResultLists, Result_CircleList;
+	MIL_ID ClonedImage = M_NULL;
+	MIL_ID MmfContext_Model = M_NULL;
+	MIL_ID MmfContext_Circle = M_NULL;
+	MIL_ID ResultContext_Model = M_NULL;
+	MIL_ID ResultContext_Circle = M_NULL;
+	MIL_ID ROIImage = M_NULL;
+	MIL_ID MetContextD = M_NULL;
+	MIL_ID MetRusult = M_NULL;
+	MIL_ID GraphicsContext = M_NULL;
+
+	try
+	{
+		if (MImage == M_NULL)
+		{
+			throw std::runtime_error("Invalid image or null");
+		}
+		MbufClone(MImage, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_DEFAULT, M_COPY_SOURCE_DATA, &ClonedImage);
+		MIL_INT img_W;
+		MIL_INT img_H;
+		MbufInquire(ClonedImage, M_SIZE_X, &img_W);
+		MbufInquire(ClonedImage, M_SIZE_Y, &img_H);
+		MbufAllocColor(MSystem, 3, img_W, img_H, 8 + M_UNSIGNED, M_IMAGE + M_PROC + M_DISP, &ImageOut);
+		MimConvert(ClonedImage, ImageOut, M_L_TO_RGB);
+		MgraAlloc(MSystem, &GraphicsContext);
+
+		//定位B2B中心
+		if (true)
+		{
+			// 模板匹配找中心
+			double mmfX = 0.0;
+			double mmfY = 0.0;
+			double mmfAngle = 0.0;
+			MIL_INT ResultCount = 0;
+			MmodRestoreA((MMFFilename_Model.data()), MSystem, M_DEFAULT, &MmfContext_Model);
+			MmodPreprocess(MmfContext_Model, M_DEFAULT);
+			MmodAllocResult(MSystem, M_DEFAULT, &ResultContext_Model);
+			MmodFind(MmfContext_Model, ClonedImage, ResultContext_Model);
+			MmodGetResult(ResultContext_Model, M_DEFAULT, M_NUMBER + M_TYPE_MIL_INT, &ResultCount);
+			if (ResultCount == 1)
+			{
+				ModelFind = true;
+				MmodGetResult(ResultContext_Model, 0, M_POSITION_X, &mmfX);
+				MmodGetResult(ResultContext_Model, 0, M_POSITION_Y, &mmfY);
+				MmodGetResult(ResultContext_Model, 0, M_ANGLE, &mmfAngle);
+
+				//画结果图
+				MgraColor(GraphicsContext, M_COLOR_BLUE);
+				MmodDraw(GraphicsContext, ResultContext_Model, ImageOut, M_DRAW_POSITION, 0, M_DEFAULT);
+				MgraColor(GraphicsContext, M_COLOR_RED);
+				MmodDraw(GraphicsContext, ResultContext_Model, ImageOut, M_DRAW_EDGES, 0, M_DEFAULT);
+
+				//将结果存入Point XYA动态数组中
+				ResultLists.emplace_back(static_cast<float>(mmfX), static_cast<float>(mmfY), static_cast<float>(mmfAngle));
+			}
+			else
+			{
+				sErr += "Failed to find Model";
+				ModelFind = false;
+			}
+		}
+
+		if (ModelFind)
+		{
+			// Find circle
+			// 恢复和预处理圆形模板上下文
+			MmodRestoreA(MMFFilename_Circle_Model.data(), MSystem, M_DEFAULT, &MmfContext_Circle);
+			MmodPreprocess(MmfContext_Circle, M_DEFAULT);
+
+			// 分配结果上下文
+			MmodAllocResult(MSystem, M_DEFAULT, &ResultContext_Circle);
+
+			for (int i = 0; i < RectROI_Circle.size(); i++)
+			{
+				if (ROIImage != M_NULL)
+				{
+					MbufFree(ROIImage); // 释放前一个 ROIImage 以避免内存泄漏
+					ROIImage = M_NULL;  // 避免重复释放
+				}
+
+				// 分配新的 ROIImage
+				MbufChild2d(ClonedImage, RectROI_Circle.at(i).X, RectROI_Circle.at(i).Y, RectROI_Circle.at(i).W, RectROI_Circle.at(i).H, &ROIImage);
+
+				MIL_INT ResultCount = 0;
+				MmodFind(MmfContext_Circle, ROIImage, ResultContext_Circle);
+				MmodGetResult(ResultContext_Circle, M_DEFAULT, M_NUMBER + M_TYPE_MIL_INT, &ResultCount);
+
+				if (ResultCount == 2)
+				{
+					for (int j = 0; j < ResultCount; j++)
+					{
+						CircleFind = true;
+						double temX = 0.0, temY = 0.0, temRadius = 0.0;
+						MmodGetResult(ResultContext_Circle, j, M_POSITION_X, &temX);
+						MmodGetResult(ResultContext_Circle, j, M_POSITION_Y, &temY);
+						MmodGetResult(ResultContext_Circle, j, M_RADIUS, &temRadius);
+
+						temX += RectROI_Circle.at(i).X;
+						temY += RectROI_Circle.at(i).Y;
+
+						if (Result_CircleList.empty())
+							Result_CircleList.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+						else
+						{
+							if (static_cast<float>(temY) < Result_CircleList.back().Y)
+								Result_CircleList.emplace(Result_CircleList.begin(), static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+							else
+								Result_CircleList.emplace_back(static_cast<float>(temX), static_cast<float>(temY), static_cast<float>(temRadius));
+						}
+
+						// 绘制结果
+						MgraControl(GraphicsContext, M_DRAW_OFFSET_X, -RectROI_Circle.at(i).X);
+						MgraControl(GraphicsContext, M_DRAW_OFFSET_Y, -RectROI_Circle.at(i).Y);
+						MgraColor(GraphicsContext, M_COLOR_GREEN);
+						MmodDraw(GraphicsContext, ResultContext_Circle, ImageOut, M_DRAW_POSITION, 0, M_DEFAULT);
+						MgraColor(GraphicsContext, M_COLOR_GREEN);
+						MmodDraw(GraphicsContext, ResultContext_Circle, ImageOut, M_DRAW_BOX, 0, M_DEFAULT);
+						MgraColor(GraphicsContext, M_COLOR_RED);
+						MmodDraw(GraphicsContext, ResultContext_Circle, ImageOut, M_DRAW_EDGES, 0, M_DEFAULT);
+						MgraControl(GraphicsContext, M_DRAW_OFFSET_X, 0);
+						MgraControl(GraphicsContext, M_DRAW_OFFSET_Y, 0);
+					}
+				}
+				else
+				{
+					CircleFind = false;
+					sErr += "Failed to find circle, No :" + std::to_string(i);
+				}
+			}
+		}
+
+		if (CircleFind)
+		{
+			if (Result_CircleList.size() == 2)
+			{
+				float angle;
+				_Point point_A, point_B, point_C, point_D;
+				point_A.X = ResultLists.at(0).X;
+				point_A.Y = ResultLists.at(0).Y;
+				point_B.X = Result_CircleList.at(0).X;
+				point_B.Y = Result_CircleList.at(0).Y;
+				point_C.X = Result_CircleList.at(1).X;
+				point_C.Y = Result_CircleList.at(1).Y;
+				point_D.X = (Result_CircleList.at(0).X + Result_CircleList.at(1).X) / 2.0;
+				point_D.Y = (Result_CircleList.at(0).Y + Result_CircleList.at(1).Y) / 2.0;
+				angle = Calculate_Angle_Points(point_A, point_D);
+				fSocketAngle = angle;
+				fdistance = sqrt(pow(point_D.X - point_A.X, 2) + pow(point_D.Y - point_A.Y, 2));
+
+				MIL_DOUBLE X_Start, Y_Start, X_End, Y_End;
+				X_Start = point_A.X;
+				Y_Start = point_A.Y;
+				X_End = point_D.X;
+				Y_End = point_D.Y;
+				MgraColor(GraphicsContext, M_COLOR_GREEN);
+				MgraLine(GraphicsContext, ImageOut, X_Start, Y_Start, X_End, Y_End);
+			}
 		}
 
 	}

@@ -31,32 +31,38 @@
 			[
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "ReadyPnpPos",
-					"@method" : "moveToReadyPnpPos",
+					"@itemName" : "AxisLoadPnpToPosPhoto",
+					"@method" : "AxisLoadPnpToPosPhoto",
 					"@pluginFileName" : "JupMotion.dll"
 				},
 				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "StartCapture",
+					"@method" : "StartCaptureTopImageUpDutThread",
+					"@pluginFileName" : "DvpPlugin.dll"
+				},
+				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "CalibraPosA1",
+					"@itemName" : "CailbraB1",
+					"@method" : "moveToPnpCailbraPosB1",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "StartCapture2",
+					"@method" : "StartCaptureTopImageUpDutThread",
+					"@pluginFileName" : "DvpPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "moveToPnpCailbraPosA1",
 					"@method" : "moveToPnpCailbraPosA1",
 					"@pluginFileName" : "JupMotion.dll"
 				},
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "CalibraPosA2",
-					"@method" : "moveToPnpCailbraPosA2",
-					"@pluginFileName" : "JupMotion.dll"
-				},
-				{
-					"@callerName" : "JupMotionCaller",
-					"@itemName" : "CalibraPosA3",
-					"@method" : "moveToPnpCailbraPosA3",
-					"@pluginFileName" : "JupMotion.dll"
-				},
-				{
-					"@callerName" : "JupMotionCaller",
-					"@itemName" : "Save Pnp Pos",
-					"@method" : "saveCurrentPnpPos",
+					"@itemName" : "AxisZPeriodicMotionUP",
+					"@method" : "AxisZPeriodicMotionUP",
 					"@pluginFileName" : "JupMotion.dll"
 				}
 			],
@@ -70,56 +76,50 @@
 			[
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "ReadyNozzlePos",
-					"@method" : "moveToReadyNozzlePos",
+					"@itemName" : "AxisLoadPnpCommandToPosSocket",
+					"@method" : "AxisLoadPnpCommandToPosSocket",
 					"@pluginFileName" : "JupMotion.dll"
 				},
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "takePhotoB1",
-					"@method" : "takePhotoToCalibraPosB1",
+					"@itemName" : "AxisLoadPnpWaitMoveToPosSocket",
+					"@method" : "AxisLoadPnpWaitMoveToPosSocket",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "DvpCaller",
+					"@itemName" : "StartCapture",
+					"@method" : "StartCaptureTopImagePutDownDutThread",
+					"@pluginFileName" : "DvpPlugin.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "moveToPnpCailbraPosA2",
+					"@method" : "moveToPnpCailbraPosA2",
 					"@pluginFileName" : "JupMotion.dll"
 				},
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "CailbraPosB1",
-					"@method" : "moveToPnpCailbraPosB1",
+					"@itemName" : "AxisZPeriodicMotionDown",
+					"@method" : "AxisZPeriodicMotionDown",
 					"@pluginFileName" : "JupMotion.dll"
 				},
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "takePhotoB2",
-					"@method" : "takePhotoToCalibraPosB2",
-					"@pluginFileName" : "JupMotion.dll"
-				},
-				{
-					"@callerName" : "JupMotionCaller",
-					"@itemName" : "CailbraPosB2",
+					"@itemName" : "moveToPnpCailbraPosB2",
 					"@method" : "moveToPnpCailbraPosB2",
 					"@pluginFileName" : "JupMotion.dll"
 				},
 				{
-					"@callerName" : "JupMotionCaller",
-					"@itemName" : "takePhotoB3",
-					"@method" : "takePhotoToCalibraPosB3",
-					"@pluginFileName" : "JupMotion.dll"
+					"@callerName" : "DvpCaller",
+					"@itemName" : "StartCapture",
+					"@method" : "StartCaptureTopImageSocketMarkAndB2BThread",
+					"@pluginFileName" : "DvpPlugin.dll"
 				},
 				{
 					"@callerName" : "JupMotionCaller",
-					"@itemName" : "CailbraPosB3",
+					"@itemName" : "moveToPnpCailbraPosB3",
 					"@method" : "moveToPnpCailbraPosB3",
-					"@pluginFileName" : "JupMotion.dll"
-				},
-				{
-					"@callerName" : "JupMotionCaller",
-					"@itemName" : "takePhotoB4",
-					"@method" : "takePhotoToFinalPosB4",
-					"@pluginFileName" : "JupMotion.dll"
-				},
-				{
-					"@callerName" : "JupMotionCaller",
-					"@itemName" : "Save Nozzle Pos",
-					"@method" : "saveCurrentPnpAndNozzlePos",
 					"@pluginFileName" : "JupMotion.dll"
 				}
 			],
@@ -129,7 +129,33 @@
 			"@branchName" : "master",
 			"@groupName" : "GroupC",
 			"cycles" : 1,
-			"items" : null,
+			"items" : 
+			[
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "AxisZPeriodicMotionUP",
+					"@method" : "AxisZPeriodicMotionUP",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "AxisLoadPnpToPosPhoto",
+					"@method" : "AxisLoadPnpToPosPhoto",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "moveToPnpCailbraPosA3",
+					"@method" : "moveToPnpCailbraPosA3",
+					"@pluginFileName" : "JupMotion.dll"
+				},
+				{
+					"@callerName" : "JupMotionCaller",
+					"@itemName" : "AxisZPeriodicMotionDown",
+					"@method" : "AxisZPeriodicMotionTest",
+					"@pluginFileName" : "JupMotion.dll"
+				}
+			],
 			"policy" : "Next"
 		},
 		{
@@ -139,15 +165,9 @@
 			"items" : 
 			[
 				{
-					"@callerName" : "JupMotionCaller",
-					"@itemName" : "Cal Distance",
-					"@method" : "CalPnpDistance",
-					"@pluginFileName" : "JupMotion.dll"
-				},
-				{
 					"@callerName" : "MilCaller",
-					"@itemName" : "Save Data To Csv",
-					"@method" : "SaveCalibraData",
+					"@itemName" : "Save Data",
+					"@method" : "SaveCaldistanceAngleData",
 					"@pluginFileName" : "MilPlugin.dll"
 				}
 			],

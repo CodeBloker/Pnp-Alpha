@@ -55,6 +55,10 @@ private:
 	void OnCheckNozzleCalibrationSelectClick(TNotifyUI & msg);
 
 private:
+	// 获得点位图片结果
+	void GetImagePointResult(std::string &imagePath, bool wait_result = false);
+
+private:
 	CComboUI*  m_pCombo_DeviceList;
 	CButtonUI* m_pBtn_DeviceSerch;
 	CButtonUI* m_pBtn_DeviceOpen;
@@ -74,22 +78,34 @@ private:
 	COptionUI* m_pOp_SwTriggerMode;
 	COptionUI* m_pOp_HwTriggerMode;
 
-	CEditUI* m_edit_m_templateX;
-	CEditUI* m_edit_m_templateY;
-	CEditUI* m_edit_Pnp_x;
-	CEditUI* m_edit_Pnp_y;
-	CEditUI* m_edit_deltaPnpx;
-	CEditUI* m_edit_deltaPnpy;
+	//CEditUI* m_edit_m_templateX;
+	//CEditUI* m_edit_m_templateY;
+	//CEditUI* m_edit_Pnp_x;
+	//CEditUI* m_edit_Pnp_y;
+	//CEditUI* m_edit_deltaPnpx;
+	//CEditUI* m_edit_deltaPnpy;
 
-	CEditUI* m_edit_m_tempX;
-	CEditUI* m_edit_m_tempY;
-	CEditUI* m_edit_m_tempR;
-	CEditUI* m_edit_Nozzle_x;
-	CEditUI* m_edit_Nozzle_y;
-	CEditUI* m_edit_Nozzle_r;
-	CEditUI* m_edit_deltaNozzleX;
-	CEditUI* m_edit_deltaNozzleY;
-	CEditUI* m_edit_deltaNozzleR;
+	//CEditUI* m_edit_m_tempX;
+	//CEditUI* m_edit_m_tempY;
+	//CEditUI* m_edit_m_tempR;
+	//CEditUI* m_edit_Nozzle_x;
+	//CEditUI* m_edit_Nozzle_y;
+	//CEditUI* m_edit_Nozzle_r;
+	//CEditUI* m_edit_deltaNozzleX;
+	//CEditUI* m_edit_deltaNozzleY;
+	//CEditUI* m_edit_deltaNozzleR;
+
+	CEditUI* m_edit_normalX;
+	CEditUI* m_edit_normalY;
+	CEditUI* m_edit_normalR;
+
+	CEditUI* m_edit_actualX;
+	CEditUI* m_edit_actualY;
+	CEditUI* m_edit_actualR;
+
+	CEditUI* m_edit_deltaX;
+	CEditUI* m_edit_deltaY;
+	CEditUI* m_edit_deltaR;
 
 	COptionUI* m_pOp_PnpCalibration;
 	COptionUI* m_pOp_NozzleCalibration;

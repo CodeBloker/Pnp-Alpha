@@ -141,6 +141,16 @@ public:
 
 	//计算底部四个圆中心校准
 	std::string ExecuteButtomCamerCircle(MIL_ID MSystem, MIL_ID MImage, MIL_ID& ImageOut, const std::string MMFFilename_Model, const std::string MMFFilename_Circle_Model, const std::vector<MilRect> RectROI_Cross, const std::vector<MilRect> RectROI_Circle, std::vector<PointXYA>& ResultLists, std::vector<PointXYA>& ResultCircleLists, float &fdistance, float &fSocketAngle, float &deltaX, float &deltaY);
+
+	//计算上料时 B2B正面中心
+	std::string ExecuteTopCameraB2BCenterResult(MIL_ID MSystem, MIL_ID MImage, MIL_ID& ImageOut, const std::string MMFFilename_Model, float &deltaX, float &deltaY);
+
+	//计算下料时 Socket两个Mark点
+	std::string ExecuteTopCameraDownSocketMarkResult(MIL_ID MSystem, MIL_ID MImage, MIL_ID& ImageOut, const std::string MMFFilename_Model, std::vector<MilRect> RectROI_Circle, float &deltaX, float &deltaY);
+
+	//计算放进下料口后 B2B跟Socket两个Mark点的距离
+	std::string ExecuteTopCamerDownSocketMarkDistance(MIL_ID MSystem, MIL_ID MImage, MIL_ID& ImageOut, const std::string MMFFilename_Model
+		,const std::string MMFFilename_Circle_Model, std::vector<MilRect> RectROI_Circle, float &fSocketAngle, float &fdistance);
 };
 
 
